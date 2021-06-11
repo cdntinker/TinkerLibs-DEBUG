@@ -44,13 +44,21 @@ Sends out a line to separate debugging information into distinct blocks.
 
 ### `DEBUG_SectionTitle(const char *Title);`
 
+    | Title                                                          |
+
 ### `DEBUG_LineOut(const char *Line);`
 
-### `DEBUG_BlockOut(const char *Block);`
+    |    Line                                                        |
 
 ### `DEBUG_Success(const char *Line);`
 
+    + Line                                                           +
+
 ### `DEBUG_Trouble(const char *Line);`
+
+    * Line                                                           *
+
+### `DEBUG_BlockOut(const char *Block);`
 
 ### `DEBUG_ProgressBar0();`
 
