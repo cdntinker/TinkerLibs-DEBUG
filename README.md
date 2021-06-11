@@ -13,6 +13,11 @@ These are all declared in **Tinker_DEBUG.h**
 
 `DEBUG_Title(void);`
 
+    Sends out a block of information about the device.
+
+    **DeviceTitle** & **DeviceDescription** are character strings pulled from `#define`s (probably fed in from platformio.ini)
+    **DeviceNotes** is a `const char*` declared elsewhere.  (This should happen before `DEBUG_Title` is called... :P )
+
 `DEBUG_Ready();`
 
 `DEBUG_Separator();`
@@ -34,5 +39,7 @@ These are all declared in **Tinker_DEBUG.h**
 `DEBUG_ProgressBar2(int dotcount);`
 
 `DEBUG_Reset();`
+
+    Sends out the reason for the latest device restart.
 
 `DEBUG_Init(const char* InitPart);`
