@@ -101,6 +101,21 @@ void DEBUG_Success(const char *Line)
     Serial.printf("+ %-62s +\n", Line);
 }
 
+int MaxDots = 62;
+
+int DEBUG_ProgressBar(int dotcount)
+{
+    if (dotcount == 0)
+        Serial.printf("| ");
+    Serial.printf(".");
+    if (dotcount == MaxDots)
+    {
+        Serial.printf(" |\n");
+        return 0;
+    }
+    return dotcount++;
+}
+
 void DEBUG_ProgressBar0()
 {
     Serial.printf("| ");
