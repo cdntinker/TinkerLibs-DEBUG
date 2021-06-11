@@ -13,10 +13,11 @@ These are all declared in **Tinker_DEBUG.h**
 
 `DEBUG_Title(void);`
 
-    Sends out a block of information about the device.
+Sends out a block of information about the device.
 
-    **DeviceTitle** & **DeviceDescription** are character strings pulled from `#define`s (probably fed in from platformio.ini)
-    **DeviceNotes** is a `const char*` declared elsewhere.  (This should happen before `DEBUG_Title` is called... :P )
+**DeviceTitle** & **DeviceDescription** are character strings pulled from `#define`s (probably fed in from platformio.ini)
+
+**DeviceNotes** is a `const char*` declared elsewhere.  (This should happen before `DEBUG_Title` is called... :P )
 
 `DEBUG_Ready();`
 
