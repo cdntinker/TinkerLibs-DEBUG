@@ -1,6 +1,7 @@
 #ifndef Tinker_DEBUG_H
 #define Tinker_DEBUG_H
-    // Stuff only needed in DEBUG_functions.cpp goes here.
+
+// Stuff only needed in DEBUG_functions.cpp goes here.
 
 #include <NOTARDUINO.h>
 
@@ -16,6 +17,8 @@ extern const char *DeviceNotes;
 #define STR(A) ST(A)
 
 #endif // Tinker_DEBUG_H
+
+// Function declarations
 
 void setup_DEBUG();
 void DEBUG_Title(void);
@@ -35,4 +38,4 @@ void DEBUG_ProgressBar1();
 void DEBUG_ProgressBar2(int dotcount);
 
 void DEBUG_Reset();
-void DEBUG_Init(const char* InitPart);
+void DEBUG_Init(const char *InitPart);
