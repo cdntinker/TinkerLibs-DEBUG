@@ -113,7 +113,7 @@ int DEBUG_ProgressBar(int dotcount)
         Serial.printf(" |\n");
         return 0;
     }
-    return dotcount++;
+    return (dotcount++);
 }
 
 void DEBUG_ProgressBar0()
