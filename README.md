@@ -1,6 +1,6 @@
-# LibTesting-DEBUG
+# TinkerLibs-DEBUG
 
-# A collection of Serial Output functions.
+## A collection of Serial Output functions.
 
 If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the following functions are enabled.  Otherwise, they're defined as empty functions.
 
