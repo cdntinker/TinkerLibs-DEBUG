@@ -161,8 +161,7 @@ void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
-void DEBUG_ProgressBar0() {}
-void DEBUG_ProgressBar1() {}
+int DEBUG_ProgressBar(int dotcount) {}
 void DEBUG_ProgressBar2(int dotcount) {}
 
 #endif // DEBUG
