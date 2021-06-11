@@ -93,10 +93,6 @@ The for loop is whatever process you're indicating progress for.
 
 `DEBUG_ProgressBar2(Foo);` adds the blanks & closes out the line when the process is finished.
 
-### `void DEBUG_ProgressBar0()`
-
-### `void DEBUG_ProgressBar1()`
-
 ### `void DEBUG_ProgressBar2(int dotcount)`
 
 ### `void DEBUG_Init(const char* InitPart)`
