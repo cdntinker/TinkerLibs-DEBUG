@@ -2,9 +2,9 @@
 
 - [Overview](#a-collection-of-serial-output-functions)
 - Usage:
-  - [With PlatformIO](#PlatformIO)
-  - [With Arduino IDE](#Arduino-IDE)
-- [The Functions](#The-Functions)
+  - [With PlatformIO](#platformio)
+  - [With Arduino IDE](#arduino-ide)
+- [The Functions](#the-functions)
 
 ## A collection of Serial Output functions.
 
