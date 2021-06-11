@@ -17,13 +17,30 @@ Currently, just turns on Serial output at 115200 baud.
 
 Sends out a block of information about the device.
 
+    #================================================================#
+    # DeviceTitle                                                    #
+    # DeviceDescription                                              #
+    +----------------------------------------------------------------+
+    # DeviceNotes (Notes about the device...)                        #
+    #================================================================#
+
 **DeviceTitle** & **DeviceDescription** are character strings pulled from `#define`s (probably fed in from platformio.ini)
 
 **DeviceNotes** is a `const char*` declared elsewhere.  (This should happen before `DEBUG_Title` is called... :stuck_out_tongue_winking_eye: )
 
 ### `DEBUG_Ready();`
 
+Sends out a block indicating `setup()` is finished
+
+    #================================================================#
+    #                         Ready To Run.                          #
+    #================================================================#
+
 ### `DEBUG_Separator();`
+
+Sends out a line to separate debugging information into distinct blocks.
+
+    >----------------------------------------------------------------<
 
 ### `DEBUG_SectionTitle(const char *Title);`
 
