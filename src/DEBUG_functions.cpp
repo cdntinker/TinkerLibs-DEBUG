@@ -1,6 +1,8 @@
 // #include <NOTARDUINO.h>
 #include <Arduino.h>
 
+int DEBUG_Width = 66;
+
 char DEBUGtxt[48];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
@@ -101,6 +103,20 @@ void DEBUG_Success(const char *Line)
     Serial.printf("+ %-62s +\n", Line);
 }
 
+int DEBUG_ProgressBar(int dotcount)
+{
+
+    if (dotcount == 0)
+        Serial.printf("| ");
+    Serial.printf(".");
+    if (dotcount == (DEBUG_Width - 5))
+    {
+        Serial.printf(" |\n");
+        return 0;
+    }
+    dotcount++;
+    return (dotcount);
+}
 
 void DEBUG_ProgressBar0()
 {
