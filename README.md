@@ -1,8 +1,22 @@
 # TinkerLibs-DEBUG
 
+- [Overview](#a-collection-of-serial-output-functions)
+- Usage:
+  - [With PlatformIO](#PlatformIO)
+  - [With Arduino IDE](#Arduino-IDE)
+- [The Functions](#The-Functions)
+
 ## A collection of Serial Output functions.
 
 If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the following functions are enabled.  Otherwise, they're defined as empty functions.
+
+## Usage
+
+### PlatformIO
+
+### Arduino IDE
+
+## The Functions
 
 These are all declared in **Tinker_DEBUG.h**
 
