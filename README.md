@@ -3,9 +3,12 @@ Testing libraries for PlatformIO usage. (DEBUG)
 
 # A collection of Serial Output functions.
 
-If DEBUG is turned on in platformio.ini (build_flags = -D DEBUG), the following functions are enabled.  Otherwise, they're defined as empty functions.
+If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the following functions are enabled.  Otherwise, they're defined as empty functions.
+
+These are all declared in **Tinker_DEBUG.h**
 
 `setup_DEBUG();`
+
     Currently, just turns on Serial output at 115200 baud.
 
 `DEBUG_Title(void);`
