@@ -28,6 +28,10 @@ Sends out a block of information about the device.
 
 **DeviceNotes** is a `const char*` declared elsewhere.  (This should happen before `DEBUG_Title` is called... :stuck_out_tongue_winking_eye: )
 
+### `DEBUG_Reset();`
+
+    Sends out the reason for the latest device restart.
+
 ### `DEBUG_Ready();`
 
 Sends out a block indicating `setup()` is finished
@@ -60,14 +64,14 @@ Sends out a line to separate debugging information into distinct blocks.
 
 ### `DEBUG_BlockOut(const char *Block);`
 
+Sends out a preformatted bloack of text.
+
+(This one's a little odd...  I should probably write up a bit of a tutorial on how to set up the block.)
+
 ### `DEBUG_ProgressBar0();`
 
 ### `DEBUG_ProgressBar1();`
 
 ### `DEBUG_ProgressBar2(int dotcount);`
-
-### `DEBUG_Reset();`
-
-    Sends out the reason for the latest device restart.
 
 ### `DEBUG_Init(const char* InitPart);`
