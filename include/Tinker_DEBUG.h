@@ -1,3 +1,22 @@
+#ifndef Tinker_DEBUG_H
+#define Tinker_DEBUG_H
+    // Stuff only needed in DEBUG_functions.cpp goes here.
+
+#include <NOTARDUINO.h>
+
+#if defined(ESP8266)
+#elif defined(ESP32)
+#include <rom/rtc.h>
+#endif
+String return_reset_reason(uint8_t reason);
+
+extern const char *DeviceNotes;
+
+#define ST(A) #A
+#define STR(A) ST(A)
+
+#endif // Tinker_DEBUG_H
+
 void setup_DEBUG();
 void DEBUG_Title(void);
 void DEBUG_Ready();

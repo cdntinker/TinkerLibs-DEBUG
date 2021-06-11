@@ -9,16 +9,16 @@ char DEBUGtxt[48];
 
 #include "Tinker_DEBUG.h"
 
-#if defined(ESP8266)
-#elif defined(ESP32)
-#include <rom/rtc.h>
-#endif
-String return_reset_reason(uint8_t reason);
+// #if defined(ESP8266)
+// #elif defined(ESP32)
+// #include <rom/rtc.h>
+// #endif
+// String return_reset_reason(uint8_t reason);
 
-extern const char *DeviceNotes;
+// extern const char *DeviceNotes;
 
-#define ST(A) #A
-#define STR(A) ST(A)
+// #define ST(A) #A
+// #define STR(A) ST(A)
 
 void setup_DEBUG()
 {
