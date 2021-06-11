@@ -8,13 +8,23 @@
 
 ## A collection of Serial Output functions.
 
-If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the following functions are enabled.  Otherwise, they're defined as empty functions.
+These functions create a neatly formatted serial debug output while developing your project.  Then, by simply NOT defining `DEBUG`, you save ~3KB of flash memory on your released version of the firmware.
+
+If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the following [functions](#the-functions) are enabled.  Otherwise, they're defined as empty functions.
 
 ## Usage
 
 ### PlatformIO
 
+In `platformio.ini`, add https://github.com/cdntinker/TinkerLibs-DEBUG to your `lib-deps` for the project.
+
+Then add `#include "Tinker_DEBUG.h"` to any source file you want to reference these functions in.
+
 ### Arduino IDE
+
+No idea...  Don't use it...
+
+Anybody wanna work this out for me?
 
 ## The Functions
 
