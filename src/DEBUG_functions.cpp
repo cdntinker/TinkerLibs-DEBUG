@@ -118,15 +118,15 @@ int DEBUG_ProgressBar(int dotcount)
     return (dotcount);
 }
 
-void DEBUG_ProgressBar0()
-{
-    Serial.printf("| ");
-}
+// void DEBUG_ProgressBar0()
+// {
+//     Serial.printf("| ");
+// }
 
-void DEBUG_ProgressBar1()
-{
-    Serial.printf(".");
-}
+// void DEBUG_ProgressBar1()
+// {
+//     Serial.printf(".");
+// }
 
 void DEBUG_ProgressBar2(int dotcount)
 {
