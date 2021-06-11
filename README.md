@@ -78,6 +78,21 @@ Builds & Sends out a (potentially multi-line) progress bar.
     | .............................................................. |
     | .......................................                        |
 
+Usage:
+
+    `int Foo = 0;`
+    `for (int Bar = 0; Bar <= 100; Bar++)`
+    `{`
+    `Foo = DEBUG_ProgressBar(Foo);`
+    `}`
+    `DEBUG_ProgressBar2(Foo);`
+
+Foo is just a throwaway placeholder needed to track horizontal position.
+
+The for loop is whatever process you're indicating progress for.
+
+`DEBUG_ProgressBar2(Foo);` adds the blanks & closes out the line when the process is finished.
+
 ### `void DEBUG_ProgressBar0()`
 
 ### `void DEBUG_ProgressBar1()`
