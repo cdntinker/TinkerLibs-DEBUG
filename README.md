@@ -18,10 +18,12 @@ If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the foll
 
 In `platformio.ini`, add https://github.com/cdntinker/TinkerLibs-DEBUG to your `lib-deps` for the project.
 
-  lib_deps =
-      Some Library
-      https://github.com/cdntinker/TinkerLibs-DEBUG
-      Some Other Library
+```
+lib_deps =
+   Some Library
+   https://github.com/cdntinker/TinkerLibs-DEBUG
+   Some Other Library
+```
 
 Then add `#include "Tinker_DEBUG.h"` to any source file you want to reference these functions in.
 
