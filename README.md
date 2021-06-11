@@ -96,3 +96,8 @@ The for loop is whatever process you're indicating progress for.
 ### `void DEBUG_ProgressBar2(int dotcount)`
 
 ### `void DEBUG_Init(const char* InitPart)`
+
+Sends out a seperator and an indication of what's being initialised.
+
+    >----------------------------------------------------------------<
+    | Initialising: InitPart                                         |
