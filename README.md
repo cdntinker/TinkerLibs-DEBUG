@@ -32,6 +32,9 @@ Sends out a block of information about the device.
 
     Sends out the reason for the latest device restart.
 
+Example:
+    | Reset Reason: External System                                  |
+    
 ### `DEBUG_Ready();`
 
 Sends out a block indicating `setup()` is finished
