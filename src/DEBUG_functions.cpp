@@ -118,16 +118,6 @@ int DEBUG_ProgressBar(int dotcount)
     return (dotcount);
 }
 
-// void DEBUG_ProgressBar0()
-// {
-//     Serial.printf("| ");
-// }
-
-// void DEBUG_ProgressBar1()
-// {
-//     Serial.printf(".");
-// }
-
 void DEBUG_ProgressBar2(int dotcount)
 {
     for (int i = 0; i < (63 - dotcount); i++)
@@ -172,9 +162,7 @@ void DEBUG_ProgressBar2(int dotcount)
 // }
 
 #else // If DEBUG is NOT turned on in platformio.ini
-void setup_DEBUG()
-{
-}
+void setup_DEBUG() {}
 void DEBUG_Reset() {}
 void DEBUG_Init(const char *InitPart) {}
 void DEBUG_Title() {}
