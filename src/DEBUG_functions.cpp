@@ -105,6 +105,7 @@ int MaxDots = 62;
 
 int DEBUG_ProgressBar(int dotcount)
 {
+    Serial.printf(",%d,", dotcount);
     if (dotcount == 0)
         Serial.printf("| ");
     Serial.printf(".");
