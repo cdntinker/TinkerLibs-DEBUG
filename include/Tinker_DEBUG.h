@@ -22,6 +22,7 @@ extern const char *DeviceNotes;
 // Function declarations
 
 void setup_DEBUG();
+
 void DEBUG_Title(void);
 void DEBUG_Ready();
 void DEBUG_Separator();
