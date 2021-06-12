@@ -3,7 +3,8 @@
 
 // Stuff only needed in DEBUG_functions.cpp goes here.
 
-#include <NOTARDUINO.h>
+// #include <NOTARDUINO.h>
+#include <Arduino.h>
 
 #if defined(ESP8266)
 #elif defined(ESP32)
