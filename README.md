@@ -66,6 +66,10 @@ Example:
 
     | Reset Reason: External System                                  |
 
+(It uses the following function to get reset info if you're building for ESP32...)
+
+### `String return_reset_reason(uint8_t reason)`
+
 ### `void DEBUG_Ready()`
 
 Sends out a block indicating `setup()` is finished
