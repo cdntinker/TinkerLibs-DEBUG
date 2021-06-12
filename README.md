@@ -86,6 +86,7 @@ Sends out a line to separate debugging information into distinct blocks.
 
 ### `void DEBUG_SectionTitle(const char *Title)`
 
+    >----------------------------------------------------------------<
     | Title                                                          |
 
 ### `void DEBUG_LineOut(const char *Line)`

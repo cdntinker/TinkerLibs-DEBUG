@@ -91,6 +91,7 @@ void DEBUG_Separator()
 
 void DEBUG_SectionTitle(const char *Title)
 {
+    DEBUG_Separator();
     Serial.printf("| %-62s |\n", Title);
 }
 
