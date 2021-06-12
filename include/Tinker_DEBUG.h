@@ -19,6 +19,8 @@ extern const char *DeviceNotes;
 
 #endif // Tinker_DEBUG_H
 
+extern String return_reset_reason(uint8_t reason);
+
 // Function declarations
 
 void setup_DEBUG();
