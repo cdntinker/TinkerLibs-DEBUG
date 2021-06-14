@@ -7,7 +7,7 @@ char DEBUGtxt[48];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
-#include "Tinker_DEBUG.h"
+#include <Tinker_DEBUG.h>
 
 void setup_DEBUG()
 {
