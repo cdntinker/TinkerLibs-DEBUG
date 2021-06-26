@@ -116,12 +116,12 @@ void DEBUG_Success(const char *Line)
     Serial.printf("+ %-62s +\n", Line);
 }
 
-int DEBUG_ProgressBar(int dotcount)
+int DEBUG_ProgressBar(int dotcount, char Dot)
 {
 
     if (dotcount == 0)
         Serial.printf("| ");
-    Serial.printf(".");
+    Serial.print(Dot);
     if (dotcount == (DEBUG_Width - 5))
     {
         Serial.printf(" |\n");
