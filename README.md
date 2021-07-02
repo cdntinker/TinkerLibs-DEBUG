@@ -14,6 +14,8 @@ These functions create a neatly formatted serial debug output while developing y
 
 If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the following [functions](#the-functions) are enabled.  Otherwise, they're defined as empty functions.
 
+**NOTE:**  The Arduino core libraries for ESP-32 & ESP-8266 have `Serial.printf()`.  Apparently, not so much with the Atmel core libraries.  (How silly...)
+
 ## Usage
 ### PlatformIO
 In `platformio.ini`, add https://github.com/cdntinker/TinkerLibs-DEBUG to your `lib-deps` for the project.
