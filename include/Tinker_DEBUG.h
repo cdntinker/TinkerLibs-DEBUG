@@ -35,8 +35,6 @@ void DEBUG_Success(const char *Line);
 void DEBUG_Trouble(const char *Line);
 
 int DEBUG_ProgressBar(int dotcount, char Dot);
-void DEBUG_ProgressBar0();
-void DEBUG_ProgressBar1();
 void DEBUG_ProgressBar2(int dotcount);
 
 void DEBUG_Reset();
