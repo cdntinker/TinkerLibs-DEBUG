@@ -19,7 +19,7 @@ void setup()
   int Foo = 0;
   for (int Bar = 0; Bar <= 100; Bar++)
   {
-    Foo = DEBUG_ProgressBar(Foo);
+    Foo = DEBUG_ProgressBar(Foo, ".");
     delay(50);
   }
   DEBUG_ProgressBar2(Foo);
