@@ -95,18 +95,21 @@ Sends out a preformatted bloack of text.
 
 (This one's a little odd...  I should probably write up a bit of a tutorial on how to set up the block.)
 
-### `int DEBUG_ProgressBar(int dotcount)`
+### `int DEBUG_ProgressBar(int dotcount, char Dot)`
 Builds & Sends out a (potentially multi-line) progress bar.
 
     | .............................................................. |
     | .......................................                        |
+
+
+`Dot` is the ASCII character to be used as the dot in the progress bar.
 
 Usage:
 
     `int Foo = 0;`
     `for (int Bar = 0; Bar <= 100; Bar++)`
     `{`
-    `Foo = DEBUG_ProgressBar(Foo);`
+    `Foo = DEBUG_ProgressBar(Foo, '.');`
     `}`
     `DEBUG_ProgressBar2(Foo);`
 
