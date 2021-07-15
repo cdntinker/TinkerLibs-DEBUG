@@ -185,7 +185,7 @@ void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
-int DEBUG_ProgressBar(int dotcount) { return 0; }
+int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
 
 #endif // DEBUG
