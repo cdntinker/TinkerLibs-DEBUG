@@ -1,9 +1,9 @@
 // #include <NOTARDUINO.h>
 #include <Arduino.h>
 
-int DEBUG_Width = 99;
+int DEBUG_Width = 98;
 
-char DEBUGtxt[93];
+char DEBUGtxt[92];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
@@ -86,7 +86,7 @@ void DEBUG_Ready()
 
 void DEBUG_Separator()
 {
-    Serial.printf(">--------------------------------------------------------------------------------------------------<\n");
+    Serial.printf(">---------------------------------------------------------------------------------------------------<\n");
 }
 
 void DEBUG_SectionTitle(const char *Title)
