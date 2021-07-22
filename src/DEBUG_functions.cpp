@@ -1,7 +1,7 @@
 // #include <NOTARDUINO.h>
 #include <Arduino.h>
 
-int DEBUG_Width = 66;
+int DEBUG_Width = 99;
 
 char DEBUGtxt[48];
 
@@ -133,7 +133,7 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
 
 void DEBUG_ProgressBar2(int dotcount)
 {
-    for (int i = 0; i < (63 - dotcount); i++)
+    for (int i = 0; i < ((DEBUG_Width - 3) - dotcount); i++)
     {
         Serial.printf(" ");
     }
