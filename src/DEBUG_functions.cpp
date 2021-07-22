@@ -3,7 +3,7 @@
 
 int DEBUG_Width = 99;
 
-char DEBUGtxt[48];
+char DEBUGtxt[93];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
@@ -62,7 +62,7 @@ void DEBUG_Reset()
 void DEBUG_Init(const char *InitPart)
 {
     DEBUG_Separator();
-    Serial.printf("| Initialising: %-48s |\n", InitPart);
+    Serial.printf("| Initialising: %-74s |\n", InitPart);
 }
 
 void DEBUG_Title()
