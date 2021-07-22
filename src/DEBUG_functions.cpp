@@ -122,7 +122,7 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
     if (dotcount == 0)
         Serial.printf("| ");
     Serial.print(Dot);
-    if (dotcount == (DEBUG_Width - 3))
+    if (dotcount == (DEBUG_Width - 2))
     {
         Serial.printf(" |\n");
         return 0;
@@ -133,7 +133,7 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
 
 void DEBUG_ProgressBar2(int dotcount)
 {
-    for (int i = 0; i < ((DEBUG_Width - 1) - dotcount); i++)
+    for (int i = 0; i < ((DEBUG_Width - 0) - dotcount); i++)
     {
         Serial.printf(" ");
     }
