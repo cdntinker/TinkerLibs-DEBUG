@@ -34,6 +34,20 @@ No idea...  Don't use it...
 
 Anybody wanna work this out for me?
 
+Well...  Here goes a try... (I installed it...)
+
+To install this library in Arduino, You'll have to do it manually.
+
+In your default sketch folder (`~/Arduino` on Linux), you'll find a folder named libraries.
+
+Create a subfolder in there for this library.  (I named it `TinkerLibs-DEBUG` here.)
+
+Download and copy the content of the `src` & `include` folders there.
+
+You will have to go into `DEBUG_functions.cpp` and add `#define DEBUG` at the start.
+
+Which kinda defeats the idea of being able to compile with/without the serial output easily...
+
 ## The Functions
 These are all declared in **Tinker_DEBUG.h**
 
