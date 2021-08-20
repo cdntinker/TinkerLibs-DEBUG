@@ -27,7 +27,7 @@ lib_deps =
    Some Other Library
 ```
 
-Then add `#include "Tinker_DEBUG.h"` to any source file you want to reference these functions in.
+Then add `#include <Tinker_DEBUG.h>` to any source file you want to reference these functions in.
 
 ### Arduino IDE
 No idea...  Don't use it...
