@@ -2,8 +2,8 @@
 #include <Tinker_DEBUG.h>
 
 const char *DeviceNotes PROGMEM = R"rawliteral(
-# Welcome to an example for TinkerLibs-DEBUG.                    #
-# This is the content of DeviceNotes.                            #)rawliteral";
+# Welcome to an example for TinkerLibs-DEBUG.                                                       #
+# This is the content of DeviceNotes.                                                               #)rawliteral";
 
 void setup()
 {
@@ -19,7 +19,7 @@ void setup()
   int Foo = 0;
   for (int Bar = 0; Bar <= 100; Bar++)
   {
-    Foo = DEBUG_ProgressBar(Foo, ".");
+    Foo = DEBUG_ProgressBar(Foo, '.');
     delay(50);
   }
   DEBUG_ProgressBar2(Foo);
