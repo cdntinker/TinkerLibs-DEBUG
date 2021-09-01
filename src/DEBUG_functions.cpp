@@ -13,6 +13,8 @@ void setup_DEBUG()
 {
     Serial.begin(115200);
     delay(2000); // There has GOT to be a better way!!!
+    Serial.println();
+    Serial.println();
 }
 
 String return_reset_reason(uint8_t reason)
