@@ -71,8 +71,6 @@ void DEBUG_Init(const char *InitPart)
 void DEBUG_Title()
 {
     Serial.printf("\n\n#===================================================================================================#\n");
-    // Serial.printf("# %-46s #\n", DeviceTitle);
-    // Serial.printf("# %-46s #\n", DeviceDescription);
     Serial.printf("# %-97s #\n", STR(DeviceName));
     Serial.printf("# %-97s #\n", STR(DeviceType));
     Serial.printf("+---------------------------------------------------------------------------------------------------+");
@@ -177,20 +175,6 @@ void DEBUG_ProgressBar2(int dotcount)
 //     debug_LineOut(Line);
 // }
 
-#else // If DEBUG is NOT turned on in platformio.ini
-void setup_DEBUG() {}
-void DEBUG_Reset() {}
-void DEBUG_Init(const char *InitPart) {}
-void DEBUG_Title() {}
-void DEBUG_Ready() {}
-void DEBUG_Separator() {}
-void DEBUG_SectionTitle(const char *Title) {}
-void DEBUG_LineOut(const char *Line) {}
-void DEBUG_Trouble(const char *Line) {}
-void DEBUG_Success(const char *Line) {}
-int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
-void DEBUG_ProgressBar2(int dotcount) {}
-
 /////  Austin's Additions  /////
 void DEBUG_Wifi(const char *InitPart)
 {
@@ -211,5 +195,25 @@ void DEBUG_rssi(const char *InitPart)
 {
     Serial.printf("| RSSI : %-90s |\n", InitPart);
 }
+
+#else // If DEBUG is NOT turned on in platformio.ini
+void setup_DEBUG() {}
+void DEBUG_Reset() {}
+void DEBUG_Init(const char *InitPart) {}
+void DEBUG_Title() {}
+void DEBUG_Ready() {}
+void DEBUG_Separator() {}
+void DEBUG_SectionTitle(const char *Title) {}
+void DEBUG_LineOut(const char *Line) {}
+void DEBUG_Trouble(const char *Line) {}
+void DEBUG_Success(const char *Line) {}
+int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
+void DEBUG_ProgressBar2(int dotcount) {}
+
+/////  Austin's Additions  /////
+void DEBUG_Wifi(const char *InitPart) {}
+void DEBUG_IP(const char *InitPart) {}
+void DEBUG_MAC(const char *InitPart) {}
+void DEBUG_rssi(const char *InitPart) {}
 
 #endif // DEBUG
