@@ -9,6 +9,7 @@ char DEBUGtxt[92];
 
 #include <Tinker_DEBUG.h>
 
+
 void setup_DEBUG()
 {
     Serial.begin(115200);
@@ -82,7 +83,7 @@ void DEBUG_Title()
 void DEBUG_Ready()
 {
     Serial.printf("#===================================================================================================#\n");
-    Serial.printf("#                                           Ready To Run.                                           #\n");
+    Serial.printf("#                                           Device Running                                          #\n");
     Serial.printf("#===================================================================================================#\n");
 }
 
@@ -189,5 +190,26 @@ void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
 int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
+
+/////  Austin's Additions  /////
+void DEBUG_Wifi(const char *InitPart)
+{
+    Serial.printf("| SSID : %-90s |\n", InitPart);
+}
+
+void DEBUG_IP(const char *InitPart)
+{
+    Serial.printf("| IP address : %-84s |\n", InitPart);
+}
+
+void DEBUG_MAC(const char *InitPart)
+{
+    Serial.printf("| MAC address : %-83s |\n", InitPart);
+}
+
+void DEBUG_rssi(const char *InitPart)
+{
+    Serial.printf("| RSSI : %-90s |\n", InitPart);
+}
 
 #endif // DEBUG
