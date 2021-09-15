@@ -101,6 +101,11 @@ void DEBUG_LineOut(const char *Line)
     Serial.printf("|    %-94s |\n", Line);
 }
 
+void DEBUG_LineOut2(const char *Line)
+{
+    Serial.printf("|       %-91s |\n", Line);
+}
+
 void DEBUG_BlockOut(const char *Block)
 {
     Serial.println("DEBUG_BlockOut Print:");
@@ -205,6 +210,7 @@ void DEBUG_Ready() {}
 void DEBUG_Separator() {}
 void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
+void DEBUG_LineOut2(const char *Line) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
 int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }

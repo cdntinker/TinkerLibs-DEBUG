@@ -28,6 +28,7 @@ void DEBUG_Ready();
 void DEBUG_Separator();
 void DEBUG_SectionTitle(const char *Title);
 void DEBUG_LineOut(const char *Line);
+void DEBUG_LineOut2(const char *Line);
 
 void DEBUG_BlockOut(const char *Block);
 
