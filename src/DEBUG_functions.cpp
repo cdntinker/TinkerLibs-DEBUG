@@ -179,6 +179,30 @@ void DEBUG_ProgressBar2(int dotcount)
 //     }
 //     debug_LineOut(Line);
 // }
+void DEBUG_ESP_info()
+{
+    // ESP efuse ID
+    uint32_t chipId = 0;
+    char Line[46];
+
+    for (int i = 0; i < 17; i = i + 8)
+    {
+        chipId |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
+    }
+    DEBUG_SectionTitle("ESP Info");
+    sprintf(Line, "ESP32 Chip model: %s Rev %d", ESP.getChipModel(), ESP.getChipRevision());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "         Chip ID: %d", chipId);
+    DEBUG_LineOut(Line);
+    sprintf(Line, " Number of Cores: %d", ESP.getChipCores());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "      Flash Size: %d", ESP.getFlashChipSize());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "      Psram Size: %d", ESP.getPsramSize());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "        Ram Size: %d", ESP.getHeapSize());
+    DEBUG_LineOut(Line);
+}
 
 /////  Austin's Additions  /////
 void DEBUG_Wifi(const char *InitPart)
@@ -215,6 +239,7 @@ void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
 int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
+void DEBUG_ESP_info() {}
 
 /////  Austin's Additions  /////
 void DEBUG_Wifi(const char *InitPart) {}
