@@ -43,6 +43,8 @@ String return_reset_reason(uint8_t reason);
 
 void DEBUG_Init(const char *InitPart);
 
+void DEBUG_ESP_info();
+
 void DEBUG_Wifi(const char *InitPart);
 void DEBUG_IP(const char *InitPart);
 void DEBUG_MAC(const char *InitPart);
