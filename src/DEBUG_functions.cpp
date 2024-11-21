@@ -58,7 +58,8 @@ void DEBUG_Reset()
             "CPU1 reset reason:  %d - %s",
             rtc_get_reset_reason(1),
             return_reset_reason(rtc_get_reset_reason(1)).c_str());
-    DEBUG_LineOut(DEBUGtxt);
+    Serial.printf("| %-94s |\n", Line);
+
 #endif
 }
 
