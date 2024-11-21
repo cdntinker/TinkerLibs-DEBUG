@@ -43,17 +43,19 @@ String return_reset_reason(uint8_t reason)
 
 void DEBUG_Reset()
 {
+DEBUG_Separator();
+
 #if defined(ESP8266)
     sprintf(DEBUGtxt,
             "Reset Reason: %s",
             ESP.getResetReason().c_str());
-    DEBUG_SectionTitle(DEBUGtxt);
+    Serial.printf("| %-97s |\n", DEBUGtxt);
 #elif defined(ESP32)
     sprintf(DEBUGtxt,
             "CPU0 reset reason:  %d - %s",
             rtc_get_reset_reason(0),
             return_reset_reason(rtc_get_reset_reason(0)).c_str());
-    DEBUG_SectionTitle(DEBUGtxt);
+    Serial.printf("| %-97s |\n", DEBUGtxt);
     sprintf(DEBUGtxt,
             "CPU1 reset reason:  %d - %s",
             rtc_get_reset_reason(1),
