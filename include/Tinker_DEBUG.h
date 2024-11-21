@@ -12,7 +12,7 @@
 #endif
 
 extern const char *DeviceNotes;
-extern char *DEBUGtxt;
+extern char DEBUGtxt[92];
 
 #define ST(A) #A
 #define STR(A) ST(A)
