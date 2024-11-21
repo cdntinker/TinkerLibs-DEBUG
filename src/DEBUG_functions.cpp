@@ -58,7 +58,7 @@ void DEBUG_Reset()
             "CPU1 reset reason:  %d - %s",
             rtc_get_reset_reason(1),
             return_reset_reason(rtc_get_reset_reason(1)).c_str());
-    DEBUG_SectionTitle(DEBUGtxt);
+    DEBUG_LineOut(DEBUGtxt);
 #endif
 }
 
