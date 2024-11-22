@@ -210,22 +210,22 @@ void DEBUG_ESP_info()
 /////  Austin's Additions  /////
 void DEBUG_Wifi(const char *InitPart)
 {
-    Serial.printf("| SSID : %-90s |\n", InitPart);
+    Serial.printf("|    SSID : %-87s |\n", InitPart);
 }
 
 void DEBUG_IP(const char *InitPart)
 {
-    Serial.printf("| IP address : %-84s |\n", InitPart);
+    Serial.printf("|    IP address : %-81s |\n", InitPart);
 }
 
 void DEBUG_MAC(const char *InitPart)
 {
-    Serial.printf("| MAC address : %-83s |\n", InitPart);
+    Serial.printf("|    MAC address : %-83s |\n", InitPart);
 }
 
 void DEBUG_rssi(const char *InitPart)
 {
-    Serial.printf("| RSSI : %-90s |\n", InitPart);
+    Serial.printf("|    RSSI : %-87s |\n", InitPart);
 }
 
 #else // If DEBUG is NOT turned on in platformio.ini
