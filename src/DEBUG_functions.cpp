@@ -155,10 +155,20 @@ void DEBUG_TEST_ESP_info()
     // Check and report on the flash memory on this board
     DEBUG_SectionTitle("Board flash memory Info");
 #if defined(ESP8266)
+    uint32_t FlashID = ESP.getFlashChipId();
     uint32_t realSize = ESP.getFlashChipRealSize();
     uint32_t ideSize = ESP.getFlashChipSize();
+    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     FlashMode_t ideMode = ESP.getFlashChipMode();
-    sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
+#elif defined(ESP32)
+    uint32_t FlashID = ESP.getFlashChipId();
+    uint32_t realSize = 000;
+    uint32_t ideSize = 000;
+    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
+    // FlashMode_t ideMode = ESP.getFlashChipMode();
+#endif
+
+    sprintf(Line, "Flash real id:   %08X", FlashID);
     DEBUG_LineOut(Line);
     sprintf(Line, "Flash real size: %u", realSize);
     DEBUG_LineOut(Line);
@@ -166,8 +176,9 @@ void DEBUG_TEST_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "Flash ide  size: %u", ideSize);
     DEBUG_LineOut(Line);
-    sprintf(Line, "Flash ide speed: %u", ESP.getFlashChipSpeed());
+    sprintf(Line, "Flash ide speed: %u", FlashSpeed);
     DEBUG_LineOut(Line);
+#if defined(ESP8266)
     sprintf(Line, "Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
                                         : ideMode == FM_QOUT ? "QOUT"
                                         : ideMode == FM_DIO    ? "DIO"
@@ -182,11 +193,6 @@ void DEBUG_TEST_ESP_info()
     {
         sprintf(Line, "Flash Chip configuration ok.");
     }
-    DEBUG_LineOut(Line);
-#elif defined(ESP32)
-    sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
-    DEBUG_LineOut(Line);
-    sprintf(Line, "Flash ide speed: %u", ESP.getFlashChipSpeed());
     DEBUG_LineOut(Line);
 #endif
 }
