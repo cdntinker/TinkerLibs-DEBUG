@@ -256,9 +256,14 @@ void DEBUG_Wifi(const char *InitPart)
     Serial.printf("|          SSID : %-87s |\n", InitPart);
 }
 
-void DEBUG_IP(const char *InitPart)
+// void DEBUG_IP(const char *InitPart)
+// {
+//     Serial.printf("|    IP address : %-81s |\n", InitPart);
+// }
+
+void DEBUG_IP()
 {
-    Serial.printf("|    IP address : %-81s |\n", InitPart);
+    Serial.printf("|    IP address : %-81s |\n", WiFi.localIP().toString().c_str());
 }
 
 void DEBUG_MAC(const char *InitPart)
