@@ -205,7 +205,7 @@ void DEBUG_ESP_info()
     char Line[46];
 #if defined(ESP8266)
 char* ChipModel = "Dunno";
-uint32_t ChipRev = 0.0
+uint32_t ChipRev = 0.0;
 uint32_t ChipID =  ESP.getChipId();
 uint32_t ChipCores = 666;
 uint32_t FlashID = ESP.getFlashChipId();
