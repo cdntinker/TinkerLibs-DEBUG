@@ -162,6 +162,11 @@ void DEBUG_TEST_ESP_info()
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     FlashMode_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
+uint32_t ChipID = 0;        // ESP efuse ID
+    for (int i = 0; i < 17; i = i + 8)
+    {
+        ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
+    }
     uint32_t FlashID = 000;
     uint32_t realSize = 000;
     uint32_t ideSize = 000;
