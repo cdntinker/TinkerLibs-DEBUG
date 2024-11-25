@@ -205,7 +205,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "        Ram Size: %d", ESP.getHeapSize());
     DEBUG_LineOut(Line);
-    sprintf(Line, " ESP SDK version: %d", ESP.getSdkVersion());
+    sprintf(Line, " ESP SDK version: %s", ESP.getSdkVersion());
     DEBUG_LineOut(Line);
 }
 
