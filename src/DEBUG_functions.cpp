@@ -196,7 +196,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, " Number of Cores: %s", "Dunno");
     DEBUG_LineOut(Line);
-    sprintf(Line, "      Flash Size: %s", "Dunno");
+    sprintf(Line, "      Flash Size: %d", ESP.getFlashChipSize();
     DEBUG_LineOut(Line);
     sprintf(Line, "      Psram Size: %s", "Dunno");
     DEBUG_LineOut(Line);
