@@ -208,7 +208,8 @@ void DEBUG_ESP_info()
 
     sprintf(Line, "ESP32 Chip model: %s Rev %.1f", "Dunno", 0.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, "         Chip ID: %s", ESP.getChipId());
+    // sprintf(Line, "         Chip ID: %s", ESP.getChipId());
+    sprintf(Line, "         Chip ID: %s", "Aaarrrggg");
     DEBUG_LineOut(Line);
     sprintf(Line, " Number of Cores: %s", "Dunno");
     DEBUG_LineOut(Line);
