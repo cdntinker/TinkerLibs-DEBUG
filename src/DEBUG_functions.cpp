@@ -184,6 +184,8 @@ void DEBUG_ProgressBar2(int dotcount)
 // }
 void DEBUG_ESP_info()
 {
+    char Line[46];
+
     DEBUG_SectionTitle("ESP Info");
 #ifdef ESP8266
     DEBUG_LineOut("It's an ESP8266...  Gotta work on this a bit yet... Sorry");
@@ -209,7 +211,6 @@ void DEBUG_ESP_info()
 #elif defined(ESP32)
     // ESP efuse ID
     uint32_t chipId = 0;
-    char Line[46];
 
     for (int i = 0; i < 17; i = i + 8)
     {
