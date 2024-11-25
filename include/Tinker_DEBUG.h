@@ -46,6 +46,7 @@ void DEBUG_Init(const char *InitPart);
 
 void DEBUG_ESP_info();
 
+void DEBUG_WiFi_Mode();
 void DEBUG_Wifi(const char *InitPart);
 void DEBUG_IP(const char *InitPart);
 void DEBUG_MAC(const char *InitPart);
