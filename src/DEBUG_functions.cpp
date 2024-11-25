@@ -204,8 +204,8 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %s", "Dunno");
     DEBUG_LineOut(Line);
-    // sprintf(Line, " ESP SDK version: %s", system_get_sdk_version());
-    // DEBUG_LineOut(Line);
+    sprintf(Line, " ESP SDK version: %s", "Dunno");
+    DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
