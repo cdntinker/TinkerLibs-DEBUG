@@ -168,7 +168,7 @@ void DEBUG_TEST_ESP_info()
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     // FlashMode_t ideMode = ESP.getFlashChipMode();
 #endif
-    sprintf(Line, "        Chip id:   %08X", FlashID);
+    sprintf(Line, "        Chip id:   %08X", ChipID);
     DEBUG_LineOut(Line);
     sprintf(Line, "  Flash real id:   %08X", FlashID);
     DEBUG_LineOut(Line);
