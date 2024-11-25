@@ -149,7 +149,7 @@ void DEBUG_ProgressBar2(int dotcount)
     Serial.printf("|\n");
 }
 
-// void debug_ESP_info()
+// void DEBUG_TEST_ESP_info()
 // {
 //     char Line[46];
 //     // Check and report on the flash memory on this board
@@ -182,6 +182,8 @@ void DEBUG_ProgressBar2(int dotcount)
 //     }
 //     debug_LineOut(Line);
 // }
+
+// Hardware & platform information
 void DEBUG_ESP_info()
 {
     char Line[46];
@@ -238,10 +240,9 @@ void DEBUG_ESP_info()
 }
 
 /////  Austin's Additions  /////
-#ifdef ESP8266
-    #include <ESP8266WiFi.h>
+// WiFi related debugging
+#if defined(ESP8266)
 #elif defined(ESP32)
-    #include <WiFi.h>
 #endif
 
 void DEBUG_WiFi_Mode()
@@ -290,6 +291,8 @@ void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
 int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
+
+void DEBUG_TEST_ESP_info() {}
 void DEBUG_ESP_info() {}
 
 /////  Austin's Additions  /////

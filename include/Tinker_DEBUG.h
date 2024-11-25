@@ -7,8 +7,10 @@
 #include <Arduino.h>
 
 #if defined(ESP8266)
+    #include <ESP8266WiFi.h>
 #elif defined(ESP32)
-#include <rom/rtc.h>
+    #include <rom/rtc.h>
+    #include <WiFi.h>
 #endif
 
 extern const char *DeviceNotes;
@@ -44,6 +46,7 @@ String return_reset_reason(uint8_t reason);
 
 void DEBUG_Init(const char *InitPart);
 
+void DEBUG_TEST_ESP_info();
 void DEBUG_ESP_info();
 
 void DEBUG_WiFi_Mode();
