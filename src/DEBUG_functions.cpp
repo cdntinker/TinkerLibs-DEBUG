@@ -235,7 +235,7 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID: %08X",ChipID);
     DEBUG_LineOut(Line);
-    sprintf(Line, " Number of Cores: %s", ChipCores);
+    sprintf(Line, " Number of Cores: %d", ChipCores);
     DEBUG_LineOut(Line);
     sprintf(Line, "   Flash Chip ID:   %08X", FlashID);
     DEBUG_LineOut(Line);
