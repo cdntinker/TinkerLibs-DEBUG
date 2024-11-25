@@ -230,7 +230,8 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
 
     DEBUG_SectionTitle("ESP Info");
 
-    sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
+    // sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
+    sprintf(Line, "  ESP Chip model: %s Rev %d", ChipModel, ChipRev);
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID: %08X",ChipID);
     DEBUG_LineOut(Line);
