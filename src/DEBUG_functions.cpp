@@ -154,9 +154,15 @@ void DEBUG_TEST_ESP_info()
     char Line[46];
     // Check and report on the flash memory on this board
     DEBUG_SectionTitle("Board flash memory Info");
+#if defined(ESP8266)
     uint32_t realSize = ESP.getFlashChipRealSize();
     uint32_t ideSize = ESP.getFlashChipSize();
     FlashMode_t ideMode = ESP.getFlashChipMode();
+#elif defined(ESP32)
+    uint32_t realSize = getFlashChipSize();
+    uint32_t ideSize = getFlashChipSize();
+    FlashMode_t ideMode = getFlashChipMode();
+#endif
     sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
     DEBUG_LineOut(Line);
     sprintf(Line, "Flash real size: %u", realSize);
