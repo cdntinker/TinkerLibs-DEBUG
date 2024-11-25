@@ -184,6 +184,10 @@ void DEBUG_TEST_ESP_info()
     }
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
+    sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "Flash ide speed: %u", ESP.getFlashChipSpeed());
+    DEBUG_LineOut(Line);
 #endif
 }
 
