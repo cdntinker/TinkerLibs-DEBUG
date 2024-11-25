@@ -238,6 +238,13 @@ void DEBUG_ESP_info()
 }
 
 /////  Austin's Additions  /////
+void DEBUG_WiFi_Mode()
+{
+    const char* const WiFi_MODES[] PROGMEM = { "NULL", "STA", "AP", "STA+AP" };
+
+    Serial.printf("|    MODE : %-87s |\n", WiFi_MODES[WiFi.getMode()]);
+}
+
 void DEBUG_Wifi(const char *InitPart)
 {
     Serial.printf("|    SSID : %-87s |\n", InitPart);
@@ -275,6 +282,7 @@ void DEBUG_ProgressBar2(int dotcount) {}
 void DEBUG_ESP_info() {}
 
 /////  Austin's Additions  /////
+void DEBUG_WiFi_Mode() {}
 void DEBUG_Wifi(const char *InitPart) {}
 void DEBUG_IP(const char *InitPart) {}
 void DEBUG_MAC(const char *InitPart) {}
