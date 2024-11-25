@@ -149,39 +149,39 @@ void DEBUG_ProgressBar2(int dotcount)
     Serial.printf("|\n");
 }
 
-// void DEBUG_TEST_ESP_info()
-// {
-//     char Line[46];
-//     // Check and report on the flash memory on this board
-//     debug_SectionTitle("Board flash memory Info");
-//     uint32_t realSize = ESP.getFlashChipRealSize();
-//     uint32_t ideSize = ESP.getFlashChipSize();
-//     FlashMode_t ideMode = ESP.getFlashChipMode();
-//     sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
-//     debug_LineOut(Line);
-//     sprintf(Line, "Flash real size: %u", realSize);
-//     debug_LineOut(Line);
-//     sprintf(Line, "Flash real size: %u MB", realSize / 1024 / 1024);
-//     debug_LineOut(Line);
-//     sprintf(Line, "Flash ide  size: %u", ideSize);
-//     debug_LineOut(Line);
-//     sprintf(Line, "Flash ide speed: %u", ESP.getFlashChipSpeed());
-//     debug_LineOut(Line);
-//     sprintf(Line, "Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT"
-//                                                                   : ideMode == FM_DIO    ? "DIO"
-//                                                                   : ideMode == FM_DOUT   ? "DOUT"
-//                                                                                          : "UNKNOWN"));
-//     debug_LineOut(Line);
-//     if (ideSize != realSize)
-//     {
-//         sprintf(Line, "Flash Chip configuration wrong!");
-//     }
-//     else
-//     {
-//         sprintf(Line, "Flash Chip configuration ok.");
-//     }
-//     debug_LineOut(Line);
-// }
+void DEBUG_TEST_ESP_info()
+{
+    char Line[46];
+    // Check and report on the flash memory on this board
+    debug_SectionTitle("Board flash memory Info");
+    uint32_t realSize = ESP.getFlashChipRealSize();
+    uint32_t ideSize = ESP.getFlashChipSize();
+    FlashMode_t ideMode = ESP.getFlashChipMode();
+    sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
+    debug_LineOut(Line);
+    sprintf(Line, "Flash real size: %u", realSize);
+    debug_LineOut(Line);
+    sprintf(Line, "Flash real size: %u MB", realSize / 1024 / 1024);
+    debug_LineOut(Line);
+    sprintf(Line, "Flash ide  size: %u", ideSize);
+    debug_LineOut(Line);
+    sprintf(Line, "Flash ide speed: %u", ESP.getFlashChipSpeed());
+    debug_LineOut(Line);
+    sprintf(Line, "Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT"
+                                                                  : ideMode == FM_DIO    ? "DIO"
+                                                                  : ideMode == FM_DOUT   ? "DOUT"
+                                                                                         : "UNKNOWN"));
+    debug_LineOut(Line);
+    if (ideSize != realSize)
+    {
+        sprintf(Line, "Flash Chip configuration wrong!");
+    }
+    else
+    {
+        sprintf(Line, "Flash Chip configuration ok.");
+    }
+    debug_LineOut(Line);
+}
 
 // Hardware & platform information
 void DEBUG_ESP_info()
