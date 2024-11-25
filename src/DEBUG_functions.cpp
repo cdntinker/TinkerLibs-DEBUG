@@ -155,6 +155,7 @@ void DEBUG_TEST_ESP_info()
     // Check and report on the flash memory on this board
     DEBUG_SectionTitle("Board flash memory Info");
 #if defined(ESP8266)
+    uint32_t ChipID = ESP.getChipId();
     uint32_t FlashID = ESP.getFlashChipId();
     uint32_t realSize = ESP.getFlashChipRealSize();
     uint32_t ideSize = ESP.getFlashChipSize();
