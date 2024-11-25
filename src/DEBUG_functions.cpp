@@ -214,7 +214,7 @@ uint16_t ChipRev = 0.0;
 uint32_t ChipID =  ESP.getChipId();
 uint32_t ChipCores = 666;
 uint32_t FlashID = ESP.getFlashChipId();
-uint32_t FlashSize = ESP.getFlashChipSize();
+uint32_t FlashChipSize = ESP.getFlashChipSize();
 #elif defined(ESP32)
 const char* ChipModel = ESP.getChipModel();
 uint16_t ChipRev = ESP.getChipRevision();
@@ -225,7 +225,7 @@ uint32_t ChipID = 0;        // ESP efuse ID
     }
 uint32_t ChipCores = ESP.getChipCores();
 uint32_t FlashID = 666;
-uint32_t FlashSize = ESP.getFlashChipSize();
+uint32_t FlashChipSize = ESP.getFlashChipSize();
 #endif
 
     DEBUG_SectionTitle("ESP Info");
@@ -238,7 +238,7 @@ uint32_t FlashSize = ESP.getFlashChipSize();
     DEBUG_LineOut(Line);
     sprintf(Line, "   Flash Chip ID:   %08X", FlashID);
     DEBUG_LineOut(Line);
-    sprintf(Line, "      Flash Size: %d", FlashSize);
+    sprintf(Line, "      Flash Size: %d", FlashChipSize);
     DEBUG_LineOut(Line);
 #ifdef ESP8266
     sprintf(Line, "      Psram Size: %s", "Dunno");
