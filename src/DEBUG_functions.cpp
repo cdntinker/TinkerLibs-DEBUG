@@ -203,6 +203,8 @@ uint32_t ChipID =  ESP.getChipId();
 uint32_t ChipCores = 666;
 uint32_t FlashID = ESP.getFlashChipId();
 uint32_t FlashChipSize = ESP.getFlashChipSize();
+uint32_t PSramSize = 0;
+
 #elif defined(ESP32)
 const char* ChipModel = ESP.getChipModel();
 double ChipRev = ESP.getChipRevision();
@@ -214,6 +216,7 @@ uint32_t ChipID = 0;        // ESP efuse ID
 uint32_t ChipCores = ESP.getChipCores();
 uint32_t FlashID = 666;
 uint32_t FlashChipSize = ESP.getFlashChipSize();
+uint32_t PSramSize = ESP.getPsramSize();
 #endif
 
     DEBUG_SectionTitle("ESP Info");
@@ -229,9 +232,11 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
     DEBUG_LineOut(Line);
     sprintf(Line, "      Flash Size: %d (%d MB)", FlashChipSize, FlashChipSize /1024 / 1024);
     DEBUG_LineOut(Line);
-#ifdef ESP8266
-    sprintf(Line, "      Psram Size: %s", "Dunno");
+#ifdef defined(ESP32)
+    sprintf(Line, "      Psram Size: %d", PSramSize);
     DEBUG_LineOut(Line);
+#endif
+#ifdef ESP8266
     sprintf(Line, "        Ram Size: %s", "Dunno");
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %s", "Dunno");
@@ -241,8 +246,6 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
     sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
-    sprintf(Line, "      Psram Size: %d", ESP.getPsramSize());
-    DEBUG_LineOut(Line);
     sprintf(Line, "        Ram Size: %d", ESP.getHeapSize());
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
