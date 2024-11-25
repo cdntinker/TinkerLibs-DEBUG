@@ -246,7 +246,7 @@ void DEBUG_ESP_info()
 
 void DEBUG_WiFi_Mode()
 {
-    const char* WiFi_MODES[] PROGMEM = { "NULL", "STA", "AP", "STA+AP" };
+    const char* WiFi_MODES[] = { "NULL", "STA", "AP", "STA+AP" };
 
     Serial.printf("|    MODE : %-87s |\n", WiFi_MODES[WiFi.getMode()]);
 }
