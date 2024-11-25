@@ -203,19 +203,38 @@ void DEBUG_TEST_ESP_info()
 void DEBUG_ESP_info()
 {
     char Line[46];
+#if defined(ESP8266)
+char* ChipModel = "Dunno";
+uint32_t ChipRev = 0.0
+uint32_t ChipID =  ESP.getChipId();
+uint32_t ChipCores = 666;
+uint32_t FlashID = ESP.getFlashChipId();
+uint32_t FlashSize = ESP.getFlashChipSize();
+#elif defined(ESP32)
+char* ChipModel = ESP.getChipModel();
+uint32_t ChipRev = ESP.getChipRevision();
+uint32_t ChipID = 0;        // ESP efuse ID
+    for (int i = 0; i < 17; i = i + 8)
+    {
+        ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
+    }
+uint32_t ChipCores = ESP.getChipCores()
+uint32_t FlashID = ESP.getFlashChipId();
+#endif
 
     DEBUG_SectionTitle("ESP Info");
-#ifdef ESP8266
-    DEBUG_LineOut("It's an ESP8266...  Gotta work on this a bit yet... Sorry");
 
-    sprintf(Line, "ESP32 Chip model: %s Rev %.1f", "Dunno", 0.0);
+    sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
     DEBUG_LineOut(Line);
-    sprintf(Line, "         Chip ID: %08X", ESP.getChipId());
+    sprintf(Line, "         Chip ID: %08X",ChipID);
     DEBUG_LineOut(Line);
-    sprintf(Line, " Number of Cores: %s", "Dunno");
+    sprintf(Line, " Number of Cores: %s", ChipCores);
     DEBUG_LineOut(Line);
-    sprintf(Line, "      Flash Size: %d", ESP.getFlashChipSize());
+    sprintf(Line, "   Flash Chip ID:   %08X", FlashID);
     DEBUG_LineOut(Line);
+    sprintf(Line, "      Flash Size: %d", FlashSize);
+    DEBUG_LineOut(Line);
+#ifdef ESP8266
     sprintf(Line, "      Psram Size: %s", "Dunno");
     DEBUG_LineOut(Line);
     sprintf(Line, "        Ram Size: %s", "Dunno");
@@ -227,21 +246,6 @@ void DEBUG_ESP_info()
     sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
-    // ESP efuse ID
-    uint32_t chipId = 0;
-
-    for (int i = 0; i < 17; i = i + 8)
-    {
-        chipId |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
-    }
-    sprintf(Line, "ESP32 Chip model: %s Rev %.1f", ESP.getChipModel(), ESP.getChipRevision());
-    DEBUG_LineOut(Line);
-    sprintf(Line, "         Chip ID: %d", chipId);
-    DEBUG_LineOut(Line);
-    sprintf(Line, " Number of Cores: %d", ESP.getChipCores());
-    DEBUG_LineOut(Line);
-    sprintf(Line, "      Flash Size: %d", ESP.getFlashChipSize());
-    DEBUG_LineOut(Line);
     sprintf(Line, "      Psram Size: %d", ESP.getPsramSize());
     DEBUG_LineOut(Line);
     sprintf(Line, "        Ram Size: %d", ESP.getHeapSize());
