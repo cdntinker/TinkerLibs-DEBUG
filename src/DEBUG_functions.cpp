@@ -161,8 +161,8 @@ void DEBUG_TEST_ESP_info()
     sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
-    uint32_t realSize = FlashSize();
-    uint32_t ideSize = FlashSize();
+    uint32_t realSize = 666;
+    uint32_t ideSize = 666;
     FlashMode_t ideMode = getFlashChipMode();
 #endif
     sprintf(Line, "Flash real size: %u", realSize);
@@ -173,10 +173,11 @@ void DEBUG_TEST_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "Flash ide speed: %u", ESP.getFlashChipSpeed());
     DEBUG_LineOut(Line);
-    sprintf(Line, "Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT"
-                                                                  : ideMode == FM_DIO    ? "DIO"
-                                                                  : ideMode == FM_DOUT   ? "DOUT"
-                                                                                         : "UNKNOWN"));
+    sprintf(Line, "Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
+                                        : ideMode == FM_QOUT ? "QOUT"
+                                        : ideMode == FM_DIO    ? "DIO"
+                                        : ideMode == FM_DOUT   ? "DOUT"
+                                        : "UNKNOWN"));
     DEBUG_LineOut(Line);
     if (ideSize != realSize)
     {
