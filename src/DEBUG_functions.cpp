@@ -232,7 +232,7 @@ uint32_t PSramSize = ESP.getPsramSize();
     DEBUG_LineOut(Line);
     sprintf(Line, "      Flash Size: %d (%d MB)", FlashChipSize, FlashChipSize /1024 / 1024);
     DEBUG_LineOut(Line);
-#ifdef defined(ESP32)
+#if defined(ESP32)
     sprintf(Line, "      Psram Size: %d", PSramSize);
     DEBUG_LineOut(Line);
 #endif
