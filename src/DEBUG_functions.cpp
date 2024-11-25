@@ -184,6 +184,10 @@ void DEBUG_ProgressBar2(int dotcount)
 // }
 void DEBUG_ESP_info()
 {
+    DEBUG_SectionTitle("ESP Info");
+#ifdef ESP8266
+    DEBUG_LineOut("It's an ESP8266...  Gotta work on this a bit yet... Sorry");
+#elif defined(ESP32)
     // ESP efuse ID
     uint32_t chipId = 0;
     char Line[46];
@@ -192,7 +196,6 @@ void DEBUG_ESP_info()
     {
         chipId |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
     }
-    DEBUG_SectionTitle("ESP Info");
     sprintf(Line, "ESP32 Chip model: %s Rev %.1f", ESP.getChipModel(), ESP.getChipRevision());
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID: %d", chipId);
@@ -209,6 +212,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
+#endif
 }
 
 /////  Austin's Additions  /////
