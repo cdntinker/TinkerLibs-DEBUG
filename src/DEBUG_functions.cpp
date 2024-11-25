@@ -208,7 +208,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "        Ram Size: %d", ESP.getHeapSize());
     DEBUG_LineOut(Line);
-    sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH());
+    sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", ESP.getSdkVersion());
     DEBUG_LineOut(Line);
