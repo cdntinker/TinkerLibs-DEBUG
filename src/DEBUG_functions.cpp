@@ -160,11 +160,6 @@ void DEBUG_TEST_ESP_info()
     FlashMode_t ideMode = ESP.getFlashChipMode();
     sprintf(Line, "Flash real id:   %08X", ESP.getFlashChipId());
     DEBUG_LineOut(Line);
-#elif defined(ESP32)
-    uint32_t realSize = 666;
-    uint32_t ideSize = 666;
-    FlashMode_t ideMode = getFlashChipMode();
-#endif
     sprintf(Line, "Flash real size: %u", realSize);
     DEBUG_LineOut(Line);
     sprintf(Line, "Flash real size: %u MB", realSize / 1024 / 1024);
@@ -188,6 +183,8 @@ void DEBUG_TEST_ESP_info()
         sprintf(Line, "Flash Chip configuration ok.");
     }
     DEBUG_LineOut(Line);
+#elif defined(ESP32)
+#endif
 }
 
 // Hardware & platform information
