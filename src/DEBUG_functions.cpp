@@ -237,9 +237,13 @@ void DEBUG_ESP_info()
 #endif
 }
 
-#include <WiFi.h>
-
 /////  Austin's Additions  /////
+#ifdef ESP8266
+    #include <ESP8266WiFi.h>
+#elif defined(ESP32)
+    #include <WiFi.h>
+#endif
+
 void DEBUG_WiFi_Mode()
 {
     const char* const WiFi_MODES[] PROGMEM = { "NULL", "STA", "AP", "STA+AP" };
