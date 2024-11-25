@@ -193,7 +193,7 @@ void DEBUG_ESP_info()
         chipId |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
     }
     DEBUG_SectionTitle("ESP Info");
-    sprintf(Line, "ESP32 Chip model: %s Rev %d", ESP.getChipModel(), ESP.getChipRevision());
+    sprintf(Line, "ESP32 Chip model: %s Rev %.1f", ESP.getChipModel(), ESP.getChipRevision());
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID: %d", chipId);
     DEBUG_LineOut(Line);
@@ -206,6 +206,10 @@ void DEBUG_ESP_info()
     sprintf(Line, "        Ram Size: %d", ESP.getHeapSize());
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", ESP.getSdkVersion());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "        Ram Size: %d", ESP.getHeapSize());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
 }
 
