@@ -155,28 +155,16 @@ void DEBUG_TEST_ESP_info()
     // Check and report on the flash memory on this board
     DEBUG_SectionTitle("Board flash memory Info");
 #if defined(ESP8266)
-    uint32_t ChipID = ESP.getChipId();
-    uint32_t FlashID = ESP.getFlashChipId();
     uint32_t realSize = ESP.getFlashChipRealSize();
     uint32_t ideSize = ESP.getFlashChipSize();
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     FlashMode_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-uint32_t ChipID = 0;        // ESP efuse ID
-    for (int i = 0; i < 17; i = i + 8)
-    {
-        ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
-    }
-    uint32_t FlashID = 000;
     uint32_t realSize = 000;
     uint32_t ideSize = 000;
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     // FlashMode_t ideMode = ESP.getFlashChipMode();
 #endif
-    sprintf(Line, "        Chip id:   %08X", ChipID);
-    DEBUG_LineOut(Line);
-    sprintf(Line, "  Flash real id:   %08X", FlashID);
-    DEBUG_LineOut(Line);
     sprintf(Line, "Flash real size: %u", realSize);
     DEBUG_LineOut(Line);
     sprintf(Line, "Flash real size: %u MB", realSize / 1024 / 1024);
@@ -237,7 +225,7 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
     DEBUG_LineOut(Line);
     sprintf(Line, " Number of Cores: %d", ChipCores);
     DEBUG_LineOut(Line);
-    sprintf(Line, "   Flash Chip ID:   %08X", FlashID);
+    sprintf(Line, "   Flash Chip ID: %08X", FlashID);
     DEBUG_LineOut(Line);
     sprintf(Line, "      Flash Size: %d", FlashChipSize);
     DEBUG_LineOut(Line);
