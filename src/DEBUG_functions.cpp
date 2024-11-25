@@ -220,6 +220,7 @@ uint32_t ChipID = 0;        // ESP efuse ID
     }
 uint32_t ChipCores = ESP.getChipCores()
 uint32_t FlashID = ESP.getFlashChipId();
+uint32_t FlashSize = ESP.getFlashChipSize();
 #endif
 
     DEBUG_SectionTitle("ESP Info");
