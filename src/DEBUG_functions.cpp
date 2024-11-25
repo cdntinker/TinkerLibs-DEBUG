@@ -248,12 +248,12 @@ void DEBUG_WiFi_Mode()
 {
     const char* WiFi_MODES[] = { "NULL", "STA", "AP", "STA+AP" };
 
-    Serial.printf("|    MODE : %-87s |\n", WiFi_MODES[WiFi.getMode()]);
+    Serial.printf("|          MODE : %-87s |\n", WiFi_MODES[WiFi.getMode()]);
 }
 
 void DEBUG_Wifi(const char *InitPart)
 {
-    Serial.printf("|    SSID : %-87s |\n", InitPart);
+    Serial.printf("|          SSID : %-87s |\n", InitPart);
 }
 
 void DEBUG_IP(const char *InitPart)
