@@ -187,6 +187,25 @@ void DEBUG_ESP_info()
     DEBUG_SectionTitle("ESP Info");
 #ifdef ESP8266
     DEBUG_LineOut("It's an ESP8266...  Gotta work on this a bit yet... Sorry");
+
+    sprintf(Line, "ESP32 Chip model: %s Rev %.1f", "Dunno", 0);
+    DEBUG_LineOut(Line);
+    sprintf(Line, "         Chip ID: %s", "Dunno");
+    DEBUG_LineOut(Line);
+    sprintf(Line, " Number of Cores: %s", "Dunno");
+    DEBUG_LineOut(Line);
+    sprintf(Line, "      Flash Size: %s", "Dunno");
+    DEBUG_LineOut(Line);
+    sprintf(Line, "      Psram Size: %s", "Dunno");
+    DEBUG_LineOut(Line);
+    sprintf(Line, "        Ram Size: %s", E"Dunno");
+    DEBUG_LineOut(Line);
+    sprintf(Line, " Arduino version: %s", "Dunno");
+    DEBUG_LineOut(Line);
+    sprintf(Line, " ESP SDK version: %s", system_get_sdk_version());
+    DEBUG_LineOut(Line);
+    sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
+    DEBUG_LineOut(Line);
 #elif defined(ESP32)
     // ESP efuse ID
     uint32_t chipId = 0;
