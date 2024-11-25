@@ -161,7 +161,7 @@ void DEBUG_TEST_ESP_info()
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     FlashMode_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-    uint32_t FlashID = ESP.getFlashChipId();
+    uint32_t FlashID = 000;
     uint32_t realSize = 000;
     uint32_t ideSize = 000;
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
@@ -208,7 +208,7 @@ void DEBUG_ESP_info()
 
     sprintf(Line, "ESP32 Chip model: %s Rev %.1f", "Dunno", 0.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, "         Chip ID: %s", "Dunno");
+    sprintf(Line, "         Chip ID: %s", ESP.getChipId());
     DEBUG_LineOut(Line);
     sprintf(Line, " Number of Cores: %s", "Dunno");
     DEBUG_LineOut(Line);
