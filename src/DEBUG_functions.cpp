@@ -198,14 +198,14 @@ void DEBUG_ESP_info()
     char Line[46];
 #if defined(ESP8266)
 const char* ChipModel = "Dunno";
-uint16_t ChipRev = 0;
+uint32_t ChipRev = 0;
 uint32_t ChipID =  ESP.getChipId();
 uint32_t ChipCores = 666;
 uint32_t FlashID = ESP.getFlashChipId();
 uint32_t FlashChipSize = ESP.getFlashChipSize();
 #elif defined(ESP32)
 const char* ChipModel = ESP.getChipModel();
-uint16_t ChipRev = ESP.getChipRevision();
+uint32_t ChipRev = ESP.getChipRevision();
 uint32_t ChipID = 0;        // ESP efuse ID
     for (int i = 0; i < 17; i = i + 8)
     {
