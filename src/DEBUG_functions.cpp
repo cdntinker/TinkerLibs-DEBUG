@@ -237,6 +237,8 @@ void DEBUG_ESP_info()
 #endif
 }
 
+#include <WiFi.h>
+
 /////  Austin's Additions  /////
 void DEBUG_WiFi_Mode()
 {
