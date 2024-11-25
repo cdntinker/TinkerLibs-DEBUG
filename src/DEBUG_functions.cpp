@@ -219,7 +219,7 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
     DEBUG_SectionTitle("ESP Info");
 
     // sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
-    sprintf(Line, "  ESP Chip model: %s Rev %.2f", ChipModel, ChipRev);
+    sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID: %08X",ChipID);
     DEBUG_LineOut(Line);
@@ -227,7 +227,7 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
     DEBUG_LineOut(Line);
     sprintf(Line, "   Flash Chip ID: %08X", FlashID);
     DEBUG_LineOut(Line);
-    sprintf(Line, "      Flash Size: %d", FlashChipSize);
+    sprintf(Line, "      Flash Size: %d (%d MB)", FlashChipSize, FlashChipSize /1024 / 1024);
     DEBUG_LineOut(Line);
 #ifdef ESP8266
     sprintf(Line, "      Psram Size: %s", "Dunno");
