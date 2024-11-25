@@ -190,7 +190,7 @@ void DEBUG_ESP_info()
 #ifdef ESP8266
     DEBUG_LineOut("It's an ESP8266...  Gotta work on this a bit yet... Sorry");
 
-    sprintf(Line, "ESP32 Chip model: %s Rev %.1f", "Dunno", 0);
+    sprintf(Line, "ESP32 Chip model: %s Rev %.1f", "Dunno", 0.0);
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID: %s", "Dunno");
     DEBUG_LineOut(Line);
@@ -200,12 +200,12 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "      Psram Size: %s", "Dunno");
     DEBUG_LineOut(Line);
-    sprintf(Line, "        Ram Size: %s", E"Dunno");
+    sprintf(Line, "        Ram Size: %s", "Dunno");
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %s", "Dunno");
     DEBUG_LineOut(Line);
-    sprintf(Line, " ESP SDK version: %s", system_get_sdk_version());
-    DEBUG_LineOut(Line);
+    // sprintf(Line, " ESP SDK version: %s", system_get_sdk_version());
+    // DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
