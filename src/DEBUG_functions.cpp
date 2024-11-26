@@ -245,6 +245,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
 // #if defined(ESP8266)
     sprintf(Line, " Arduino version: %s", CoreVer);
+    DEBUG_LineOut(Line);
 // #elif defined(ESP32)
 #if defined(ESP8266)
     sprintf(Line, " Arduino version: %s", ESP.getCoreVersion());
