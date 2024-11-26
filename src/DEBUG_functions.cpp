@@ -209,7 +209,8 @@ void DEBUG_ESP_info()
     uint32_t FlashID = 666;
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
-    sprintf(const char* CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
+    const char* CoreVer;
+    sprintf(CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     const char* SDKver = ESP.getSdkVersion();
     uint32_t ideMode = 4;
 #endif
