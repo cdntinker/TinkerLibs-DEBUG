@@ -239,7 +239,7 @@ void DEBUG_ESP_info()
     sprintf(Line, "      Psram Size: %d (%.3f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
 #endif
-    sprintf(Line, "        Ram Size: %d (%.3f MB)", RAMsize, RAMsize / 1024.0 / 1024.0);
+    sprintf(Line, "        Ram Size: %d (%.3f KB)", RAMsize, RAMsize / 1024.0);// / 1024.0);
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     DEBUG_LineOut(Line);
