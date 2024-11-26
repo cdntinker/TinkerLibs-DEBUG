@@ -212,6 +212,7 @@ void DEBUG_ESP_info()
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
     const char* SDKver = ESP.getSdkVersion();
+    FlashMode_t ideMode = 4;
 #endif
     uint32_t FlashChipSize = ESP.getFlashChipSize();
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
@@ -244,16 +245,16 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d", FreeHeap);
     DEBUG_LineOut(Line);
-#if defined(ESP8266)
+// #if defined(ESP8266)
     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
                                         : ideMode == FM_QOUT ? "QOUT"
                                         : ideMode == FM_DIO    ? "DIO"
                                         : ideMode == FM_DOUT   ? "DOUT"
                                         : "UNKNOWN"));
     DEBUG_LineOut(Line);
-#elif defined(ESP32)
-    // sprintf(Line, " Flash ide mode:  %d", ideMode);
-#endif
+// #elif defined(ESP32)
+//     // sprintf(Line, " Flash ide mode:  %d", ideMode);
+// #endif
 }
 
 /////  Austin's Additions  /////
