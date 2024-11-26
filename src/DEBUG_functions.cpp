@@ -229,7 +229,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "   Flash Chip ID: %08X", FlashID);
     DEBUG_LineOut(Line);
-    sprintf(Line, "      Flash Size: %d (%d MB)", FlashChipSize, FlashChipSize / 1024 / 1024);
+    sprintf(Line, "      Flash Size: %d (%.3f MB)", FlashChipSize, FlashChipSize / 1024 / 1024);
     DEBUG_LineOut(Line);
     sprintf(Line, "     Flash speed: %u", FlashSpeed);
     DEBUG_LineOut(Line);
@@ -239,7 +239,7 @@ void DEBUG_ESP_info()
     sprintf(Line, "      Psram Size: %d (%.3f MB)", PSramSize, (float)PSramSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
 #endif
-    sprintf(Line, "        Ram Size: %d (%d MB)", RAMsize, RAMsize / 1024 / 1024);
+    sprintf(Line, "        Ram Size: %d (%.3f MB)", RAMsize, RAMsize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     DEBUG_LineOut(Line);
