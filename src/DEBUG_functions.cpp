@@ -119,12 +119,12 @@ void DEBUG_BlockOut(const char *Block)
 
 void DEBUG_Trouble(const char *Line)
 {
-    Serial.printf("X %-97s X\n", Line);
+    Serial.printf("XXX %-93s XXX\n", Line);
 }
 
 void DEBUG_Success(const char *Line)
 {
-    Serial.printf("> %-97s <\n", Line);
+    Serial.printf(">>> %-93s <<<\n", Line);
 }
 
 int DEBUG_ProgressBar(int dotcount, char Dot)
