@@ -198,7 +198,7 @@ void DEBUG_ESP_info()
     #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
     const char* SDKver = "DamnifIknow";                 // Don't actually know
     // uint32_t FreeHeap = ESP.getFreeHeap();
-    FlashMode_t ideMode = ESP.getFlashChipMode();
+    uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
     const char* ChipModel = ESP.getChipModel();
     uint32_t ChipRev = ESP.getChipRevision();
@@ -212,7 +212,7 @@ void DEBUG_ESP_info()
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
     const char* SDKver = ESP.getSdkVersion();
-    FlashMode_t ideMode = 4;
+    uint32_t ideMode = 4;
 #endif
     uint32_t FlashChipSize = ESP.getFlashChipSize();
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
