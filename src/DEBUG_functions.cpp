@@ -250,7 +250,7 @@ void DEBUG_ESP_info()
                                         : ideMode == FM_QOUT ? "QOUT"
                                         : ideMode == FM_DIO    ? "DIO"
                                         : ideMode == FM_DOUT   ? "DOUT"
-                                        : "UNKNOWN"));
+                                        : "BORKED"));
     DEBUG_LineOut(Line);
 // #elif defined(ESP32)
 //     // sprintf(Line, " Flash ide mode:  %d", ideMode);
