@@ -195,7 +195,7 @@ void DEBUG_ESP_info()
     // #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
     // #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
     // #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
-    const char* SDKver = ESP.getSdkVersion();                 // Don't actually know
+    char SDKver42 = ESP.getSdkVersion();                 // Don't actually know
     uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
     const char* ChipModel = ESP.getChipModel();
