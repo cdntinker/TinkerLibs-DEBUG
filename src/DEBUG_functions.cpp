@@ -119,7 +119,7 @@ void DEBUG_BlockOut(const char *Block)
 
 void DEBUG_Trouble(const char *Line)
 {
-    Serial.printf("XXX %-93s XXX\n", Line);
+    Serial.printf("+XX %-93s XX+\n", Line);
 }
 
 void DEBUG_Success(const char *Line)
@@ -132,13 +132,24 @@ void DEBUG_Event(const char *Line)
     Serial.printf("+-> %-93s <-+\n", Line);
 }
 
+//////////////////////////////////////////
+// This one needs a HUGE amount of work...
+//////////////////////////////////////////
+/*
+    Determine how many lines of dots there are
+    & which line we're on.
+    Then subtract lines * width from dotcount
+    Put a "| " in front of every line
+
+*/
 int DEBUG_ProgressBar(int dotcount, char Dot)
 {
+    int Width = DEBUG_Width -2;
 
     if (dotcount == 0)
         Serial.printf("| ");
     Serial.print(Dot);
-    if (dotcount == (DEBUG_Width - 2))
+    if (dotcount == Width)
     {
         Serial.printf(" |\n");
         return 0;
