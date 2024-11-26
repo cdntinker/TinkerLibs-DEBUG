@@ -234,8 +234,6 @@ void DEBUG_ESP_info()
     sprintf(Line, "     Flash speed: %u", FlashSpeed);
     DEBUG_LineOut(Line);
 #if defined(ESP32)
-// double PSinM = PSramSize / 1024.0 / 1024.0;
-//     sprintf(Line, "      Psram Size: %d (%.2f MB)", PSramSize, PSinM);
     sprintf(Line, "      Psram Size: %d (%.3f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
 #endif
@@ -243,13 +241,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0);// / 1024.0);
     DEBUG_LineOut(Line);
-// #if defined(ESP8266)
     sprintf(Line, " Arduino version: %s", CoreVer);
-    DEBUG_LineOut(Line);
-// #elif defined(ESP32)
-// #if defined(ESP8266)
-//     sprintf(Line, " Arduino version: %s", ESP.getCoreVersion().c_str());
-// #endif
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", SDKver);
     DEBUG_LineOut(Line);
