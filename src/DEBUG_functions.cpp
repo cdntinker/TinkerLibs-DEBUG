@@ -124,7 +124,12 @@ void DEBUG_Trouble(const char *Line)
 
 void DEBUG_Success(const char *Line)
 {
-    Serial.printf(">>> %-93s <<<\n", Line);
+    Serial.printf("+++ %-93s +++\n", Line);
+}
+
+void DEBUG_Event(const char *Line)
+{
+    Serial.printf("+-> %-93s <-+\n", Line);
 }
 
 int DEBUG_ProgressBar(int dotcount, char Dot)
@@ -268,6 +273,7 @@ void DEBUG_LineOut(const char *Line) {}
 void DEBUG_LineOut2(const char *Line) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
+void DEBUG_Event(const char *Line) {}
 int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
 
