@@ -189,14 +189,11 @@ void DEBUG_ESP_info()
     const char* ChipModel = "Dunno";                    // Don't actually know
     double ChipRev = 0;                                 // Don't actually know
     uint32_t ChipID =  ESP.getChipId();
-    uint32_t ChipCores = 666;                           // Don't actually know
+    uint32_t ChipCores = 1;
     uint32_t FlashID = ESP.getFlashChipId();
     uint32_t RAMsize = 666;                             // Don't actually know
     sprintf(CoreVer, "%s", ESP.getCoreVersion().c_str());
-    // #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
-    // #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
-    // #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
-    const char* SDKver = ESP.getSdkVersion();                 // Don't actually know
+    // const char* SDKver = ESP.getSdkVersion();
     uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
     const char* ChipModel = ESP.getChipModel();
@@ -207,13 +204,14 @@ void DEBUG_ESP_info()
             ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
         }
     uint32_t ChipCores = ESP.getChipCores();
-    uint32_t FlashID = 666;
+    uint32_t FlashID = 000;
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
     sprintf(CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
-    const char* SDKver = ESP.getSdkVersion();
+    // const char* SDKver = ESP.getSdkVersion();
     uint32_t ideMode = 4;
 #endif
+    const char* SDKver = ESP.getSdkVersion();
     uint32_t FlashChipSize = ESP.getFlashChipSize();
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     uint32_t FreeHeap = ESP.getFreeHeap();
