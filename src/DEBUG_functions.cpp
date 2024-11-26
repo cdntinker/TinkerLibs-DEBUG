@@ -155,15 +155,11 @@ void DEBUG_TEST_ESP_info()
     // Check and report on the flash memory on this board
     DEBUG_SectionTitle("Board flash memory Info");
 #if defined(ESP8266)
-    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     FlashMode_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
-    // FlashMode_t ideMode = ESP.getFlashChipMode();
+        uint32_t ideMode = ESP.getFlashChipMode();
 #endif
-    sprintf(Line, "Flash ide speed: %u", FlashSpeed);
-    DEBUG_LineOut(Line);
-#if defined(ESP8266)
+// #if defined(ESP8266)
     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
                                         : ideMode == FM_QOUT ? "QOUT"
                                         : ideMode == FM_DIO    ? "DIO"
@@ -179,7 +175,8 @@ void DEBUG_TEST_ESP_info()
     //     sprintf(Line, "Flash Chip configuration ok.");
     // }
     // DEBUG_LineOut(Line);
-#endif
+// #elif defined(ESP32)
+// #endif
 }
 
 // Hardware & platform information
