@@ -144,12 +144,19 @@ void DEBUG_Event(const char *Line)
 */
 int DEBUG_ProgressBar(int dotcount, char Dot)
 {
-    int Width = DEBUG_Width -2;
+    int Width = DEBUG_Width - 2;
+    int dotposition;
 
-    if (dotcount == 0)
+    if(dotcount > Width)
+    {
+        dotposition = dotcount - Width;
+    }
+
+    // if (dotcount == 0)
+    if (dotposition == 0)
         Serial.printf("| ");
     Serial.print(Dot);
-    if (dotcount == Width)
+    if (dotposition == Width)
     {
         Serial.printf(" |\n");
         return 0;
