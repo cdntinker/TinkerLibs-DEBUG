@@ -192,7 +192,7 @@ void DEBUG_ESP_info()
     uint32_t ChipCores = 666;                           // Don't actually know
     uint32_t FlashID = ESP.getFlashChipId();
     uint32_t RAMsize = 666;                             // Don't actually know
-    sprintf(CoreVer, ESP.getCoreVersion().c_str());
+    sprintf(CoreVer, "%s", ESP.getCoreVersion().c_str());
     // #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
     // #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
     // #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
