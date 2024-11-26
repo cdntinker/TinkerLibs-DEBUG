@@ -208,6 +208,7 @@ uint32_t RAMsize = 666;                             // Don't actually know
 #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
 #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
 const char* SDKver = "DamnifIknow";                 // Don't actually know
+uint32_t FreeHeap = ESP.getFreeHeap();
 #elif defined(ESP32)
 const char* ChipModel = ESP.getChipModel();
 uint32_t ChipRev = ESP.getChipRevision();
@@ -222,6 +223,7 @@ uint32_t FlashChipSize = ESP.getFlashChipSize();
 uint32_t PSramSize = ESP.getPsramSize();
 uint32_t RAMsize = ESP.getHeapSize();
 const char* SDKver = ESP.getSdkVersion();
+uint32_t FreeHeap = ESP.getFreeHeap();
 #endif
 
     DEBUG_SectionTitle("ESP Info");
@@ -247,13 +249,8 @@ const char* SDKver = ESP.getSdkVersion();
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", SDKver);
     DEBUG_LineOut(Line);
-#ifdef ESP8266
-    sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
+    sprintf(Line, "       Free heap: %d", FreeHeap);
     DEBUG_LineOut(Line);
-#elif defined(ESP32)
-    sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
-    DEBUG_LineOut(Line);
-#endif
 }
 
 /////  Austin's Additions  /////
