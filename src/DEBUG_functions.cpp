@@ -229,19 +229,19 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "   Flash Chip ID: %08X", FlashID);
     DEBUG_LineOut(Line);
-    sprintf(Line, "      Flash Size: %d (%.2f MB)", FlashChipSize, FlashChipSize / 1024.0 / 1024.0);
+    sprintf(Line, "      Flash Size: %d (%.3f MB)", FlashChipSize, FlashChipSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
     sprintf(Line, "     Flash speed: %u", FlashSpeed);
     DEBUG_LineOut(Line);
 #if defined(ESP32)
 // double PSinM = PSramSize / 1024.0 / 1024.0;
 //     sprintf(Line, "      Psram Size: %d (%.2f MB)", PSramSize, PSinM);
-    sprintf(Line, "      Psram Size: %d (%.2f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
+    sprintf(Line, "      Psram Size: %d (%.3f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
 #endif
-    sprintf(Line, "        Ram Size: %d (%.2f KB)", RAMsize, RAMsize / 1024.0);// / 1024.0);
+    sprintf(Line, "        Ram Size: %d (%.3f KB)", RAMsize, RAMsize / 1024.0);// / 1024.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, "       Free heap: %d (%.2f KB)", FreeHeap, FreeHeap / 1024.0);// / 1024.0);
+    sprintf(Line, "       Free heap: %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0);// / 1024.0);
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     DEBUG_LineOut(Line);
