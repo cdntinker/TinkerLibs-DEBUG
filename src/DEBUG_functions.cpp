@@ -228,6 +228,8 @@ void DEBUG_ESP_info()
 #if defined(ESP8266)
     sprintf(Line, "   Flash Chip ID: %08X", FlashID);
     DEBUG_LineOut(Line);
+#elif defined(ESP32)
+    DEBUG_LineOut("   Flash Chip ID: No way to retrieve");
 #endif
     sprintf(Line, "      Flash Size: %d (%.3f MB)", FlashChipSize, FlashChipSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
