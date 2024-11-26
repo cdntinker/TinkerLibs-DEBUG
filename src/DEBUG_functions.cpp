@@ -184,6 +184,7 @@ void DEBUG_TEST_ESP_info()
 void DEBUG_ESP_info()
 {
     char Line[46];
+    char CoreVer[42];
 #if defined(ESP8266)
     const char* ChipModel = "Dunno";                    // Don't actually know
     double ChipRev = 0;                                 // Don't actually know
@@ -191,7 +192,7 @@ void DEBUG_ESP_info()
     uint32_t ChipCores = 666;                           // Don't actually know
     uint32_t FlashID = ESP.getFlashChipId();
     uint32_t RAMsize = 666;                             // Don't actually know
-    const char CoreVer[42] = ESP.getCoreVersion().c_str();
+    sprintf(CoreVer, ESP.getCoreVersion().c_str());
     // #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
     // #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
     // #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
@@ -209,7 +210,6 @@ void DEBUG_ESP_info()
     uint32_t FlashID = 666;
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
-    char CoreVer[42];
     sprintf(CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     const char* SDKver = ESP.getSdkVersion();
     uint32_t ideMode = 4;
