@@ -176,10 +176,11 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
 {
     int Width = DEBUG_Width - 2;
     int dotposition = dotcount;
+    int rowcount = dotcount / Width;
 
     if (dotcount > Width)
     {
-        dotposition = dotcount - (Width + 1);
+        dotposition = dotcount - ((Width + 1) * rowcount);
     }
 
     // if (dotcount == 0)
