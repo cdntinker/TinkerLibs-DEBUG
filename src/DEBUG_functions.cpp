@@ -231,7 +231,7 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "      Flash Size: %d (%.3f MB)", FlashChipSize, FlashChipSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, "     Flash speed: %u", FlashSpeed);
+    sprintf(Line, "     Flash speed: %u kHz", FlashSpeed / 1000);
     DEBUG_LineOut(Line);
 #if defined(ESP32)
     sprintf(Line, "      Psram Size: %d (%.3f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
