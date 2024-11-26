@@ -155,24 +155,10 @@ void DEBUG_TEST_ESP_info()
     // Check and report on the flash memory on this board
     DEBUG_SectionTitle("Board flash memory Info");
 #if defined(ESP8266)
-    uint32_t realSize = ESP.getFlashChipRealSize();
-    uint32_t ideSize = ESP.getFlashChipSize();
-    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     FlashMode_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-    uint32_t realSize = 000;
-    uint32_t ideSize = 000;
-    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     // FlashMode_t ideMode = ESP.getFlashChipMode();
 #endif
-    sprintf(Line, "Flash real size: %u", realSize);
-    DEBUG_LineOut(Line);
-    sprintf(Line, "Flash real size: %u MB", realSize / 1024 / 1024);
-    DEBUG_LineOut(Line);
-    sprintf(Line, "Flash ide  size: %u", ideSize);
-    DEBUG_LineOut(Line);
-    sprintf(Line, "Flash ide speed: %u", FlashSpeed);
-    DEBUG_LineOut(Line);
 #if defined(ESP8266)
     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
                                         : ideMode == FM_QOUT ? "QOUT"
@@ -203,6 +189,7 @@ uint32_t ChipID =  ESP.getChipId();
 uint32_t ChipCores = 666;                           // Don't actually know
 uint32_t FlashID = ESP.getFlashChipId();
 uint32_t FlashChipSize = ESP.getFlashChipSize();
+    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
 uint32_t RAMsize = 666;                             // Don't actually know
 #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
 #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
@@ -220,6 +207,7 @@ uint32_t ChipID = 0;        // ESP efuse ID
 uint32_t ChipCores = ESP.getChipCores();
 uint32_t FlashID = 666;
 uint32_t FlashChipSize = ESP.getFlashChipSize();
+    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
 uint32_t PSramSize = ESP.getPsramSize();
 uint32_t RAMsize = ESP.getHeapSize();
 const char* SDKver = ESP.getSdkVersion();
@@ -238,6 +226,8 @@ uint32_t FreeHeap = ESP.getFreeHeap();
     sprintf(Line, "   Flash Chip ID: %08X", FlashID);
     DEBUG_LineOut(Line);
     sprintf(Line, "      Flash Size: %d (%d MB)", FlashChipSize, FlashChipSize /1024 / 1024);
+    DEBUG_LineOut(Line);
+    sprintf(Line, "     Flash speed: %u", FlashSpeed);
     DEBUG_LineOut(Line);
 #if defined(ESP32)
     sprintf(Line, "      Psram Size: %d (%d MB)", PSramSize, PSramSize /1024 / 1024);
