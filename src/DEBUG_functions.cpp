@@ -76,7 +76,7 @@ void DEBUG_Title()
     Serial.printf("\n\n#===================================================================================================#\n");
     Serial.printf("# %-97s #\n", STR(DeviceName));
     Serial.printf("# %-97s #\n", STR(DeviceType));
-    Serial.printf("+---------------------------------------------------------------------------------------------------+");
+    Serial.printf("#---------------------------------------------------------------------------------------------------#");
     Serial.println(DeviceNotes);
     Serial.printf("#===================================================================================================#\n");
 }
@@ -90,7 +90,7 @@ void DEBUG_Ready()
 
 void DEBUG_Separator()
 {
-    Serial.printf(">---------------------------------------------------------------------------------------------------<\n");
+    Serial.printf("+---------------------------------------------------------------------------------------------------+\n");
 }
 
 void DEBUG_SectionTitle(const char *Title)
@@ -124,7 +124,7 @@ void DEBUG_Trouble(const char *Line)
 
 void DEBUG_Success(const char *Line)
 {
-    Serial.printf("+ %-97s +\n", Line);
+    Serial.printf("> %-97s <\n", Line);
 }
 
 int DEBUG_ProgressBar(int dotcount, char Dot)
