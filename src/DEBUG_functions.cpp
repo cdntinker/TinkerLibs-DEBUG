@@ -174,35 +174,30 @@ void DEBUG_Event(const char *Line)
 */
 int DEBUG_ProgressBar(int dotcount, char Dot)
 {
-    int Width = DEBUG_Width - 2;
+    int Width = DEBUG_Width - 1;
     int dotposition = dotcount;
     int rowcount = dotcount / Width;
 
-    if (dotcount >= Width)
-    {
-        dotposition = dotcount - ((Width + 1) * rowcount);
-        // dotposition = dotcount - ((Width * rowcount) + 1);
-    }
+    dotposition = dotcount - ((Width * rowcount));
 
-    // if (dotcount == 0)
     if (dotposition == 0)
         Serial.printf("| ");
 
-    // Serial.print(Dot);
-Serial.print(rowcount);
+    Serial.print(Dot);
+    // Serial.print(rowcount);
 
-    if (dotposition == Width)
+    if (dotposition == Width - 1)
     {
         Serial.printf(" |\n");
         return 0;
     }
     dotcount++;
-    return (dotcount);
+    return (dotposition);
 }
 
 void DEBUG_ProgressBar2(int dotcount)
 {
-    for (int i = 0; i < ((DEBUG_Width - 0) - dotcount); i++)
+    for (int i = 0; i < ((DEBUG_Width - 1) - dotcount); i++)
     {
         Serial.printf(" ");
     }
