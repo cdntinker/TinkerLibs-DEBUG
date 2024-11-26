@@ -177,7 +177,7 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
     int Width = DEBUG_Width - 2;
     int dotposition = dotcount;
     int rowcount = dotcount / Width;
-Serial.print(rowcount);
+
     if (dotcount > Width)
     {
         // dotposition = dotcount - ((Width + 1) * rowcount);
@@ -188,7 +188,8 @@ Serial.print(rowcount);
     if (dotposition == 0)
         Serial.printf("| ");
 
-    Serial.print(Dot);
+    // Serial.print(Dot);
+Serial.print(rowcount);
 
     if (dotposition == Width)
     {
