@@ -184,7 +184,7 @@ void DEBUG_TEST_ESP_info()
 void DEBUG_ESP_info()
 {
     char Line[46];
-    char CoreVer[42];
+    char CoreVer[12];
 #if defined(ESP8266)
     const char* ChipModel = "Dunno";                    // Don't actually know
     double ChipRev = 0;                                 // Don't actually know
@@ -247,9 +247,9 @@ void DEBUG_ESP_info()
     sprintf(Line, " Arduino version: %s", CoreVer);
     DEBUG_LineOut(Line);
 // #elif defined(ESP32)
-#if defined(ESP8266)
-    sprintf(Line, " Arduino version: %s", ESP.getCoreVersion().c_str());
-#endif
+// #if defined(ESP8266)
+//     sprintf(Line, " Arduino version: %s", ESP.getCoreVersion().c_str());
+// #endif
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", SDKver);
     DEBUG_LineOut(Line);
