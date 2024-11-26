@@ -159,7 +159,7 @@ void DEBUG_TEST_ESP_info()
 #elif defined(ESP32)
         uint32_t ideMode = ESP.getFlashChipMode();
 #endif
-// #if defined(ESP8266)
+#if defined(ESP8266)
     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
                                         : ideMode == FM_QOUT ? "QOUT"
                                         : ideMode == FM_DIO    ? "DIO"
@@ -175,8 +175,9 @@ void DEBUG_TEST_ESP_info()
     //     sprintf(Line, "Flash Chip configuration ok.");
     // }
     // DEBUG_LineOut(Line);
-// #elif defined(ESP32)
-// #endif
+#elif defined(ESP32)
+    sprintf(Line, " Flash ide mode:  %d", ideMode)
+#endif
 }
 
 // Hardware & platform information
