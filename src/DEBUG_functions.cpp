@@ -157,7 +157,7 @@ void DEBUG_TEST_ESP_info()
 #if defined(ESP8266)
     FlashMode_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-        uint32_t ideMode = ESP.getFlashChipMode();
+        // uint32_t ideMode = ESP.getFlashChipMode();
 #endif
 #if defined(ESP8266)
     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
