@@ -151,33 +151,33 @@ void DEBUG_ProgressBar2(int dotcount)
 
 void DEBUG_TEST_ESP_info()
 {
-    char Line[46];
-    // Check and report on the flash memory on this board
-    DEBUG_SectionTitle("Board flash memory Info");
-#if defined(ESP8266)
-    FlashMode_t ideMode = ESP.getFlashChipMode();
-#elif defined(ESP32)
-        // uint32_t ideMode = ESP.getFlashChipMode();
-#endif
-#if defined(ESP8266)
-    sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
-                                        : ideMode == FM_QOUT ? "QOUT"
-                                        : ideMode == FM_DIO    ? "DIO"
-                                        : ideMode == FM_DOUT   ? "DOUT"
-                                        : "UNKNOWN"));
-    DEBUG_LineOut(Line);
-    // if (ideSize != realSize)
-    // {
-    //     sprintf(Line, "Flash Chip configuration wrong!");
-    // }
-    // else
-    // {
-    //     sprintf(Line, "Flash Chip configuration ok.");
-    // }
-    // DEBUG_LineOut(Line);
-#elif defined(ESP32)
-    // sprintf(Line, " Flash ide mode:  %d", ideMode);
-#endif
+//     char Line[46];
+//     // Check and report on the flash memory on this board
+//     DEBUG_SectionTitle("Board flash memory Info");
+// #if defined(ESP8266)
+//     FlashMode_t ideMode = ESP.getFlashChipMode();
+// #elif defined(ESP32)
+//         // uint32_t ideMode = ESP.getFlashChipMode();
+// #endif
+// #if defined(ESP8266)
+//     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
+//                                         : ideMode == FM_QOUT ? "QOUT"
+//                                         : ideMode == FM_DIO    ? "DIO"
+//                                         : ideMode == FM_DOUT   ? "DOUT"
+//                                         : "UNKNOWN"));
+//     DEBUG_LineOut(Line);
+//     // if (ideSize != realSize)
+//     // {
+//     //     sprintf(Line, "Flash Chip configuration wrong!");
+//     // }
+//     // else
+//     // {
+//     //     sprintf(Line, "Flash Chip configuration ok.");
+//     // }
+//     // DEBUG_LineOut(Line);
+// #elif defined(ESP32)
+//     // sprintf(Line, " Flash ide mode:  %d", ideMode);
+// #endif
 }
 
 // Hardware & platform information
@@ -185,36 +185,37 @@ void DEBUG_ESP_info()
 {
     char Line[46];
 #if defined(ESP8266)
-const char* ChipModel = "Dunno";                    // Don't actually know
-double ChipRev = 0;                                 // Don't actually know
-uint32_t ChipID =  ESP.getChipId();
-uint32_t ChipCores = 666;                           // Don't actually know
-uint32_t FlashID = ESP.getFlashChipId();
-uint32_t FlashChipSize = ESP.getFlashChipSize();
-    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
-uint32_t RAMsize = 666;                             // Don't actually know
-#define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
-#define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
-#define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
-const char* SDKver = "DamnifIknow";                 // Don't actually know
-uint32_t FreeHeap = ESP.getFreeHeap();
+    const char* ChipModel = "Dunno";                    // Don't actually know
+    double ChipRev = 0;                                 // Don't actually know
+    uint32_t ChipID =  ESP.getChipId();
+    uint32_t ChipCores = 666;                           // Don't actually know
+    uint32_t FlashID = ESP.getFlashChipId();
+    // uint32_t FlashChipSize = ESP.getFlashChipSize();
+    // uint32_t FlashSpeed = ESP.getFlashChipSpeed();
+    uint32_t RAMsize = 666;                             // Don't actually know
+    #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
+    #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
+    #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
+    const char* SDKver = "DamnifIknow";                 // Don't actually know
+    // uint32_t FreeHeap = ESP.getFreeHeap();
+    FlashMode_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-const char* ChipModel = ESP.getChipModel();
-uint32_t ChipRev = ESP.getChipRevision();
-uint32_t ChipID = 0;        // ESP efuse ID
-    for (int i = 0; i < 17; i = i + 8)
-    {
-        ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
-    }
-uint32_t ChipCores = ESP.getChipCores();
-uint32_t FlashID = 666;
-uint32_t FlashChipSize = ESP.getFlashChipSize();
-    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
-uint32_t PSramSize = ESP.getPsramSize();
-uint32_t RAMsize = ESP.getHeapSize();
-const char* SDKver = ESP.getSdkVersion();
-uint32_t FreeHeap = ESP.getFreeHeap();
+    const char* ChipModel = ESP.getChipModel();
+    uint32_t ChipRev = ESP.getChipRevision();
+    uint32_t ChipID = 0;        // ESP efuse ID
+        for (int i = 0; i < 17; i = i + 8)
+        {
+            ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
+        }
+    uint32_t ChipCores = ESP.getChipCores();
+    uint32_t FlashID = 666;
+    uint32_t PSramSize = ESP.getPsramSize();
+    uint32_t RAMsize = ESP.getHeapSize();
+    const char* SDKver = ESP.getSdkVersion();
 #endif
+    uint32_t FlashChipSize = ESP.getFlashChipSize();
+    uint32_t FlashSpeed = ESP.getFlashChipSpeed();
+    uint32_t FreeHeap = ESP.getFreeHeap();
 
     DEBUG_SectionTitle("ESP Info");
 
@@ -243,6 +244,16 @@ uint32_t FreeHeap = ESP.getFreeHeap();
     DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d", FreeHeap);
     DEBUG_LineOut(Line);
+#if defined(ESP8266)
+    sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
+                                        : ideMode == FM_QOUT ? "QOUT"
+                                        : ideMode == FM_DIO    ? "DIO"
+                                        : ideMode == FM_DOUT   ? "DOUT"
+                                        : "UNKNOWN"));
+    DEBUG_LineOut(Line);
+#elif defined(ESP32)
+    // sprintf(Line, " Flash ide mode:  %d", ideMode);
+#endif
 }
 
 /////  Austin's Additions  /////
