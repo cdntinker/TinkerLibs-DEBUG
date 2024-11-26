@@ -176,7 +176,7 @@ void DEBUG_TEST_ESP_info()
     // }
     // DEBUG_LineOut(Line);
 #elif defined(ESP32)
-    sprintf(Line, " Flash ide mode:  %d", ideMode);
+    // sprintf(Line, " Flash ide mode:  %d", ideMode);
 #endif
 }
 
