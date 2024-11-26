@@ -197,13 +197,17 @@ void DEBUG_ESP_info()
 {
     char Line[46];
 #if defined(ESP8266)
-const char* ChipModel = "Dunno";
-double ChipRev = 0;
+const char* ChipModel = "Dunno";                    // Don't actually know
+double ChipRev = 0;                                 // Don't actually know
 uint32_t ChipID =  ESP.getChipId();
-uint32_t ChipCores = 666;
+uint32_t ChipCores = 666;                           // Don't actually know
 uint32_t FlashID = ESP.getFlashChipId();
 uint32_t FlashChipSize = ESP.getFlashChipSize();
-uint32_t RAMsize = ESP.getHeapSize();
+uint32_t RAMsize = 666;                             // Don't actually know
+#define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
+#define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
+#define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
+const char* SDKver = "DamnifIknow";                 // Don't actually know
 #elif defined(ESP32)
 const char* ChipModel = ESP.getChipModel();
 uint32_t ChipRev = ESP.getChipRevision();
@@ -217,6 +221,7 @@ uint32_t FlashID = 666;
 uint32_t FlashChipSize = ESP.getFlashChipSize();
 uint32_t PSramSize = ESP.getPsramSize();
 uint32_t RAMsize = ESP.getHeapSize();
+const char* SDKver = ESP.getSdkVersion();
 #endif
 
     DEBUG_SectionTitle("ESP Info");
@@ -238,18 +243,14 @@ uint32_t RAMsize = ESP.getHeapSize();
 #endif
     sprintf(Line, "        Ram Size: %d", RAMsize);
     DEBUG_LineOut(Line);
+    sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
+    DEBUG_LineOut(Line);
+    sprintf(Line, " ESP SDK version: %s", SDKver);
+    DEBUG_LineOut(Line);
 #ifdef ESP8266
-    sprintf(Line, " Arduino version: %s", "Dunno");
-    DEBUG_LineOut(Line);
-    sprintf(Line, " ESP SDK version: %s", "Dunno");
-    DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
-    sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
-    DEBUG_LineOut(Line);
-    sprintf(Line, " ESP SDK version: %s", ESP.getSdkVersion());
-    DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d", ESP.getFreeHeap());
     DEBUG_LineOut(Line);
 #endif
