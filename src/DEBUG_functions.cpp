@@ -9,7 +9,6 @@ char DEBUGtxt[92];
 
 #include <Tinker_DEBUG.h>
 
-
 void setup_DEBUG()
 {
     Serial.begin(115200);
@@ -20,30 +19,61 @@ void setup_DEBUG()
 
 String HR_reset_reason(uint8_t reason)
 {
-  switch ( reason)
-  {
-    case 1 : return ("POWERON_RESET");break;          /**<1, Vbat power on reset*/
-    case 3 : return ("SW_RESET");break;               /**<3, Software reset digital core*/
-    case 4 : return ("OWDT_RESET");break;             /**<4, Legacy watch dog reset digital core*/
-    case 5 : return ("DEEPSLEEP_RESET");break;        /**<5, Deep Sleep reset digital core*/
-    case 6 : return ("SDIO_RESET");break;             /**<6, Reset by SLC module, reset digital core*/
-    case 7 : return ("TG0WDT_SYS_RESET");break;       /**<7, Timer Group0 Watch dog reset digital core*/
-    case 8 : return ("TG1WDT_SYS_RESET");break;       /**<8, Timer Group1 Watch dog reset digital core*/
-    case 9 : return ("RTCWDT_SYS_RESET");break;       /**<9, RTC Watch dog Reset digital core*/
-    case 10 : return ("INTRUSION_RESET");break;       /**<10, Instrusion tested to reset CPU*/
-    case 11 : return ("TGWDT_CPU_RESET");break;       /**<11, Time Group reset CPU*/
-    case 12 : return ("SW_CPU_RESET");break;          /**<12, Software reset CPU*/
-    case 13 : return ("RTCWDT_CPU_RESET");break;      /**<13, RTC Watch dog Reset CPU*/
-    case 14 : return ("EXT_CPU_RESET");break;         /**<14, for APP CPU, reseted by PRO CPU*/
-    case 15 : return ("RTCWDT_BROWN_OUT_RESET");break;/**<15, Reset when the vdd voltage is not stable*/
-    case 16 : return ("RTCWDT_RTC_RESET");break;      /**<16, RTC Watch dog reset digital core and rtc module*/
-    default : return ("NO_MEAN");
-  }
+    switch (reason)
+    {
+    case 1:
+        return ("POWERON_RESET");
+        break; /**<1, Vbat power on reset*/
+    case 3:
+        return ("SW_RESET");
+        break; /**<3, Software reset digital core*/
+    case 4:
+        return ("OWDT_RESET");
+        break; /**<4, Legacy watch dog reset digital core*/
+    case 5:
+        return ("DEEPSLEEP_RESET");
+        break; /**<5, Deep Sleep reset digital core*/
+    case 6:
+        return ("SDIO_RESET");
+        break; /**<6, Reset by SLC module, reset digital core*/
+    case 7:
+        return ("TG0WDT_SYS_RESET");
+        break; /**<7, Timer Group0 Watch dog reset digital core*/
+    case 8:
+        return ("TG1WDT_SYS_RESET");
+        break; /**<8, Timer Group1 Watch dog reset digital core*/
+    case 9:
+        return ("RTCWDT_SYS_RESET");
+        break; /**<9, RTC Watch dog Reset digital core*/
+    case 10:
+        return ("INTRUSION_RESET");
+        break; /**<10, Instrusion tested to reset CPU*/
+    case 11:
+        return ("TGWDT_CPU_RESET");
+        break; /**<11, Time Group reset CPU*/
+    case 12:
+        return ("SW_CPU_RESET");
+        break; /**<12, Software reset CPU*/
+    case 13:
+        return ("RTCWDT_CPU_RESET");
+        break; /**<13, RTC Watch dog Reset CPU*/
+    case 14:
+        return ("EXT_CPU_RESET");
+        break; /**<14, for APP CPU, reseted by PRO CPU*/
+    case 15:
+        return ("RTCWDT_BROWN_OUT_RESET");
+        break; /**<15, Reset when the vdd voltage is not stable*/
+    case 16:
+        return ("RTCWDT_RTC_RESET");
+        break; /**<16, RTC Watch dog reset digital core and rtc module*/
+    default:
+        return ("NO_MEAN");
+    }
 }
 
 void DEBUG_Reset()
 {
-DEBUG_Separator();
+    DEBUG_Separator();
 
 #if defined(ESP8266)
     sprintf(DEBUGtxt,
@@ -145,9 +175,9 @@ void DEBUG_Event(const char *Line)
 int DEBUG_ProgressBar(int dotcount, char Dot)
 {
     int Width = DEBUG_Width - 2;
-    int dotposition;
+    int dotposition = dotcount;
 
-    if(dotcount > Width)
+    if (dotcount > Width)
     {
         dotposition = dotcount - Width;
     }
@@ -155,7 +185,9 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
     // if (dotcount == 0)
     if (dotposition == 0)
         Serial.printf("| ");
+
     Serial.print(Dot);
+
     if (dotposition == Width)
     {
         Serial.printf(" |\n");
@@ -180,30 +212,30 @@ void DEBUG_ESP_info()
     char Line[46];
     char CoreVer[12];
 #if defined(ESP8266)
-    const char* ChipModel = "Dunno";                    // Don't actually know
-    double ChipRev = 0;                                 // Don't actually know
-    uint32_t ChipID =  ESP.getChipId();
+    const char *ChipModel = "Dunno"; // Don't actually know
+    double ChipRev = 0;              // Don't actually know
+    uint32_t ChipID = ESP.getChipId();
     uint32_t ChipCores = 1;
     uint32_t FlashID = ESP.getFlashChipId();
-    uint32_t RAMsize = 0;                               // Don't actually know
+    uint32_t RAMsize = 0; // Don't actually know
     sprintf(CoreVer, "%s", ESP.getCoreVersion().c_str());
     uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-    const char* ChipModel = ESP.getChipModel();
+    const char *ChipModel = ESP.getChipModel();
     uint32_t ChipRev = ESP.getChipRevision();
-    uint32_t ChipID = 0;        // ESP efuse ID
-        for (int i = 0; i < 17; i = i + 8)
-        {
-            ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
-        }
+    uint32_t ChipID = 0; // ESP efuse ID
+    for (int i = 0; i < 17; i = i + 8)
+    {
+        ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
+    }
     uint32_t ChipCores = ESP.getChipCores();
-    uint32_t FlashID = 000;                             // Don't actually know
+    uint32_t FlashID = 000; // Don't actually know
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
     sprintf(CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     uint32_t ideMode = 4;
 #endif
-    const char* SDKver = ESP.getSdkVersion();
+    const char *SDKver = ESP.getSdkVersion();
     uint32_t FlashChipSize = ESP.getFlashChipSize();
     uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     uint32_t FreeHeap = ESP.getFreeHeap();
@@ -212,7 +244,7 @@ void DEBUG_ESP_info()
 
     sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
     DEBUG_LineOut(Line);
-    sprintf(Line, "         Chip ID: %08X",ChipID);
+    sprintf(Line, "         Chip ID: %08X", ChipID);
     DEBUG_LineOut(Line);
     sprintf(Line, " Number of Cores: %d", ChipCores);
     DEBUG_LineOut(Line);
@@ -230,19 +262,18 @@ void DEBUG_ESP_info()
     sprintf(Line, "      Psram Size: %d (%.3f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
 #endif
-    sprintf(Line, "        Ram Size: %d (%.3f KB)", RAMsize, RAMsize / 1024.0);// / 1024.0);
+    sprintf(Line, "        Ram Size: %d (%.3f KB)", RAMsize, RAMsize / 1024.0); // / 1024.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, "       Free heap: %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0);// / 1024.0);
+    sprintf(Line, "       Free heap: %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0); // / 1024.0);
     DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %s", CoreVer);
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", SDKver);
     DEBUG_LineOut(Line);
-    sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
-                                        : ideMode == FM_QOUT ? "QOUT"
-                                        : ideMode == FM_DIO    ? "DIO"
-                                        : ideMode == FM_DOUT   ? "DOUT"
-                                        : "BORKED"));
+    sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT"
+                                                                   : ideMode == FM_DIO    ? "DIO"
+                                                                   : ideMode == FM_DOUT   ? "DOUT"
+                                                                                          : "BORKED"));
     DEBUG_LineOut(Line);
 }
 
@@ -254,7 +285,7 @@ void DEBUG_ESP_info()
 
 void DEBUG_WiFi_Mode()
 {
-    const char* WiFi_MODES[] = { "NULL", "STA", "AP", "STA+AP" };
+    const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 
     Serial.printf("|          MODE : %-81s |\n", WiFi_MODES[WiFi.getMode()]);
 }
