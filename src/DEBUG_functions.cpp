@@ -204,7 +204,7 @@ void DEBUG_ESP_info()
             ChipID |= ((ESP.getEfuseMac() >> (40 - i)) & 0xff) << i;
         }
     uint32_t ChipCores = ESP.getChipCores();
-    uint32_t FlashID = 000;
+    uint32_t FlashID = 000;                             // Don't actually know
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
     sprintf(CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
@@ -225,8 +225,10 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, " Number of Cores: %d", ChipCores);
     DEBUG_LineOut(Line);
+#if defined(ESP8266)
     sprintf(Line, "   Flash Chip ID: %08X", FlashID);
     DEBUG_LineOut(Line);
+#endif
     sprintf(Line, "      Flash Size: %d (%.3f MB)", FlashChipSize, FlashChipSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
     sprintf(Line, "     Flash speed: %u MHz", FlashSpeed / 1000 / 1000);
