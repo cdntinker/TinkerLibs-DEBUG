@@ -236,7 +236,7 @@ void DEBUG_ESP_info()
 #if defined(ESP32)
 // double PSinM = PSramSize / 1024.0 / 1024.0;
     // sprintf(Line, "      Psram Size: %d (%f MB)", PSramSize, PSinM);
-    sprintf(Line, "      Psram Size: %d (%.2f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
+    sprintf(Line, "      Psram Size: %d (%.2f MB)", PSramSize, (float)PSramSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
 #endif
     sprintf(Line, "        Ram Size: %d (%d MB)", RAMsize, RAMsize / 1024 / 1024);
