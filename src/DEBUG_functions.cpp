@@ -18,7 +18,7 @@ void setup_DEBUG()
     Serial.println();
 }
 
-String return_reset_reason(uint8_t reason)
+String HR_reset_reason(uint8_t reason)
 {
   switch ( reason)
   {
@@ -54,12 +54,12 @@ DEBUG_Separator();
     sprintf(DEBUGtxt,
             "CPU0 reset reason:  %d - %s",
             rtc_get_reset_reason(0),
-            return_reset_reason(rtc_get_reset_reason(0)).c_str());
+            HR_reset_reason(rtc_get_reset_reason(0)).c_str());
     Serial.printf("| %-97s |\n", DEBUGtxt);
     sprintf(DEBUGtxt,
             "CPU1 reset reason:  %d - %s",
             rtc_get_reset_reason(1),
-            return_reset_reason(rtc_get_reset_reason(1)).c_str());
+            HR_reset_reason(rtc_get_reset_reason(1)).c_str());
     Serial.printf("| %-97s |\n", DEBUGtxt);
 
 #endif
@@ -109,9 +109,11 @@ void DEBUG_LineOut2(const char *Line)
     Serial.printf("|       %-91s |\n", Line);
 }
 
+//////////////////////////////////////////
+// This one needs a HUGE amount of work...
+//////////////////////////////////////////
 void DEBUG_BlockOut(const char *Block)
 {
-    Serial.println("DEBUG_BlockOut Print:");
     Serial.printf(Block);
 }
 
@@ -149,37 +151,6 @@ void DEBUG_ProgressBar2(int dotcount)
     Serial.printf("|\n");
 }
 
-void DEBUG_TEST_ESP_info()
-{
-//     char Line[46];
-//     // Check and report on the flash memory on this board
-//     DEBUG_SectionTitle("Board flash memory Info");
-// #if defined(ESP8266)
-//     FlashMode_t ideMode = ESP.getFlashChipMode();
-// #elif defined(ESP32)
-//         // uint32_t ideMode = ESP.getFlashChipMode();
-// #endif
-// #if defined(ESP8266)
-//     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
-//                                         : ideMode == FM_QOUT ? "QOUT"
-//                                         : ideMode == FM_DIO    ? "DIO"
-//                                         : ideMode == FM_DOUT   ? "DOUT"
-//                                         : "UNKNOWN"));
-//     DEBUG_LineOut(Line);
-//     // if (ideSize != realSize)
-//     // {
-//     //     sprintf(Line, "Flash Chip configuration wrong!");
-//     // }
-//     // else
-//     // {
-//     //     sprintf(Line, "Flash Chip configuration ok.");
-//     // }
-//     // DEBUG_LineOut(Line);
-// #elif defined(ESP32)
-//     // sprintf(Line, " Flash ide mode:  %d", ideMode);
-// #endif
-}
-
 // Hardware & platform information
 void DEBUG_ESP_info()
 {
@@ -191,9 +162,8 @@ void DEBUG_ESP_info()
     uint32_t ChipID =  ESP.getChipId();
     uint32_t ChipCores = 1;
     uint32_t FlashID = ESP.getFlashChipId();
-    uint32_t RAMsize = 666;                             // Don't actually know
+    uint32_t RAMsize = 0;                               // Don't actually know
     sprintf(CoreVer, "%s", ESP.getCoreVersion().c_str());
-    // const char* SDKver = ESP.getSdkVersion();
     uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
     const char* ChipModel = ESP.getChipModel();
@@ -208,7 +178,6 @@ void DEBUG_ESP_info()
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
     sprintf(CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
-    // const char* SDKver = ESP.getSdkVersion();
     uint32_t ideMode = 4;
 #endif
     const char* SDKver = ESP.getSdkVersion();
@@ -218,7 +187,6 @@ void DEBUG_ESP_info()
 
     DEBUG_SectionTitle("ESP Info");
 
-    // sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
     sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID: %08X",ChipID);
@@ -247,16 +215,12 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", SDKver);
     DEBUG_LineOut(Line);
-// #if defined(ESP8266)
     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
                                         : ideMode == FM_QOUT ? "QOUT"
                                         : ideMode == FM_DIO    ? "DIO"
                                         : ideMode == FM_DOUT   ? "DOUT"
                                         : "BORKED"));
     DEBUG_LineOut(Line);
-// #elif defined(ESP32)
-//     // sprintf(Line, " Flash ide mode:  %d", ideMode);
-// #endif
 }
 
 /////  Austin's Additions  /////
@@ -276,11 +240,6 @@ void DEBUG_Wifi(const char *InitPart)
 {
     Serial.printf("|          SSID : %-87s |\n", InitPart);
 }
-
-// void DEBUG_IP(const char *InitPart)
-// {
-//     Serial.printf("|    IP address : %-81s |\n", InitPart);
-// }
 
 void DEBUG_IP()
 {
@@ -312,7 +271,6 @@ void DEBUG_Success(const char *Line) {}
 int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
 
-void DEBUG_TEST_ESP_info() {}
 void DEBUG_ESP_info() {}
 
 /////  Austin's Additions  /////
