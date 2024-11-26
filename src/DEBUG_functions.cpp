@@ -241,11 +241,11 @@ void DEBUG_ESP_info()
 #endif
     sprintf(Line, "        Ram Size: %d (%.3f KB)", RAMsize, RAMsize / 1024.0);// / 1024.0);
     DEBUG_LineOut(Line);
+    sprintf(Line, "       Free heap: %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0);// / 1024.0);
+    DEBUG_LineOut(Line);
     sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", SDKver);
-    DEBUG_LineOut(Line);
-    sprintf(Line, "       Free heap: %d", FreeHeap);
     DEBUG_LineOut(Line);
 // #if defined(ESP8266)
     sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO"
