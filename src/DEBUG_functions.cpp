@@ -190,14 +190,12 @@ void DEBUG_ESP_info()
     uint32_t ChipID =  ESP.getChipId();
     uint32_t ChipCores = 666;                           // Don't actually know
     uint32_t FlashID = ESP.getFlashChipId();
-    // uint32_t FlashChipSize = ESP.getFlashChipSize();
-    // uint32_t FlashSpeed = ESP.getFlashChipSpeed();
     uint32_t RAMsize = 666;                             // Don't actually know
-    #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
-    #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
-    #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
+    const char* CoreVer = ESP.getCoreVersion();
+    // #define ESP_ARDUINO_VERSION_MAJOR 6                 // Don't actually know
+    // #define ESP_ARDUINO_VERSION_MINOR 6                 // Don't actually know
+    // #define ESP_ARDUINO_VERSION_PATCH 6                 // Don't actually know
     const char* SDKver = ESP.getSdkVersion();                 // Don't actually know
-    // uint32_t FreeHeap = ESP.getFreeHeap();
     uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
     const char* ChipModel = ESP.getChipModel();
@@ -211,6 +209,7 @@ void DEBUG_ESP_info()
     uint32_t FlashID = 666;
     uint32_t PSramSize = ESP.getPsramSize();
     uint32_t RAMsize = ESP.getHeapSize();
+    sprintf(const char* CoreVer, "%d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
     const char* SDKver = ESP.getSdkVersion();
     uint32_t ideMode = 4;
 #endif
@@ -243,11 +242,11 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     sprintf(Line, "       Free heap: %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0);// / 1024.0);
     DEBUG_LineOut(Line);
-#if defined(ESP8266)
-    sprintf(Line, " Arduino version: %s", ESP.getCoreVersion());
-#elif defined(ESP32)
-    sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
-#endif
+// #if defined(ESP8266)
+    sprintf(Line, " Arduino version: %s", CoreVer);
+// #elif defined(ESP32)
+//     sprintf(Line, " Arduino version: %d.%d.%d", ESP_ARDUINO_VERSION_MAJOR, ESP_ARDUINO_VERSION_MINOR, ESP_ARDUINO_VERSION_PATCH);
+// #endif
     DEBUG_LineOut(Line);
     sprintf(Line, " ESP SDK version: %s", SDKver);
     DEBUG_LineOut(Line);
