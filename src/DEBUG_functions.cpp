@@ -147,14 +147,11 @@ void DEBUG_BlockOut(const char *Block)
 
     int Line_Width = DEBUG_Width - 6;
 
-    char text[512];
-    strcpy(text, Block);
-
     char Line[DEBUG_Width];
 
     for (int current = 0; Block[current] != '\0'; current++, counter++, Column++)
     {
-        if (isspace(text[current])) // TODO: Add other delimiters here
+        if (isspace(Block[current])) // TODO: Add other delimiters here
             last_space = current;
 
         Line[Column] = Block[current];
