@@ -139,7 +139,7 @@ void DEBUG_LineOut2(const char *Line)
     Serial.printf("|       %-91s |\n", Line);
 }
 
-void DEBUG_BlockOut(const char Block[1024])
+void DEBUG_BlockOut(const char *Block)
 {
     int last_space = 0;
     int counter = 0;
