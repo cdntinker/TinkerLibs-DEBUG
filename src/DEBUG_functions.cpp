@@ -139,6 +139,11 @@ void DEBUG_LineOut2(const char *Line)
     Serial.printf("|       %-91s |\n", Line);
 }
 
+//////////////////////////////////////////////////////////////
+// NOTE!
+// `Block` Must end with a `\n` or this function fails to
+// complete long blocks
+//////////////////////////////////////////////////////////////
 void DEBUG_BlockOut(const char *Block)
 {
     int last_space = 0;
@@ -156,7 +161,7 @@ void DEBUG_BlockOut(const char *Block)
 
         Line[Column] = Block[current];
 
-        if ((counter >= Line_Width) || (Block[current] == '\n') || (Block[current] == '\0'))
+        if ((counter >= Line_Width) || (Block[current] == '\n'))
         {
             Line[Column - (current - last_space)] = '\0';
 
@@ -166,6 +171,7 @@ void DEBUG_BlockOut(const char *Block)
             DEBUG_LineOut(Line);
         }
     }
+            DEBUG_LineOut(Line);
 }
 
 void DEBUG_Trouble(const char *Line)
