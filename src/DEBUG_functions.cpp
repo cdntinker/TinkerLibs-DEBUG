@@ -156,13 +156,13 @@ void DEBUG_BlockOut(const char *Block)
 
         Line[Column] = Block[current];
 
-        if ((counter >= Line_Width) || (Block[current] == '\n'))
+        if ((counter >= Line_Width) || (Block[current] == '\n') || (Block[current] == '\0'))
         {
             Line[Column - (current - last_space)] = '\0';
 
             counter = 0;
-            current = last_space;
-            Column = -1;
+            current = last_space;       // Loop back to before the partial word...
+            Column = -1;                // Back 1 past the start because the loop will bump it one...
             DEBUG_LineOut(Line);
         }
     }
