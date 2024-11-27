@@ -139,12 +139,36 @@ void DEBUG_LineOut2(const char *Line)
     Serial.printf("|       %-91s |\n", Line);
 }
 
-//////////////////////////////////////////
-// This one needs a HUGE amount of work...
-//////////////////////////////////////////
 void DEBUG_BlockOut(const char *Block)
 {
-    Serial.printf(Block);
+    int last_space = 0;
+    int counter = 0;
+    int Column = 0;
+
+    int Line_Width = DEBUG_Width - 6;
+
+    char text[512];
+    strcpy(text, Block);
+
+    char Line[DEBUG_Width];
+
+    for (int current = 0; Block[current] != '\0'; current++, counter++, Column++)
+    {
+        if (isspace(text[current])) // TODO: Add other delimiters here
+            last_space = current;
+
+        Line[Column] = Block[current];
+
+        if ((counter >= Line_Width) || (Block[current] == '\n'))
+        {
+            Line[Column - (current - last_space)] = '\0';
+
+            counter = 0;
+            current = last_space;
+            Column = -1;
+            DEBUG_LineOut(Line);
+        }
+    }
 }
 
 void DEBUG_Trouble(const char *Line)
