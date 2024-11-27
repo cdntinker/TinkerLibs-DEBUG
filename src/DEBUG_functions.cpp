@@ -171,7 +171,6 @@ void DEBUG_BlockOut(const char *Block)
             DEBUG_LineOut(Line);
         }
     }
-            DEBUG_LineOut(Line);
 }
 
 void DEBUG_Trouble(const char *Line)
