@@ -14,8 +14,8 @@
 #endif
 
 extern const char *DeviceNotes;
-// extern int DEBUG_Width;
-extern char DEBUGtxt[];
+int DEBUG_Width = 98;
+char DEBUGtxt[92];
 
 #define ST(A) #A
 #define STR(A) ST(A)

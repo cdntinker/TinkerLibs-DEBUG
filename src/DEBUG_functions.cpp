@@ -1,7 +1,7 @@
 // #include <NOTARDUINO.h>
 #include <Arduino.h>
 
-// int DEBUG_Width = 98;
+extern int DEBUG_Width;
 
 extern char DEBUGtxt[];
 
