@@ -323,7 +323,7 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 void DEBUG_WiFi_info()
 {
-    DEBUG_SectionTitle("ESP Info");
+    DEBUG_SectionTitle("WiFi Info");
     DEBUG_LineOut("Not yet...  Workin' on it tho...  I promise...");
 
 }
