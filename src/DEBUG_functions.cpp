@@ -110,6 +110,9 @@ void DEBUG_Init(const char *InitPart)
 //      will still function properly, but will require that you
 //      change the format of this variable.
 //      (normally defined in your project)
+//
+// Future thing(s): maybe figure out a good way to change the
+//                  vertical borders back to `#`s
 void DEBUG_Title()
 {
     Serial.printf("\n\n#===================================================================================================#\n");
@@ -311,11 +314,19 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
 }
 
-/////  Austin's Additions  /////
-// WiFi related debugging
 #if defined(ESP8266)
 #elif defined(ESP32)
 #endif
+
+////////////////////////////////////////////////////////////////
+//                   WiFi Related Debugging                   //
+////////////////////////////////////////////////////////////////
+void DEBUG_WiFi_info()
+{
+    DEBUG_SectionTitle("ESP Info");
+    DEBUG_LineOut("Not yet...  Workin' on it tho...  I promise...");
+
+}
 
 void DEBUG_WiFi_Mode()
 {
@@ -324,6 +335,7 @@ void DEBUG_WiFi_Mode()
     Serial.printf("|          MODE : %-81s |\n", WiFi_MODES[WiFi.getMode()]);
 }
 
+/////  Austin's Additions  /////
 void DEBUG_Wifi(const char *InitPart)
 {
     Serial.printf("|          SSID : %-87s |\n", InitPart);
@@ -361,6 +373,7 @@ int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
 
 void DEBUG_ESP_info() {}
+void DEBUG_WiFi_info() {}
 
 /////  Austin's Additions  /////
 void DEBUG_WiFi_Mode() {}
