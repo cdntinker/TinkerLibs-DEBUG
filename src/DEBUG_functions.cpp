@@ -323,6 +323,8 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 void DEBUG_WiFi_info()
 {
+    char* poop = "-----";
+
     DEBUG_SectionTitle("WiFi Info");
     DEBUG_LineOut("Not yet...  Workin' on it tho...  I promise...");
 
@@ -330,19 +332,23 @@ void DEBUG_WiFi_info()
     sprintf(DEBUGtxt, "      MODE : %s", WiFi_MODES[WiFi.getMode()]);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      SSID : %s", "------");
+    sprintf(DEBUGtxt, "      SSID : %s", poop);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      PASS : %s", "------");
+    sprintf(DEBUGtxt, "      RSSI : %s", poop);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "  HostName : %s", "------");
+    sprintf(DEBUGtxt, "      PASS : %s", poop);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "  HostName : %s", WiFi.getHostname());
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "       MAC : %s", poop);
     DEBUG_LineOut(DEBUGtxt);
 
     sprintf(DEBUGtxt, "IP address : %s", WiFi.localIP().toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
-
-    Serial.printf("|    IP address : %-81s |\n", WiFi.localIP().toString().c_str());
 }
 
 void DEBUG_WiFi_Mode()
