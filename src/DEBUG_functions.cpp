@@ -356,7 +356,8 @@ strcpy (WiFiHOST, WiFi.getHostname());
 #endif
 
     DEBUG_SectionTitle("WiFi Info");
-
+Serial.print("::: ");
+Serial.println(WiFi.SSID());
     sprintf(DEBUGtxt, "      MODE : %s", WiFiMODE);
     DEBUG_LineOut(DEBUGtxt);
 
