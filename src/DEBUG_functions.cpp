@@ -327,10 +327,20 @@ void DEBUG_WiFi_info()
     DEBUG_LineOut("Not yet...  Workin' on it tho...  I promise...");
 
     const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
-    sprintf(DEBUGtxt, "          MODE : %s", WiFi_MODES[WiFi.getMode()]);
+    sprintf(DEBUGtxt, "      MODE : %s", WiFi_MODES[WiFi.getMode()]);
     DEBUG_LineOut(DEBUGtxt);
-    
-    Serial.printf("|          MODE : %-81s |\n", WiFi_MODES[WiFi.getMode()]);
+
+    sprintf(DEBUGtxt, "      SSID : %s", "------");
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "      PASS : %s", "------");
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "  HostName : %s", "------");
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "IP address : %s", WiFi.localIP().toString().c_str());
+    DEBUG_LineOut(DEBUGtxt);
 
     Serial.printf("|    IP address : %-81s |\n", WiFi.localIP().toString().c_str());
 }
