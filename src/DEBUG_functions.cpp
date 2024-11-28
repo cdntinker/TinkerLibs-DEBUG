@@ -393,7 +393,7 @@ strcpy (WiFiEncr, WiFi_AuthTypes[WiFi.encryptionType(0)]);
     sprintf(DEBUGtxt, "      PASS : %s", WiFiPASS);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "Encryption : %s", WiFiEncr);
+    sprintf(DEBUGtxt, "Encryption : %d - %s", WiFi.encryptionType(0), WiFiEncr);
     DEBUG_LineOut(DEBUGtxt);
 
     sprintf(DEBUGtxt, "      RSSI : %ld dBm", WiFiRSSI);
