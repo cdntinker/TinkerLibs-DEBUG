@@ -1,9 +1,11 @@
 // #include <NOTARDUINO.h>
 #include <Arduino.h>
 
-extern int DEBUG_Width;
+// extern int DEBUG_Width;
+// extern char DEBUGtxt[];
 
-extern char DEBUGtxt[];
+int DEBUG_Width = 98;
+char DEBUGtxt[92];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
