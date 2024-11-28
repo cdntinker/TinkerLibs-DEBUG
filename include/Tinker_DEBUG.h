@@ -20,8 +20,6 @@ char DEBUGtxt[92];
 #define ST(A) #A
 #define STR(A) ST(A)
 
-#endif // Tinker_DEBUG_H
-
 // Function declarations
 
 
@@ -56,3 +54,5 @@ void DEBUG_Wifi(const char *InitPart);
 void DEBUG_IP();
 void DEBUG_MAC(const char *InitPart);
 void DEBUG_rssi(const char *InitPart);
+
+#endif // Tinker_DEBUG_H
