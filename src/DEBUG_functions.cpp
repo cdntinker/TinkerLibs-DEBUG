@@ -333,9 +333,18 @@ char WiFiIP[16] = "___.___.___.___";
 
 const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
+
+if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
+    strcpy (WiFiIP, "[IP unset]");
+else
 strcpy (WiFiIP, WiFi.localIP().toString().c_str());
+
 strcpy (WiFiHOST, WiFi.getHostname());
-strcpy(WiFiSSID, WiFi.SSID().c_str());
+
+if (strlen(WiFi.SSID().c_str()) != 0)
+    strcpy(WiFiSSID, WiFi.SSID().c_str());
+else
+    strcpy(WiFiSSID, "[SSID unset]");
 
 #if defined(ESP8266)
 
@@ -352,7 +361,6 @@ strcpy(WiFiSSID, WiFi.SSID().c_str());
             "%02X:%02X:%02X:%02X:%02X:%02X", 
             baseMac[0], baseMac[1], baseMac[2], baseMac[3], baseMac[4], baseMac[5]
             );
-
 #endif
 
     DEBUG_SectionTitle("WiFi Info");
