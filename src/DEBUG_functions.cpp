@@ -321,13 +321,28 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 //                   WiFi Related Debugging                   //
 ////////////////////////////////////////////////////////////////
+char WiFi_AuthTypes[][32] =
+    {
+        "OPEN (or unknown)",
+        "WEB",
+        "WPA_PSK",
+        "WPA2_PSK",
+        "WPA_WPA2_PSK",
+        "WiFi EAP",
+        "WiFi EAP",
+        "WPA3_PSK",
+        "WPA2_WPA3_PSK",
+        "WAPI_PSK",
+        "WPA3_ENT_SUITE_B_192_BIT",
+        "MAX"};
+
 void DEBUG_WiFi_info()
 {
 char WiFiMODE[8] = "-----";
 char WiFiSSID[32] = "____________";
 char WiFiPASS[32] = "____________";
 long WiFiRSSI = WiFi.RSSI();
-char WiFiEncr[32] = "(All references are wrong)";
+char WiFiEncr[32] = "____________";
 char WiFiHOST[32] = "____________";
 char WiFiMAC[24] = "__:__:__:__:__:__:__:__";
 char WiFiIP[16] = "___.___.___.___";
@@ -346,6 +361,8 @@ if (strlen(WiFi.SSID().c_str()) != 0)
     strcpy(WiFiSSID, WiFi.SSID().c_str());
 else
     strcpy(WiFiSSID, "(SSID unset)");
+
+strcpy (WiFiEncr, WiFi_AuthTypes[WiFi.encryptionType(0)]);
 
 #if defined(ESP8266)
 
