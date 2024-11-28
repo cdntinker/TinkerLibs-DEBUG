@@ -153,7 +153,7 @@ void DEBUG_LineOut2(const char *Line)
 
 //////////////////////////////////////////////////////////////
 // NOTE:
-// In order to insert a blank line in your text block, place 
+// In order to insert a blank line in your text block, place
 // `\n\n` where you want the blank line to appear.
 //////////////////////////////////////////////////////////////
 void DEBUG_BlockOut(const char *Block)
@@ -326,6 +326,8 @@ void DEBUG_WiFi_info()
     DEBUG_SectionTitle("WiFi Info");
     DEBUG_LineOut("Not yet...  Workin' on it tho...  I promise...");
 
+    const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
+    Serial.printf("|          MODE : %-81s |\n", WiFi_MODES[WiFi.getMode()]);
 }
 
 void DEBUG_WiFi_Mode()
