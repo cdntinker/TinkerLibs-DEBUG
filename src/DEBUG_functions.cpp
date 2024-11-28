@@ -363,6 +363,8 @@ else
             );
 #endif
 
+Serial.printf("{{{%d}}}\n", WiFi.encryptionType());
+
     DEBUG_SectionTitle("WiFi Info");
 
     sprintf(DEBUGtxt, "      MODE : %s", WiFiMODE);
