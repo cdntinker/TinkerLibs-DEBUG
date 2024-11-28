@@ -355,7 +355,7 @@ void DEBUG_WiFi_info()
 #if defined(ESP8266)
     sprintf(DEBUGtxt, "       MAC : %s", WiFi.macAddress().c_str());
 #elif defined(ESP32)
-    sprintf(DEBUGtxt, "       MAC : poop);
+    sprintf(DEBUGtxt, "       MAC : %s", poop);
 #endif
     DEBUG_LineOut(DEBUGtxt);
 
