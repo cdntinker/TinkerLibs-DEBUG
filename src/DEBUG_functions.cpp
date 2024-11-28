@@ -335,12 +335,12 @@ const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
 strcpy (WiFiIP, WiFi.localIP().toString().c_str());
 strcpy (WiFiHOST, WiFi.getHostname());
+strcpy(WiFiSSID, WiFi.SSID().c_str());
 
 #if defined(ESP8266)
 
 // #include <ESP8266WiFi.h>
     strcpy(WiFiMAC, WiFi.macAddress().c_str());
-    strcpy(WiFiSSID, WiFi.SSID().c_str());
 #elif defined(ESP32)
 
 // #include <WiFi.h>
@@ -356,8 +356,7 @@ strcpy (WiFiHOST, WiFi.getHostname());
 #endif
 
     DEBUG_SectionTitle("WiFi Info");
-Serial.print("::: ");
-Serial.println(WiFi.SSID());
+
     sprintf(DEBUGtxt, "      MODE : %s", WiFiMODE);
     DEBUG_LineOut(DEBUGtxt);
 
