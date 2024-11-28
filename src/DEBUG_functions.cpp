@@ -323,6 +323,14 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 void DEBUG_WiFi_info()
 {
+
+#if defined(ESP8266)
+#include <ESP8266WiFi.h>
+#elif defined(ESP32)
+#include <WiFi.h>
+  uint8_t baseMac[6];
+  esp_err_t ret = esp_wifi_get_mac(WIFI_IF_STA, baseMac);
+#endif
     char* poop = "-----";
 
     DEBUG_SectionTitle("WiFi Info");
@@ -335,16 +343,20 @@ void DEBUG_WiFi_info()
     sprintf(DEBUGtxt, "      SSID : %s", poop);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      RSSI : %s", poop);
+    sprintf(DEBUGtxt, "      PASS : %s", poop);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      PASS : %s", poop);
+    sprintf(DEBUGtxt, "      RSSI : %s", poop);
     DEBUG_LineOut(DEBUGtxt);
 
     sprintf(DEBUGtxt, "  HostName : %s", WiFi.getHostname());
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "       MAC : %s", poop);
+#if defined(ESP8266)
+    sprintf(DEBUGtxt, "       MAC : %s", WiFi.macAddress().c_str());
+#elif defined(ESP32)
+    sprintf(DEBUGtxt, "       MAC : poop);
+#endif
     DEBUG_LineOut(DEBUGtxt);
 
     sprintf(DEBUGtxt, "IP address : %s", WiFi.localIP().toString().c_str());
