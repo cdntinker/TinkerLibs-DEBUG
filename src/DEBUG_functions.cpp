@@ -160,17 +160,21 @@ void DEBUG_BlockOut(const char *Block)
             last_space = current;
 
         Line[Column] = Block[current];
+        Line[Column + 1] = '\0'; // We're re-using Line, ensure it ends...
 
         if ((counter >= Line_Width) || (Block[current] == '\n'))
         {
             Line[Column - (current - last_space)] = '\0';
 
             counter = 0;
-            current = last_space;       // Loop back to before the partial word...
-            Column = -1;                // Back 1 past the start because the loop will bump it one...
+            current = last_space; // Loop back to before the partial word...
+            Column = -1;          // Back 1 past the start because the loop will bump it one...
             DEBUG_LineOut(Line);
         }
     }
+
+    if (counter > 1)
+        DEBUG_LineOut(Line);
 }
 
 void DEBUG_Trouble(const char *Line)
