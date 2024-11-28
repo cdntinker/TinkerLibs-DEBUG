@@ -140,15 +140,16 @@ void DEBUG_LineOut2(const char *Line)
 }
 
 //////////////////////////////////////////////////////////////
-// NOTE!
-// `Block` Must end with a `\n` or this function fails to
-// complete long blocks
+// NOTE:
+// In order to insert a blank line in your text block, place 
+// `\n\n` where you want the blank line to appear.
 //////////////////////////////////////////////////////////////
 void DEBUG_BlockOut(const char *Block)
 {
     int last_space = 0;
     int counter = 0;
     int Column = 0;
+    int LineNum = 0;
 
     int Line_Width = DEBUG_Width - 6;
 
@@ -169,7 +170,13 @@ void DEBUG_BlockOut(const char *Block)
             counter = 0;
             current = last_space; // Loop back to before the partial word...
             Column = -1;          // Back 1 past the start because the loop will bump it one...
-            DEBUG_LineOut(Line);
+            LineNum++;
+
+            if ((LineNum == 1) && (strlen(Line) == 0))
+            {
+            }
+            else
+                DEBUG_LineOut(Line);
         }
     }
 
