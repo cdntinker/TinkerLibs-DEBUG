@@ -363,7 +363,7 @@ if (strlen(WiFi.SSID().c_str()) != 0)
 else
     strcpy(WiFiSSID, "(SSID unset)");
 
-strcpy (WiFiEncr, WiFi_AuthTypes[WiFi.encryptionType()]);
+strcpy (WiFiEncr, WiFi_AuthTypes[WiFi.encryptionType(0)]);
 
 #if defined(ESP8266)
 
@@ -393,7 +393,7 @@ strcpy (WiFiEncr, WiFi_AuthTypes[WiFi.encryptionType()]);
     sprintf(DEBUGtxt, "      PASS : %s", WiFiPASS);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "Encryption : %d - %s", WiFi.encryptionType(), WiFiEncr);
+    sprintf(DEBUGtxt, "Encryption : %d - %s", WiFi.encryptionType(0), WiFiEncr);
     DEBUG_LineOut(DEBUGtxt);
 
     sprintf(DEBUGtxt, "      RSSI : %ld dBm", WiFiRSSI);
