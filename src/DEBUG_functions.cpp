@@ -335,7 +335,7 @@ const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
 
 if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
-    strcpy (WiFiIP, "[IP unset]");
+    strcpy (WiFiIP, "(IP unset)");
 else
 strcpy (WiFiIP, WiFi.localIP().toString().c_str());
 
@@ -344,7 +344,7 @@ strcpy (WiFiHOST, WiFi.getHostname());
 if (strlen(WiFi.SSID().c_str()) != 0)
     strcpy(WiFiSSID, WiFi.SSID().c_str());
 else
-    strcpy(WiFiSSID, "[SSID unset]");
+    strcpy(WiFiSSID, "(SSID unset)");
 
 #if defined(ESP8266)
 
