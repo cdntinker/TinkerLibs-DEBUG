@@ -327,6 +327,7 @@ char WiFiMODE[8] = "-----";
 char WiFiSSID[32] = "____________";
 char WiFiPASS[32] = "____________";
 long WiFiRSSI = WiFi.RSSI();
+char WiFiEncr[32] = "(All references are wrong)";
 char WiFiHOST[32] = "____________";
 char WiFiMAC[24] = "__:__:__:__:__:__:__:__";
 char WiFiIP[16] = "___.___.___.___";
@@ -374,9 +375,8 @@ else
     sprintf(DEBUGtxt, "      PASS : %s", WiFiPASS);
     DEBUG_LineOut(DEBUGtxt);
 
-    // sprintf(DEBUGtxt, "Encryption : %d", WiFi.encryptionType());
-    // DEBUG_LineOut(DEBUGtxt);
-    // TKIP (WPA) = 2 WEP = 5 CCMP (WPA) = 4 NONE = 7 AUTO = 8
+    sprintf(DEBUGtxt, "Encryption : %s", WiFiEncr);
+    DEBUG_LineOut(DEBUGtxt);
 
     sprintf(DEBUGtxt, "      RSSI : %ld dBm", WiFiRSSI);
     DEBUG_LineOut(DEBUGtxt);
