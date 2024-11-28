@@ -323,47 +323,63 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 void DEBUG_WiFi_info()
 {
+char WiFiMODE[8] = "-----";
+char WiFiSSID[32] = "____________";
+char WiFiPASS[32] = "____________";
+long WiFiRSSI = WiFi.RSSI();
+char WiFiHOST[32] = "____________";
+char WiFiMAC[24] = "__:__:__:__:__:__:__:__";
+char WiFiIP[16] = "___.___.___.___";
+
+const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
+strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
+strcpy (WiFiIP, WiFi.localIP().toString().c_str());
+strcpy (WiFiHOST, WiFi.getHostname());
 
 #if defined(ESP8266)
-#include <ESP8266WiFi.h>
+
+// #include <ESP8266WiFi.h>
+    strcpy(WiFiMAC, WiFi.macAddress().c_str());
+    strcpy(WiFiSSID, WiFi.SSID().c_str());
 #elif defined(ESP32)
-#include <WiFi.h>
 
-#endif
-    char* poop = "-----";
-
-    DEBUG_SectionTitle("WiFi Info");
-    DEBUG_LineOut("Not yet...  Workin' on it tho...  I promise...");
-
-    const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
-    sprintf(DEBUGtxt, "      MODE : %s", WiFi_MODES[WiFi.getMode()]);
-    DEBUG_LineOut(DEBUGtxt);
-
-    sprintf(DEBUGtxt, "      SSID : %s", poop);
-    DEBUG_LineOut(DEBUGtxt);
-
-    sprintf(DEBUGtxt, "      PASS : %s", poop);
-    DEBUG_LineOut(DEBUGtxt);
-
-    sprintf(DEBUGtxt, "      RSSI : %s", poop);
-    DEBUG_LineOut(DEBUGtxt);
-
-    sprintf(DEBUGtxt, "  HostName : %s", WiFi.getHostname());
-    DEBUG_LineOut(DEBUGtxt);
-
-#if defined(ESP8266)
-    sprintf(DEBUGtxt, "       MAC : %s", WiFi.macAddress().c_str());
-#elif defined(ESP32)
+// #include <WiFi.h>
     uint8_t baseMac[6];
     // Get MAC address for WiFi station
     esp_read_mac(baseMac, ESP_MAC_WIFI_STA);
     char baseMacChr[18] = {0};
-    // sprintf(baseMacChr, "%02X:%02X:%02X:%02X:%02X:%02X", baseMac[0], baseMac[1], baseMac[2], baseMac[3], baseMac[4], baseMac[5]);
-    sprintf(DEBUGtxt, "       MAC : %02X:%02X:%02X:%02X:%02X:%02X", baseMac[0], baseMac[1], baseMac[2], baseMac[3], baseMac[4], baseMac[5]);
+    sprintf(WiFiMAC, 
+            "%02X:%02X:%02X:%02X:%02X:%02X", 
+            baseMac[0], baseMac[1], baseMac[2], baseMac[3], baseMac[4], baseMac[5]
+            );
+
 #endif
+
+    DEBUG_SectionTitle("WiFi Info");
+
+    sprintf(DEBUGtxt, "      MODE : %s", WiFiMODE);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "IP address : %s", WiFi.localIP().toString().c_str());
+    sprintf(DEBUGtxt, "      SSID : %s", WiFiSSID);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "      PASS : %s", WiFiPASS);
+    DEBUG_LineOut(DEBUGtxt);
+
+    // sprintf(DEBUGtxt, "Encryption : %d", WiFi.encryptionType());
+    // DEBUG_LineOut(DEBUGtxt);
+    // TKIP (WPA) = 2 WEP = 5 CCMP (WPA) = 4 NONE = 7 AUTO = 8
+
+    sprintf(DEBUGtxt, "      RSSI : %ld dBm", WiFiRSSI);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "  HostName : %s", WiFiHOST);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "       MAC : %s", WiFiMAC);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "IP address : %s", WiFiIP);
     DEBUG_LineOut(DEBUGtxt);
 }
 
