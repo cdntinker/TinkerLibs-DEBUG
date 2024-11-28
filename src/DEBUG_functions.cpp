@@ -328,6 +328,8 @@ void DEBUG_WiFi_info()
 
     const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
     Serial.printf("|          MODE : %-81s |\n", WiFi_MODES[WiFi.getMode()]);
+
+    Serial.printf("|    IP address : %-81s |\n", WiFi.localIP().toString().c_str());
 }
 
 void DEBUG_WiFi_Mode()
