@@ -321,9 +321,12 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 //                   WiFi Related Debugging                   //
 ////////////////////////////////////////////////////////////////
+
+void DEBUG_WiFi_info()
+{
 char WiFi_AuthTypes[][32] =
     {
-        "OPEN (or unknown)",
+        "OPEN (or not checked)",
         "WEB",
         "WPA_PSK",
         "WPA2_PSK",
@@ -336,8 +339,6 @@ char WiFi_AuthTypes[][32] =
         "WPA3_ENT_SUITE_B_192_BIT",
         "MAX"};
 
-void DEBUG_WiFi_info()
-{
 char WiFiMODE[8] = "-----";
 char WiFiSSID[32] = "____________";
 char WiFiPASS[32] = "____________";
