@@ -14,7 +14,7 @@
 #endif
 
 extern const char *DeviceNotes;
-extern int DEBUG_Width;
+// extern int DEBUG_Width;
 extern char DEBUGtxt[];
 
 #define ST(A) #A
