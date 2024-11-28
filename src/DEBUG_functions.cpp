@@ -328,8 +328,7 @@ void DEBUG_WiFi_info()
 #include <ESP8266WiFi.h>
 #elif defined(ESP32)
 #include <WiFi.h>
-  uint8_t baseMac[6];
-  esp_err_t ret = esp_wifi_get_mac(WIFI_IF_STA, baseMac);
+
 #endif
     char* poop = "-----";
 
