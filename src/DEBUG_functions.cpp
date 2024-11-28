@@ -103,13 +103,20 @@ void DEBUG_Init(const char *InitPart)
     Serial.printf("| Initialising: %-83s |\n", InitPart);
 }
 
+////////////////////////////////////////////////////////////////
+//                     BREAKING CHANGE!!!                     //
+////////////////////////////////////////////////////////////////
+// Changed `DeviceNotes` output to use `DEBUG_BlockOut()
+//      will still function properly, but will require that you
+//      change the format of this variable.
+//      (normally defined in your project)
 void DEBUG_Title()
 {
     Serial.printf("\n\n#===================================================================================================#\n");
     Serial.printf("# %-97s #\n", STR(DeviceName));
     Serial.printf("# %-97s #\n", STR(DeviceType));
     Serial.printf("#---------------------------------------------------------------------------------------------------#");
-    Serial.println(DeviceNotes);
+    DEBUG_BlockOut(DeviceNotes);
     Serial.printf("#===================================================================================================#\n");
 }
 
