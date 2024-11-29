@@ -4,7 +4,7 @@
 // extern int DEBUG_Width;
 // extern char DEBUGtxt[];
 
-#define DEBUGwidth 90
+// #define DEBUGwidth 90
 
 #ifdef DEBUGwidth
 int DEBUG_Width = DEBUGwidth;
