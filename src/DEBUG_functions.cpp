@@ -33,6 +33,27 @@ void debug_MakeDivider(char End, char Bar)
 
 }
 
+void debug_CentredText(const char* Text)
+{
+    char TheLine[111] = "";
+
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+    int TextLength = strlan(Text);
+    int MidPoint = DEBUG_Width / 2;
+    int StartPoint = MidPoint - (TextLength / 2);
+
+    TheLine[0] = '|';
+    TheLine[DEBUG_Width] = '|';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    for(size_t i = 0; i < TextLength; i++)
+    {
+        TheLine[StartPoint + i] = Text[i];
+    }
+
+    Serial.println(TheLine);}
+
 void setup_DEBUG()
 {
     Serial.begin(115200);
@@ -54,8 +75,6 @@ void setup_DEBUG()
 /**/
 void DEBUG_Title()
 {
-    char TheLine[111] = "";
-
     debug_MakeDivider('#', '=');
 
     DEBUG_LineOut0(STR(DeviceName));
@@ -156,7 +175,8 @@ void DEBUG_Init(const char *InitPart)
 void DEBUG_Ready()
 {
     debug_MakeDivider('#', '=');
-    Serial.printf("#                                           Device Running                                          #\n");
+    debug_CentredText("Device Running"
+    // Serial.printf("#                                           Device Running                                          #\n");
     debug_MakeDivider('#', '=');
 }
 
