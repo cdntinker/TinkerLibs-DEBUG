@@ -137,10 +137,10 @@ void DEBUG_Separator()
     char TheLine[111] = "";
 
     memset(TheLine, '-', sizeof(TheLine) -1);
-    TheLine[DEBUG_Width] = '\0';
 
     TheLine[0] = '+';
-    TheLine[DEBUG_Width] = '|';
+    TheLine[DEBUG_Width] = '+';
+    TheLine[DEBUG_Width + 1] = '\0';
 
     Serial.println(TheLine);
 
