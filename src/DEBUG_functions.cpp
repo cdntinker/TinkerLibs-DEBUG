@@ -6,7 +6,7 @@
 
 int DEBUG_Width = 98;
 int Line_width = DEBUG_Width -6;
-char DEBUGtxt[Line_width];
+char DEBUGtxt[98];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
