@@ -35,7 +35,7 @@ void debug_MakeDivider(char End, char Bar)
 
 void debug_CentredText(char End, const char* Text)
 {
-    Serial.printf("%d %d >%s<\n", sizeof(Text), strlen(Text), Text);
+// Serial.printf("%d %d >%s<\n", sizeof(Text), strlen(Text), Text);
 
     char TheLine[111] = "";
 
@@ -55,8 +55,8 @@ void debug_CentredText(char End, const char* Text)
     }
 
     Serial.println(TheLine);
-Serial.println("012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
-Serial.println("000000000011111111112222222222333333333344444444445555555555666666666677777777778888888888");
+// Serial.println("012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+// Serial.println("000000000011111111112222222222333333333344444444445555555555666666666677777777778888888888");
 }
 
 void setup_DEBUG()
