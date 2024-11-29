@@ -4,7 +4,12 @@
 // extern int DEBUG_Width;
 // extern char DEBUGtxt[];
 
-int DEBUG_Width = 90;
+#ifdef DEBUGwidth
+int DEBUG_Width = DEBUGwidth;
+#else
+int DEBUG_Width = 100;
+#endif
+
 int Line_width = DEBUG_Width -6;
 char DEBUGtxt[101];
 
