@@ -135,8 +135,8 @@ void DEBUG_Separator()
 {
     Serial.print("+");
     for (int i = 1; i < DEBUG_Width - 2; i++)
-        Serial.println("-");
-    Serial.print("+");
+        Serial.print("-");
+    Serial.println("+");
 
     // Serial.printf("+---------------------------------------------------------------------------------------------------+\n");
 }
