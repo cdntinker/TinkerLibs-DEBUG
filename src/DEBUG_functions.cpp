@@ -440,6 +440,7 @@ void DEBUG_WiFi_Mode()
 }
 
 /////  Austin's Additions  /////
+////  (likely obsolete...) /////
 void DEBUG_Wifi(const char *InitPart)
 {
     Serial.printf("|          SSID : %-87s |\n", InitPart);
@@ -459,6 +460,13 @@ void DEBUG_rssi(const char *InitPart)
 {
     Serial.printf("|    RSSI : %-87s |\n", InitPart);
 }
+
+////////////////////////////////////////////////////////////////
+//                       TO BE CREATED                        //
+////////////////////////////////////////////////////////////////
+// DEBUG_MQTT_info
+// DEBUG_Bluetooth_info
+// DEBUG_FS_info
 
 #else // If DEBUG is NOT turned on in platformio.ini
 void setup_DEBUG() {}
