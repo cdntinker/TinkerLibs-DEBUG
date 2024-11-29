@@ -49,7 +49,7 @@ void debug_CentredText(const char* Text)
 
     for(size_t i = 0; i < TextLength; i++)
     {
-        TheLine[StartPoint + i] = Text[i];
+        TheLine[StartPoint - (TextLength /2) + i] = Text[i];
     }
 
     Serial.println(TheLine);}
