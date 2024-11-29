@@ -80,9 +80,6 @@ void DEBUG_Title()
     debug_CentredText('#', STR(DeviceName));
     debug_CentredText('#', STR(DeviceType));
 
-    // DEBUG_LineOut0(STR(DeviceName));
-    // DEBUG_LineOut0(STR(DeviceType));
-
     debug_MakeDivider('#', '-');
 
     DEBUG_BlockOut(DeviceNotes);
