@@ -102,18 +102,21 @@ void DEBUG_Reset()
     sprintf(DEBUGtxt,
             "Reset Reason: %s",
             ESP.getResetReason().c_str());
-    Serial.printf("| %-97s |\n", DEBUGtxt);
+    // Serial.printf("| %-97s |\n", DEBUGtxt);
+    DEBUG_LineOut0(DEBUGtxt);
 #elif defined(ESP32)
     sprintf(DEBUGtxt,
             "CPU0 reset reason:  %d - %s",
             rtc_get_reset_reason(0),
             HR_reset_reason(rtc_get_reset_reason(0)).c_str());
-    Serial.printf("| %-97s |\n", DEBUGtxt);
+    // Serial.printf("| %-97s |\n", DEBUGtxt);
+    DEBUG_LineOut0(DEBUGtxt);
     sprintf(DEBUGtxt,
             "CPU1 reset reason:  %d - %s",
             rtc_get_reset_reason(1),
             HR_reset_reason(rtc_get_reset_reason(1)).c_str());
-    Serial.printf("| %-97s |\n", DEBUGtxt);
+    // Serial.printf("| %-97s |\n", DEBUGtxt);
+    DEBUG_LineOut0(DEBUGtxt);
 
 #endif
 }
@@ -145,6 +148,7 @@ void DEBUG_Separator()
     Serial.println(TheLine);
 }
 
+/**/
 void DEBUG_SectionTitle(const char *Title)
 {
     DEBUG_Separator();
@@ -164,7 +168,7 @@ void DEBUG_LineOut(const char *Line)
 
     for(int i = 0; i < strlen(Line); i++)
     {
-        TheLine[i+3] = Line[i];
+        TheLine[i+4] = Line[i];
     }
 
     Serial.println(TheLine);
@@ -183,7 +187,7 @@ void DEBUG_LineOut0(const char *Line)
 
     for(int i = 0; i < strlen(Line); i++)
     {
-        TheLine[i+1] = Line[i];
+        TheLine[i+2] = Line[i];
     }
 
     Serial.println(TheLine);
@@ -202,7 +206,7 @@ void DEBUG_LineOut2(const char *Line)
 
     for(int i = 0; i < strlen(Line); i++)
     {
-        TheLine[i+5] = Line[i];
+        TheLine[i+6] = Line[i];
     }
 
     Serial.println(TheLine);
