@@ -19,6 +19,20 @@ char DEBUGtxt[101];
 
 #include <Tinker_DEBUG.h>
 
+void debug_MakeDivider(char End, char Bar)
+{
+    char TheLine[111] = "";
+
+    memset(TheLine, Bar, sizeof(TheLine) -1);
+
+    TheLine[0] = End;
+    TheLine[DEBUG_Width] = End;
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    Serial.println(TheLine);
+
+}
+
 ////////////////////////////////////////////////////////////////
 //                     BREAKING CHANGE!!!                     //
 ////////////////////////////////////////////////////////////////
@@ -29,8 +43,11 @@ char DEBUGtxt[101];
 //
 // Future thing(s): maybe figure out a good way to change the
 //                  vertical borders back to `#`s
+/**/
 void DEBUG_Title()
 {
+    debug_MakeDivider('*', '~');
+    
     char TheLine[111] = "";
 
     memset(TheLine, '=', sizeof(TheLine) -1);
@@ -43,10 +60,6 @@ void DEBUG_Title()
 
     DEBUG_LineOut0(STR(DeviceName));
     DEBUG_LineOut0(STR(DeviceType));
-// }{
-    // Serial.printf("\n\n#===================================================================================================#\n");
-    // Serial.printf("# %-97s #\n", STR(DeviceName));
-    // Serial.printf("# %-97s #\n", STR(DeviceType));
 
     memset(TheLine, '-', sizeof(TheLine) -1);
 
@@ -54,8 +67,6 @@ void DEBUG_Title()
     TheLine[DEBUG_Width] = '#';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    // Serial.println(TheLine);
-    // Serial.printf("#---------------------------------------------------------------------------------------------------#\n");
     DEBUG_BlockOut(DeviceNotes);
 
     memset(TheLine, '=', sizeof(TheLine) -1);
@@ -65,7 +76,6 @@ void DEBUG_Title()
     TheLine[DEBUG_Width + 1] = '\0';
 
     Serial.println(TheLine);
-    // Serial.printf("#===================================================================================================#\n");
 }
 
 void setup_DEBUG()
