@@ -51,10 +51,13 @@ void debug_CentredText(char End, const char* Text)
 
     for(int i = 0; i < TextLength; i++)
     {
-        TheLine[StartPoint - (TextLength /2) + i] = Text[i];
+        TheLine[StartPoint + i] = Text[i];
     }
 
-    Serial.println(TheLine);}
+    Serial.println(TheLine);
+Serial.println("012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+Serial.println("000000000011111111112222222222333333333344444444445555555555666666666677777777778888888888");
+}
 
 void setup_DEBUG()
 {
@@ -78,17 +81,6 @@ void setup_DEBUG()
 void DEBUG_Title()
 {
     debug_MakeDivider('#', '=');
-// char DevName[DEBUG_Width];
-// char DevType[DEBUG_Width];
-
-// strcpy(DevName, STR(DeviceName));
-// strcpy(DevType, STR(DeviceType));
-
-// Serial.printf("%d %d >%s<\n", sizeof(DevName), strlen(DevName), DevName);
-// Serial.printf("%d %d >%s<\n", sizeof(DevType), strlen(DevType), DevType);
-
-//     debug_CentredText('#', DevName);
-//     debug_CentredText('#', DevType);
 
     debug_CentredText('#', STR(DeviceName));
     debug_CentredText('#', STR(DeviceType));
