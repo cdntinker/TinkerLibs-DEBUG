@@ -78,20 +78,20 @@ void setup_DEBUG()
 void DEBUG_Title()
 {
     debug_MakeDivider('#', '=');
-char DevName[DEBUG_Width];
-char DevType[DEBUG_Width];
+// char DevName[DEBUG_Width];
+// char DevType[DEBUG_Width];
 
-strcpy(DevName, STR(DeviceName));
-strcpy(DevType, STR(DeviceType));
+// strcpy(DevName, STR(DeviceName));
+// strcpy(DevType, STR(DeviceType));
 
-Serial.printf("%d %d >%s<\n", sizeof(DevName), strlen(DevName), DevName);
-Serial.printf("%d %d >%s<\n", sizeof(DevType), strlen(DevType), DevType);
+// Serial.printf("%d %d >%s<\n", sizeof(DevName), strlen(DevName), DevName);
+// Serial.printf("%d %d >%s<\n", sizeof(DevType), strlen(DevType), DevType);
 
-    debug_CentredText('#', DevName);
-    debug_CentredText('#', DevType);
+//     debug_CentredText('#', DevName);
+//     debug_CentredText('#', DevType);
 
-    // debug_CentredText('#', STR(DeviceName));
-    // debug_CentredText('#', STR(DeviceType));
+    debug_CentredText('#', STR(DeviceName));
+    debug_CentredText('#', STR(DeviceType));
 
     debug_MakeDivider('#', '-');
 
