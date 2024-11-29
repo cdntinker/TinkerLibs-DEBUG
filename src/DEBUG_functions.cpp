@@ -41,8 +41,8 @@ void DEBUG_Title()
 
     Serial.println(TheLine);
 
-    DEBUG_LineOut0(STR(DeviceName))
-    DEBUG_LineOut0(STR(DeviceType))
+    DEBUG_LineOut0(STR(DeviceName));
+    DEBUG_LineOut0(STR(DeviceType));
 // }{
     // Serial.printf("\n\n#===================================================================================================#\n");
     // Serial.printf("# %-97s #\n", STR(DeviceName));
