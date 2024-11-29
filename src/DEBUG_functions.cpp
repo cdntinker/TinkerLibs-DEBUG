@@ -77,7 +77,7 @@ void DEBUG_Title()
 {
     debug_MakeDivider('#', '=');
 
-    debug_CentredText('#', ST(DeviceName));
+    debug_CentredText('#', STR(DeviceName));
     debug_CentredText('#', STR(DeviceType));
 
     // DEBUG_LineOut0(STR(DeviceName));
