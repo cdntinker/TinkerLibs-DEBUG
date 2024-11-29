@@ -81,6 +81,9 @@ char DevType[DEBUG_Width];
 strcpy(DevName, STR(DeviceName));
 strcpy(DevType, STR(DeviceType));
 
+Serial.printf(">%s<\n", DevName);
+Serial.printf(">%s<\n", DevType);
+
     debug_CentredText('#', DevName);
     debug_CentredText('#', DevType);
 
