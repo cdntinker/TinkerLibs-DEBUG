@@ -134,10 +134,19 @@ void DEBUG_Ready()
 /**/
 void DEBUG_Separator()
 {
-    Serial.print("+");
-    for (int i = 1; i < DEBUG_Width - 2; i++)
-        Serial.print("-");
-    Serial.println("+");
+
+    memset(TheLine, '-', sizeof(TheLine) -1);
+    TheLine[DEBUG_Width] = '\0';
+
+    TheLine[0] = '+';
+    TheLine[DEBUG_Width] = '|';
+
+    Serial.println(TheLine);
+
+    // Serial.print("+");
+    // for (int i = 1; i < DEBUG_Width - 2; i++)
+    //     Serial.print("-");
+    // Serial.println("+");
 
     // Serial.printf("+---------------------------------------------------------------------------------------------------+\n");
 }
@@ -147,9 +156,8 @@ void DEBUG_SectionTitle(const char *Title)
     DEBUG_Separator();
     Serial.printf("| %-97s |\n", Title);
 }
-/*
-Adding Width adjustability
-*/
+
+/**/
 void DEBUG_LineOut(const char *Line)
 {
     char TheLine[111] = "";
