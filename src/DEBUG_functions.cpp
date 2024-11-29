@@ -76,9 +76,16 @@ void setup_DEBUG()
 void DEBUG_Title()
 {
     debug_MakeDivider('#', '=');
+char* DevName;
+char* DevType;
+strcpy(DevName, STR(DeviceName));
+strcpy(DevType, STR(DeviceType));
 
-    debug_CentredText('#', STR(DeviceName));
-    debug_CentredText('#', STR(DeviceType));
+    debug_CentredText('#', DevName);
+    debug_CentredText('#', DevType);
+
+    // debug_CentredText('#', STR(DeviceName));
+    // debug_CentredText('#', STR(DeviceType));
 
     debug_MakeDivider('#', '-');
 
