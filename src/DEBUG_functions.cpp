@@ -39,7 +39,7 @@ void debug_CentredText(const char* Text)
 
     memset(TheLine, ' ', sizeof(TheLine) -1);
 
-    int TextLength = strlan(Text);
+    int TextLength = strlen(Text);
     int MidPoint = DEBUG_Width / 2;
     int StartPoint = MidPoint - (TextLength / 2);
 
@@ -175,7 +175,7 @@ void DEBUG_Init(const char *InitPart)
 void DEBUG_Ready()
 {
     debug_MakeDivider('#', '=');
-    debug_CentredText("Device Running"
+    debug_CentredText("Device Running");
     // Serial.printf("#                                           Device Running                                          #\n");
     debug_MakeDivider('#', '=');
 }
