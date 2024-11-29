@@ -166,8 +166,6 @@ void DEBUG_LineOut(const char *Line)
     }
 
     Serial.println(TheLine);
-    Serial.println(sizeof(TheLine));
-    Serial.println(strlen(TheLine));
 
     // Serial.printf("|    %-94s |\n", Line);
 }
