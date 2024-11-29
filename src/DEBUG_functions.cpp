@@ -158,7 +158,7 @@ void DEBUG_LineOut(const char *Line)
     // memset(TheLine, ' ', sizeof TheLine - 1);
     // TheLine[sizeof TheLine - 1] = '\0';
 memset(TheLine, ' ', sizeof(TheLine) -1);
-// TheLine[sizeof(TheLine)] = '\0';
+TheLine[DEBUG_Width] = '\0';
 
 // strcpy(TheLine, " ");
 // for (int i = 0; i < DEBUG_Width - 1; i++)
