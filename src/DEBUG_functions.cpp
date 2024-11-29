@@ -147,12 +147,16 @@ void DEBUG_SectionTitle(const char *Title)
     DEBUG_Separator();
     Serial.printf("| %-97s |\n", Title);
 }
-
+/*
+Adding Width adjustability
+*/
 void DEBUG_LineOut(const char *Line)
 {
     char TheLine[101];
 
-    std::fill(TheLine, TheLine + num_space_req, ' ');
+    std::fill(TheLine, TheLine + DEBUG_Width, ' ');
+    // memset (TheLine, ' ', DEBUG_Width);
+
 
     TheLine[0] = '|';
     TheLine[DEBUG_Width] = '|';
