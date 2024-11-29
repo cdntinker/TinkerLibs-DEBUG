@@ -167,7 +167,7 @@ for (int i = 0; i < DEBUG_Width - 1; i++)
 
     TheLine[0] = '|';
     TheLine[DEBUG_Width] = '|';
-    TheLine[DEBUG_Width+1] = '\0';
+    // TheLine[DEBUG_Width+1] = '\0';
 
     Serial.println(TheLine);
 
