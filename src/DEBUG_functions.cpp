@@ -47,7 +47,7 @@ void debug_CentredText(char End, const char* Text)
     TheLine[DEBUG_Width] = End;
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(size_t i = 0; i < TextLength; i++)
+    for(int i = 0; i < TextLength; i++)
     {
         TheLine[StartPoint - (TextLength /2) + i] = Text[i];
     }
