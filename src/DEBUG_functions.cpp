@@ -157,12 +157,12 @@ void DEBUG_LineOut(const char *Line)
     // std::fill(TheLine, TheLine + DEBUG_Width, ' ');
     // memset(TheLine, ' ', sizeof TheLine - 1);
     // TheLine[sizeof TheLine - 1] = '\0';
-// memset(TheLine, ' ', sizeof(TheLine) -1);
+memset(TheLine, ' ', sizeof(TheLine) -1);
 // TheLine[sizeof(TheLine)] = '\0';
 
-strcpy(TheLine, " ");
-for (int i = 0; i < DEBUG_Width - 1; i++)
-    strcat(TheLine, " ");
+// strcpy(TheLine, " ");
+// for (int i = 0; i < DEBUG_Width - 1; i++)
+//     strcat(TheLine, " ");
 
 
     TheLine[0] = '|';
