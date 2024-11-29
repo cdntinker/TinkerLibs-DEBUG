@@ -35,6 +35,8 @@ void debug_MakeDivider(char End, char Bar)
 
 void debug_CentredText(char End, const char* Text)
 {
+    Serial.printf("%d %d >%s<\n", sizeof(Text), strlen(Text), Text);
+
     char TheLine[111] = "";
 
     memset(TheLine, ' ', sizeof(TheLine) -1);
