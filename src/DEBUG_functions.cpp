@@ -157,7 +157,7 @@ void DEBUG_LineOut(const char *Line)
     // std::fill(TheLine, TheLine + DEBUG_Width, ' ');
     // memset (TheLine, ' ', DEBUG_Width);
 memset(TheLine, ' ', sizeof TheLine - 1);
-bla[sizeof TheLine - 1] = '\0';
+TheLine[sizeof TheLine - 1] = '\0';
 
     TheLine[0] = '|';
     TheLine[DEBUG_Width] = '|';
