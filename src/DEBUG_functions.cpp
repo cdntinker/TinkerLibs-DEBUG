@@ -4,9 +4,9 @@
 // extern int DEBUG_Width;
 // extern char DEBUGtxt[];
 
-int DEBUG_Width = 98;
+int DEBUG_Width = 100;
 int Line_width = DEBUG_Width -6;
-char DEBUGtxt[98];
+char DEBUGtxt[101];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
@@ -131,6 +131,7 @@ void DEBUG_Ready()
     Serial.printf("#===================================================================================================#\n");
 }
 
+/**/
 void DEBUG_Separator()
 {
     Serial.print("+");
@@ -149,7 +150,22 @@ void DEBUG_SectionTitle(const char *Title)
 
 void DEBUG_LineOut(const char *Line)
 {
-    Serial.printf("|    %-94s |\n", Line);
+    char TheLine[101];
+
+    std::fill(TheLine, TheLine + num_space_req, ' ');
+
+    TheLine[0] = '|';
+    TheLine[DEBUG_Width] = '|';
+    TheLine[DEBUG_Width+1] = '\0';
+
+    Serial.println(TheLine);
+
+
+    // strcpy(TheLine, "|");
+    // strcat(TheLine, "    ");
+    // strcat(TheLine, Line);
+
+    // Serial.printf("|    %-94s |\n", Line);
 }
 
 void DEBUG_LineOut2(const char *Line)
