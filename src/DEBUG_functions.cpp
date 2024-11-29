@@ -12,6 +12,26 @@ char DEBUGtxt[98];
 
 #include <Tinker_DEBUG.h>
 
+////////////////////////////////////////////////////////////////
+//                     BREAKING CHANGE!!!                     //
+////////////////////////////////////////////////////////////////
+// Changed `DeviceNotes` output to use `DEBUG_BlockOut()
+//      will still function properly, but will require that you
+//      change the format of this variable.
+//      (normally defined in your project)
+//
+// Future thing(s): maybe figure out a good way to change the
+//                  vertical borders back to `#`s
+void DEBUG_Title()
+{
+    Serial.printf("\n\n#===================================================================================================#\n");
+    Serial.printf("# %-97s #\n", STR(DeviceName));
+    Serial.printf("# %-97s #\n", STR(DeviceType));
+    Serial.printf("#---------------------------------------------------------------------------------------------------#\n");
+    DEBUG_BlockOut(DeviceNotes);
+    Serial.printf("#===================================================================================================#\n");
+}
+
 void setup_DEBUG()
 {
     Serial.begin(115200);
@@ -104,26 +124,6 @@ void DEBUG_Init(const char *InitPart)
     Serial.printf("| Initialising: %-83s |\n", InitPart);
 }
 
-////////////////////////////////////////////////////////////////
-//                     BREAKING CHANGE!!!                     //
-////////////////////////////////////////////////////////////////
-// Changed `DeviceNotes` output to use `DEBUG_BlockOut()
-//      will still function properly, but will require that you
-//      change the format of this variable.
-//      (normally defined in your project)
-//
-// Future thing(s): maybe figure out a good way to change the
-//                  vertical borders back to `#`s
-void DEBUG_Title()
-{
-    Serial.printf("\n\n#===================================================================================================#\n");
-    Serial.printf("# %-97s #\n", STR(DeviceName));
-    Serial.printf("# %-97s #\n", STR(DeviceType));
-    Serial.printf("#---------------------------------------------------------------------------------------------------#\n");
-    DEBUG_BlockOut(DeviceNotes);
-    Serial.printf("#===================================================================================================#\n");
-}
-
 void DEBUG_Ready()
 {
     Serial.printf("#===================================================================================================#\n");
@@ -133,7 +133,12 @@ void DEBUG_Ready()
 
 void DEBUG_Separator()
 {
-    Serial.printf("+---------------------------------------------------------------------------------------------------+\n");
+    Serial.print("+");
+    for (int i = 1; i < DEBUG_Width; i++)
+        Serial.print("-");
+    Serial.print("+");
+
+    // Serial.printf("+---------------------------------------------------------------------------------------------------+\n");
 }
 
 void DEBUG_SectionTitle(const char *Title)
