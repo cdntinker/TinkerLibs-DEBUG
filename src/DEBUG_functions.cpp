@@ -78,11 +78,12 @@ void DEBUG_Title()
     debug_MakeDivider('#', '=');
 char DevName[DEBUG_Width];
 char DevType[DEBUG_Width];
+
 strcpy(DevName, STR(DeviceName));
 strcpy(DevType, STR(DeviceType));
 
-Serial.printf("%d >%s<\n", strlen(DevName), DevName);
-Serial.printf("%d >%s<\n", strlen(DevName), DevType);
+Serial.printf("%d %d >%s<\n", sizeof(DevName), strlen(DevName), DevName);
+Serial.printf("%d %d >%s<\n", sizeof(DevType), strlen(DevType), DevType);
 
     debug_CentredText('#', DevName);
     debug_CentredText('#', DevType);
