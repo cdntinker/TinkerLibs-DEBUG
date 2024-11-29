@@ -171,7 +171,7 @@ void DEBUG_LineOut(const char *Line)
     TheLine[DEBUG_Width] = '|';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < strlen(Line); i++)
+    for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[i+4] = Line[i];
     }
@@ -190,7 +190,7 @@ void DEBUG_LineOut0(const char *Line)
     TheLine[DEBUG_Width] = '|';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < strlen(Line); i++)
+    for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[i+2] = Line[i];
     }
@@ -209,7 +209,7 @@ void DEBUG_LineOut2(const char *Line)
     TheLine[DEBUG_Width] = '|';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < strlen(Line); i++)
+    for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[i+6] = Line[i];
     }
@@ -277,7 +277,7 @@ void DEBUG_Trouble(const char *Line)
     TheLine[DEBUG_Width] = '+';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < strlen(Line); i++)
+    for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[i+6] = Line[i];
     }
@@ -300,7 +300,7 @@ void DEBUG_Success(const char *Line)
     TheLine[DEBUG_Width] = '+';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < strlen(Line); i++)
+    for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[i+6] = Line[i];
     }
@@ -323,7 +323,7 @@ void DEBUG_Event(const char *Line)
     TheLine[DEBUG_Width] = '+';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < strlen(Line); i++)
+    for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[i+6] = Line[i];
     }
