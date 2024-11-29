@@ -161,8 +161,8 @@ void DEBUG_LineOut(const char *Line)
 // TheLine[sizeof(TheLine)] = '\0';
 
 strcpy(TheLine, " ");
-for (int i = 0; i < DEBUG_Width; i++)
-    TheLine[i] = ' ';
+for (int i = 0; i < DEBUG_Width - 1; i++)
+    strcat(TheLine, " ");
 
 
     TheLine[0] = '|';
