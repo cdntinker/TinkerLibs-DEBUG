@@ -148,7 +148,7 @@ void DEBUG_Separator()
 void DEBUG_SectionTitle(const char *Title)
 {
     DEBUG_Separator();
-    Serial.printf("| %-97s |\n", Title);
+    DEBUG_LineOut0(Title);
 }
 
 /**/
@@ -170,9 +170,42 @@ void DEBUG_LineOut(const char *Line)
     Serial.println(TheLine);
 }
 
+/**/
+void DEBUG_LineOut0(const char *Line)
+{
+    char TheLine[111] = "";
+
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+    TheLine[0] = '|';
+    TheLine[DEBUG_Width] = '|';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    for(int i = 0; i < strlen(Line); i++)
+    {
+        TheLine[i+1] = Line[i];
+    }
+
+    Serial.println(TheLine);
+}
+
+/**/
 void DEBUG_LineOut2(const char *Line)
 {
-    Serial.printf("|       %-91s |\n", Line);
+    char TheLine[111] = "";
+
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+    TheLine[0] = '|';
+    TheLine[DEBUG_Width] = '|';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    for(int i = 0; i < strlen(Line); i++)
+    {
+        TheLine[i+5] = Line[i];
+    }
+
+    Serial.println(TheLine);
 }
 
 //////////////////////////////////////////////////////////////
@@ -503,6 +536,7 @@ void DEBUG_Ready() {}
 void DEBUG_Separator() {}
 void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
+void DEBUG_LineOut0(const char *Line) {}
 void DEBUG_LineOut2(const char *Line) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
