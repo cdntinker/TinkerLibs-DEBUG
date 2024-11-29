@@ -33,6 +33,14 @@ void debug_MakeDivider(char End, char Bar)
 
 }
 
+void setup_DEBUG()
+{
+    Serial.begin(115200);
+    delay(2000); // There has GOT to be a better way!!!
+    Serial.println();
+    Serial.println();
+}
+
 ////////////////////////////////////////////////////////////////
 //                     BREAKING CHANGE!!!                     //
 ////////////////////////////////////////////////////////////////
@@ -46,8 +54,6 @@ void debug_MakeDivider(char End, char Bar)
 /**/
 void DEBUG_Title()
 {
-    debug_MakeDivider('#', '=');
-
     char TheLine[111] = "";
 
     debug_MakeDivider('#', '=');
@@ -60,14 +66,6 @@ void DEBUG_Title()
     DEBUG_BlockOut(DeviceNotes);
 
     debug_MakeDivider('#', '=');
-}
-
-void setup_DEBUG()
-{
-    Serial.begin(115200);
-    delay(2000); // There has GOT to be a better way!!!
-    Serial.println();
-    Serial.println();
 }
 
 String HR_reset_reason(uint8_t reason)
@@ -157,23 +155,15 @@ void DEBUG_Init(const char *InitPart)
 
 void DEBUG_Ready()
 {
-    Serial.printf("#===================================================================================================#\n");
+    debug_MakeDivider('#', '=');
     Serial.printf("#                                           Device Running                                          #\n");
-    Serial.printf("#===================================================================================================#\n");
+    debug_MakeDivider('#', '=');
 }
 
 /**/
 void DEBUG_Separator()
 {
-    char TheLine[111] = "";
-
-    memset(TheLine, '-', sizeof(TheLine) -1);
-
-    TheLine[0] = '+';
-    TheLine[DEBUG_Width] = '+';
-    TheLine[DEBUG_Width + 1] = '\0';
-
-    Serial.println(TheLine);
+    debug_MakeDivider('+', '-');
 }
 
 /**/
