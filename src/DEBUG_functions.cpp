@@ -31,12 +31,41 @@ char DEBUGtxt[101];
 //                  vertical borders back to `#`s
 void DEBUG_Title()
 {
-    Serial.printf("\n\n#===================================================================================================#\n");
-    Serial.printf("# %-97s #\n", STR(DeviceName));
-    Serial.printf("# %-97s #\n", STR(DeviceType));
-    Serial.printf("#---------------------------------------------------------------------------------------------------#\n");
+    char TheLine[111] = "";
+
+    memset(TheLine, '=', sizeof(TheLine) -1);
+
+    TheLine[0] = '#';
+    TheLine[DEBUG_Width] = '#';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    Serial.println(TheLine);
+
+    DEBUG_LineOut0(STR(DeviceName))
+    DEBUG_LineOut0(STR(DeviceType))
+// }{
+    // Serial.printf("\n\n#===================================================================================================#\n");
+    // Serial.printf("# %-97s #\n", STR(DeviceName));
+    // Serial.printf("# %-97s #\n", STR(DeviceType));
+
+    memset(TheLine, '-', sizeof(TheLine) -1);
+
+    TheLine[0] = '#';
+    TheLine[DEBUG_Width] = '#';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    // Serial.println(TheLine);
+    // Serial.printf("#---------------------------------------------------------------------------------------------------#\n");
     DEBUG_BlockOut(DeviceNotes);
-    Serial.printf("#===================================================================================================#\n");
+
+    memset(TheLine, '=', sizeof(TheLine) -1);
+
+    TheLine[0] = '#';
+    TheLine[DEBUG_Width] = '#';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    Serial.println(TheLine);
+    // Serial.printf("#===================================================================================================#\n");
 }
 
 void setup_DEBUG()
