@@ -46,36 +46,20 @@ void debug_MakeDivider(char End, char Bar)
 /**/
 void DEBUG_Title()
 {
-    debug_MakeDivider('*', '~');
-    
+    debug_MakeDivider('#', '=');
+
     char TheLine[111] = "";
 
-    memset(TheLine, '=', sizeof(TheLine) -1);
-
-    TheLine[0] = '#';
-    TheLine[DEBUG_Width] = '#';
-    TheLine[DEBUG_Width + 1] = '\0';
-
-    Serial.println(TheLine);
+    debug_MakeDivider('#', '=');
 
     DEBUG_LineOut0(STR(DeviceName));
     DEBUG_LineOut0(STR(DeviceType));
 
-    memset(TheLine, '-', sizeof(TheLine) -1);
-
-    TheLine[0] = '#';
-    TheLine[DEBUG_Width] = '#';
-    TheLine[DEBUG_Width + 1] = '\0';
+    debug_MakeDivider('#', '-');
 
     DEBUG_BlockOut(DeviceNotes);
 
-    memset(TheLine, '=', sizeof(TheLine) -1);
-
-    TheLine[0] = '#';
-    TheLine[DEBUG_Width] = '#';
-    TheLine[DEBUG_Width + 1] = '\0';
-
-    Serial.println(TheLine);
+    debug_MakeDivider('#', '=');
 }
 
 void setup_DEBUG()
