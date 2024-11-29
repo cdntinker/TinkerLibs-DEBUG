@@ -279,35 +279,35 @@ void DEBUG_ESP_info()
 
     DEBUG_SectionTitle("ESP Info");
 
-    sprintf(Line, "  ESP Chip model: %s Rev %.1f", ChipModel, ChipRev);
+    sprintf(Line, "  ESP Chip model : %s Rev %.1f", ChipModel, ChipRev);
     DEBUG_LineOut(Line);
-    sprintf(Line, "         Chip ID: %08X", ChipID);
+    sprintf(Line, "         Chip ID : %08X", ChipID);
     DEBUG_LineOut(Line);
-    sprintf(Line, " Number of Cores: %d", ChipCores);
+    sprintf(Line, " Number of Cores : %d", ChipCores);
     DEBUG_LineOut(Line);
 #if defined(ESP8266)
-    sprintf(Line, "   Flash Chip ID: %08X", FlashID);
+    sprintf(Line, "   Flash Chip ID : %08X", FlashID);
     DEBUG_LineOut(Line);
 #elif defined(ESP32)
-    DEBUG_LineOut("   Flash Chip ID: No way to retrieve");
+    DEBUG_LineOut("   Flash Chip ID : No way to retrieve");
 #endif
-    sprintf(Line, "      Flash Size: %d (%.3f MB)", FlashChipSize, FlashChipSize / 1024.0 / 1024.0);
+    sprintf(Line, "      Flash Size : %d (%.3f MB)", FlashChipSize, FlashChipSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, "     Flash speed: %u MHz", FlashSpeed / 1000 / 1000);
+    sprintf(Line, "     Flash speed : %u MHz", FlashSpeed / 1000 / 1000);
     DEBUG_LineOut(Line);
 #if defined(ESP32)
-    sprintf(Line, "      Psram Size: %d (%.3f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
+    sprintf(Line, "      Psram Size : %d (%.3f MB)", PSramSize, PSramSize / 1024.0 / 1024.0);
     DEBUG_LineOut(Line);
 #endif
-    sprintf(Line, "        Ram Size: %d (%.3f KB)", RAMsize, RAMsize / 1024.0); // / 1024.0);
+    sprintf(Line, "        Ram Size : %d (%.3f KB)", RAMsize, RAMsize / 1024.0); // / 1024.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, "       Free heap: %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0); // / 1024.0);
+    sprintf(Line, "       Free heap : %d (%.3f KB)", FreeHeap, FreeHeap / 1024.0); // / 1024.0);
     DEBUG_LineOut(Line);
-    sprintf(Line, " Arduino version: %s", CoreVer);
+    sprintf(Line, " Arduino version : %s", CoreVer);
     DEBUG_LineOut(Line);
-    sprintf(Line, " ESP SDK version: %s", SDKver);
+    sprintf(Line, " ESP SDK version : %s", SDKver);
     DEBUG_LineOut(Line);
-    sprintf(Line, " Flash ide mode:  %s", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT"
+    sprintf(Line, "  Flash ide mode : %s", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT"
                                                                    : ideMode == FM_DIO    ? "DIO"
                                                                    : ideMode == FM_DOUT   ? "DOUT"
                                                                                           : "BORKED"));
@@ -324,26 +324,34 @@ void DEBUG_ESP_info()
 
 void DEBUG_WiFi_info()
 {
-char WiFi_AuthTypes[][32] =
+// char WiFi_Statii[][32] =
+//     {
+//         "WL_NO_SHIELD",
+//         "WL_IDLE_STATUS",
+//         "WL_NO_SSID_AVAIL",
+//         "WL_SCAN_COMPLETED",
+//         "WL_CONNECTED",
+//         "WiFi WL_CONNECT_FAILED",
+//         "WiFi WL_CONNECTION_LOST",
+//         "WL_DISCONNECTED"
+//     };
+
+char WiFi_Statii[][32] =
     {
-        "OPEN (or not checked)",
-        "WEB",
-        "WPA_PSK",
-        "WPA2_PSK",
-        "WPA_WPA2_PSK",
-        "WiFi EAP",
-        "WiFi EAP",
-        "WPA3_PSK",
-        "WPA2_WPA3_PSK",
-        "WAPI_PSK",
-        "WPA3_ENT_SUITE_B_192_BIT",
-        "MAX"};
+        "WL_IDLE_STATUS",
+        "WL_NO_SSID_AVAIL",
+        "__2__",
+        "WL_CONNECTED",
+        "WL_CONNECT_FAILED",
+        "__5__",
+        "WL_WRONG_PASSWORD",
+        "WL_DISCONNECTED"
+    };
 
 char WiFiMODE[8] = "-----";
 char WiFiSSID[32] = "____________";
 char WiFiPASS[32] = "____________";
 long WiFiRSSI = WiFi.RSSI();
-char WiFiAuth[32] = "____________";
 char WiFiHOST[32] = "____________";
 char WiFiMAC[24] = "__:__:__:__:__:__:__:__";
 char WiFiIP[16] = "___.___.___.___";
@@ -362,8 +370,6 @@ if (strlen(WiFi.SSID().c_str()) != 0)
     strcpy(WiFiSSID, WiFi.SSID().c_str());
 else
     strcpy(WiFiSSID, "(SSID unset)");
-
-strcpy (WiFiAuth, WiFi_AuthTypes[WiFi.encryptionType(1)]);
 
 #if defined(ESP8266)
 
@@ -384,28 +390,45 @@ strcpy (WiFiAuth, WiFi_AuthTypes[WiFi.encryptionType(1)]);
 
     DEBUG_SectionTitle("WiFi Info");
 
-    sprintf(DEBUGtxt, "      MODE : %s", WiFiMODE);
+//////
+    // sprintf(DEBUGtxt, " subnetMask : %s", WiFi.subnetMask().toString().c_str());
+    // DEBUG_LineOut(DEBUGtxt);
+    // sprintf(DEBUGtxt, "  gatewayIP : %s", WiFi.gatewayIP().toString().c_str());
+    // DEBUG_LineOut(DEBUGtxt);
+    // sprintf(DEBUGtxt, "     dnsIP 0: %s", WiFi.dnsIP(0).toString().c_str());
+    // DEBUG_LineOut(DEBUGtxt);
+    // sprintf(DEBUGtxt, "     dnsIP 1: %s", WiFi.dnsIP(1).toString().c_str());
+    // DEBUG_LineOut(DEBUGtxt);
+    // sprintf(DEBUGtxt, " broadcastIP: %s", WiFi.broadcastIP().toString().c_str());
+    // DEBUG_LineOut(DEBUGtxt);
+
+    // DEBUG_LineOut("- - - - - - - - - -");
+//////
+    sprintf(DEBUGtxt, "      Connected? : %s", WiFi.isConnected() ? "YES" : "NO");
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      SSID : %s", WiFiSSID);
+    sprintf(DEBUGtxt, "          Status : %d - %s", WiFi.status(), (WiFi.status() == 255) ? "Not Connected" : WiFi_Statii[WiFi.status()]);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      PASS : %s", WiFiPASS);
+    sprintf(DEBUGtxt, "            Mode : %s", WiFiMODE);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      Auth : %d - %s", WiFi.encryptionType(1), WiFiAuth);
+    sprintf(DEBUGtxt, "            SSID : %s", WiFiSSID);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      RSSI : %ld dBm", WiFiRSSI);
+    sprintf(DEBUGtxt, "            PASS : %s", WiFiPASS);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "  HostName : %s", WiFiHOST);
+    sprintf(DEBUGtxt, "            RSSI : %ld dBm", WiFiRSSI);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "       MAC : %s", WiFiMAC);
+    sprintf(DEBUGtxt, "        HostName : %s", WiFiHOST);
     DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "IP address : %s", WiFiIP);
+    sprintf(DEBUGtxt, "             MAC : %s", WiFiMAC);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "      IP address : %s", WiFiIP);
     DEBUG_LineOut(DEBUGtxt);
 }
 
