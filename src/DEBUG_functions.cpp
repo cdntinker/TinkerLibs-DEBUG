@@ -33,7 +33,7 @@ void debug_MakeDivider(char End, char Bar)
 
 }
 
-void debug_CentredText(const char* Text)
+void debug_CentredText(char End, const char* Text)
 {
     char TheLine[111] = "";
 
@@ -43,8 +43,8 @@ void debug_CentredText(const char* Text)
     int MidPoint = DEBUG_Width / 2;
     int StartPoint = MidPoint - (TextLength / 2);
 
-    TheLine[0] = '|';
-    TheLine[DEBUG_Width] = '|';
+    TheLine[0] = End;
+    TheLine[DEBUG_Width] = End;
     TheLine[DEBUG_Width + 1] = '\0';
 
     for(size_t i = 0; i < TextLength; i++)
@@ -175,7 +175,7 @@ void DEBUG_Init(const char *InitPart)
 void DEBUG_Ready()
 {
     debug_MakeDivider('#', '=');
-    debug_CentredText("Device Running");
+    debug_CentredText('#', "Device Running");
     // Serial.printf("#                                           Device Running                                          #\n");
     debug_MakeDivider('#', '=');
 }
