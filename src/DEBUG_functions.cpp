@@ -171,6 +171,7 @@ TheLine[DEBUG_Width] = '\0';
 
     Serial.println(TheLine);
     Serial.println(sizeof(TheLine));
+    Serial.println(strlen(TheLine));
 
 
     // strcpy(TheLine, "|");
