@@ -134,6 +134,7 @@ void DEBUG_Ready()
 /**/
 void DEBUG_Separator()
 {
+    char TheLine[111];
 
     memset(TheLine, '-', sizeof(TheLine) -1);
     TheLine[DEBUG_Width] = '\0';
