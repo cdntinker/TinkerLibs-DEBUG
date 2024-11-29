@@ -4,7 +4,7 @@
 // extern int DEBUG_Width;
 // extern char DEBUGtxt[];
 
-int DEBUG_Width = 100;
+int DEBUG_Width = 90;
 int Line_width = DEBUG_Width -6;
 char DEBUGtxt[101];
 
@@ -143,13 +143,6 @@ void DEBUG_Separator()
     TheLine[DEBUG_Width + 1] = '\0';
 
     Serial.println(TheLine);
-
-    // Serial.print("+");
-    // for (int i = 1; i < DEBUG_Width - 2; i++)
-    //     Serial.print("-");
-    // Serial.println("+");
-
-    // Serial.printf("+---------------------------------------------------------------------------------------------------+\n");
 }
 
 void DEBUG_SectionTitle(const char *Title)
@@ -164,10 +157,10 @@ void DEBUG_LineOut(const char *Line)
     char TheLine[111] = "";
 
     memset(TheLine, ' ', sizeof(TheLine) -1);
-    TheLine[DEBUG_Width] = '\0';
 
     TheLine[0] = '|';
     TheLine[DEBUG_Width] = '|';
+    TheLine[DEBUG_Width + 1] = '\0';
 
     for(int i = 0; i < strlen(Line); i++)
     {
@@ -175,8 +168,6 @@ void DEBUG_LineOut(const char *Line)
     }
 
     Serial.println(TheLine);
-
-    // Serial.printf("|    %-94s |\n", Line);
 }
 
 void DEBUG_LineOut2(const char *Line)
