@@ -255,10 +255,8 @@ void DEBUG_BlockOut(const char *Block)
         DEBUG_LineOut(Line);
 }
 
+/**/
 void DEBUG_Trouble(const char *Line)
-// {
-//     Serial.printf("+XX %-93s XX+\n", Line);
-// }
 {
     char TheLine[111] = "";
 
@@ -279,14 +277,51 @@ void DEBUG_Trouble(const char *Line)
 
     Serial.println(TheLine);
 }
+
+/**/
 void DEBUG_Success(const char *Line)
 {
-    Serial.printf("+++ %-93s +++\n", Line);
+    char TheLine[111] = "";
+
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+    TheLine[0] = '+';
+    TheLine[1] = '+';
+    TheLine[2] = '+';
+    TheLine[DEBUG_Width-2] = '+';
+    TheLine[DEBUG_Width-1] = '+';
+    TheLine[DEBUG_Width] = '+';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    for(int i = 0; i < strlen(Line); i++)
+    {
+        TheLine[i+6] = Line[i];
+    }
+
+    Serial.println(TheLine);
 }
 
+/**/
 void DEBUG_Event(const char *Line)
 {
-    Serial.printf("+-> %-93s <-+\n", Line);
+    char TheLine[111] = "";
+
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+    TheLine[0] = '+';
+    TheLine[1] = '-';
+    TheLine[2] = '>';
+    TheLine[DEBUG_Width-2] = '<';
+    TheLine[DEBUG_Width-1] = '-';
+    TheLine[DEBUG_Width] = '+';
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    for(int i = 0; i < strlen(Line); i++)
+    {
+        TheLine[i+6] = Line[i];
+    }
+
+    Serial.println(TheLine);
 }
 
 int DEBUG_ProgressBar(int dotcount, char Dot)
