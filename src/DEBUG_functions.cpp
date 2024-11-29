@@ -154,29 +154,20 @@ void DEBUG_LineOut(const char *Line)
 {
     char TheLine[111] = "";
 
-    // std::fill(TheLine, TheLine + DEBUG_Width, ' ');
-    // memset(TheLine, ' ', sizeof TheLine - 1);
-    // TheLine[sizeof TheLine - 1] = '\0';
-memset(TheLine, ' ', sizeof(TheLine) -1);
-TheLine[DEBUG_Width] = '\0';
-
-// strcpy(TheLine, " ");
-// for (int i = 0; i < DEBUG_Width - 1; i++)
-//     strcat(TheLine, " ");
-
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+    TheLine[DEBUG_Width] = '\0';
 
     TheLine[0] = '|';
     TheLine[DEBUG_Width] = '|';
-    // TheLine[DEBUG_Width+1] = '\0';
+
+    for(int i = 0; i < strlen(Line); i++)
+    {
+        TheLine[i+3] = Line[i];
+    }
 
     Serial.println(TheLine);
     Serial.println(sizeof(TheLine));
     Serial.println(strlen(TheLine));
-
-
-    // strcpy(TheLine, "|");
-    // strcat(TheLine, "    ");
-    // strcat(TheLine, Line);
 
     // Serial.printf("|    %-94s |\n", Line);
 }
