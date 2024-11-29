@@ -18,6 +18,7 @@ extern const char *DeviceNotes;
 // char DEBUGtxt[92];
 
 extern int DEBUG_Width;
+extern int Line_width;
 extern char DEBUGtxt[];
 
 #define ST(A) #A

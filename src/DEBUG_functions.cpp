@@ -5,7 +5,8 @@
 // extern char DEBUGtxt[];
 
 int DEBUG_Width = 98;
-char DEBUGtxt[92];
+int Line_width = DEBUG_Width -6;
+char DEBUGtxt[Line_width];
 
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
@@ -466,7 +467,9 @@ void DEBUG_rssi(const char *InitPart)
 ////////////////////////////////////////////////////////////////
 // DEBUG_MQTT_info
 // DEBUG_Bluetooth_info
+// DEBUG_Ethernet_info
 // DEBUG_FS_info
+// DEBUG_GPIO_info
 
 #else // If DEBUG is NOT turned on in platformio.ini
 void setup_DEBUG() {}
