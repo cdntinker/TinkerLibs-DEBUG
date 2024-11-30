@@ -239,6 +239,7 @@ void DEBUG_LineOut(const char *Line)
     }
 
     Serial.println(TheLine);
+    debug_LeftText('|', 2, Line);
 }
 
 /**/
@@ -258,6 +259,7 @@ void DEBUG_LineOut2(const char *Line)
     }
 
     Serial.println(TheLine);
+    debug_LeftText('|', 4, Line);
 }
 
 //////////////////////////////////////////////////////////////
