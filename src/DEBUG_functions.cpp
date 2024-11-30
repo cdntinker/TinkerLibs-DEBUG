@@ -225,40 +225,12 @@ void DEBUG_SectionTitle(const char *Title)
 /**/
 void DEBUG_LineOut(const char *Line)
 {
-    char TheLine[111] = "";
-
-    memset(TheLine, ' ', sizeof(TheLine) -1);
-
-    TheLine[0] = '|';
-    TheLine[DEBUG_Width] = '|';
-    TheLine[DEBUG_Width + 1] = '\0';
-
-    for(size_t i = 0; i < strlen(Line); i++)
-    {
-        TheLine[i+4] = Line[i];
-    }
-
-    Serial.println(TheLine);
     debug_LeftText('|', 2, Line);
 }
 
 /**/
 void DEBUG_LineOut2(const char *Line)
 {
-    char TheLine[111] = "";
-
-    memset(TheLine, ' ', sizeof(TheLine) -1);
-
-    TheLine[0] = '|';
-    TheLine[DEBUG_Width] = '|';
-    TheLine[DEBUG_Width + 1] = '\0';
-
-    for(size_t i = 0; i < strlen(Line); i++)
-    {
-        TheLine[i+6] = Line[i];
-    }
-
-    Serial.println(TheLine);
     debug_LeftText('|', 4, Line);
 }
 
