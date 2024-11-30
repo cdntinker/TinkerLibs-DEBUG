@@ -504,7 +504,7 @@ else if (strcmp(WiFiMODE, "AP") == 0)
 {
     strcpy(WiFiIP, WiFi.softAPIP().toString().c_str());
     strcpy(WiFiSSID, APssid);
-    strcpy(WiFiPASS, pass);
+    strcpy(WiFiPASS, APpass);
 }
 else
 {
