@@ -559,6 +559,7 @@ else
     sprintf(DEBUGtxt, "      IP address : %s", WiFiIP);
     DEBUG_LineOut(DEBUGtxt);
 //////
+#ifdef DEBUGx
     debug_CentredText('|', "- - - - - - - - - -");
 
     sprintf(DEBUGtxt, "      subnetMask : %s", WiFi.subnetMask().toString().c_str());
@@ -571,6 +572,7 @@ else
     DEBUG_LineOut(DEBUGtxt);
     sprintf(DEBUGtxt, "      broadcastIP: %s", WiFi.broadcastIP().toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
+#endif
 //////
 }
 
