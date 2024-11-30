@@ -1,5 +1,12 @@
 {
-    "name": "TinkerLibs-DEBUG",
-    "version": "1.1.0+20210817144854"
+  "name": "TinkerLibs-DEBUG",
+  "version": "1.1.0",
+  "description": "Serial Debugging library to simplify ESP work.",
+  "frameworks": "arduino",
+  "platforms": ["espressif8266", "espressif32"],
+  "headers": "Tinker_DEBUG.h",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdntinker/TinkerLibs-DEBUG"
   }
-  
+}
