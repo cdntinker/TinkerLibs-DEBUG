@@ -35,8 +35,6 @@ void debug_MakeDivider(char End, char Bar)
 
 void debug_CentredText(char End, const char* Text)
 {
-// Serial.printf("%d %d >%s<\n", sizeof(Text), strlen(Text), Text);
-
     char TheLine[111] = "";
 
     memset(TheLine, ' ', sizeof(TheLine) -1);
@@ -52,6 +50,28 @@ void debug_CentredText(char End, const char* Text)
     for(int i = 0; i < TextLength; i++)
     {
         TheLine[StartPoint + i] = Text[i];
+    }
+
+    Serial.println(TheLine);
+}
+
+void debug_LeftText(char End, int Indent, const char* Text)
+{
+// Serial.printf("%d %d >%s<\n", sizeof(Text), strlen(Text), Text);
+
+    char TheLine[111] = "";
+
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+    int TextLength = strlen(Text);
+
+    TheLine[0] = End;
+    TheLine[DEBUG_Width] = End;
+    TheLine[DEBUG_Width + 1] = '\0';
+
+    for(int i = 0; i < TextLength; i++)
+    {
+        TheLine[Indent + 2 + i] = Text[i];
     }
 
     Serial.println(TheLine);
@@ -156,17 +176,20 @@ void DEBUG_Reset()
             "Reset Reason: %s",
             ESP.getResetReason().c_str());
     DEBUG_LineOut0(DEBUGtxt);
+    debug_LeftText('|', 1, DEBUGtxt);
 #elif defined(ESP32)
     sprintf(DEBUGtxt,
             "CPU0 reset reason:  %d - %s",
             rtc_get_reset_reason(0),
             HR_reset_reason(rtc_get_reset_reason(0)).c_str());
     DEBUG_LineOut0(DEBUGtxt);
+    debug_LeftText('|', 1, DEBUGtxt);
     sprintf(DEBUGtxt,
             "CPU1 reset reason:  %d - %s",
             rtc_get_reset_reason(1),
             HR_reset_reason(rtc_get_reset_reason(1)).c_str());
     DEBUG_LineOut0(DEBUGtxt);
+    debug_LeftText('|', 1, DEBUGtxt);
 
 #endif
 }
