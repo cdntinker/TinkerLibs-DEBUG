@@ -460,10 +460,11 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 //                   WiFi Related Debugging                   //
 ////////////////////////////////////////////////////////////////
+extern const char* APssid;
+extern const char* APpass;
 
 void DEBUG_WiFi_info()
 {
-Serial.println("-=[WIP]=-");
 char WiFi_Statii[][32] =
     {
         "WL_IDLE_STATUS",
@@ -486,8 +487,6 @@ char WiFiIP[16] = "___.___.___.___";
 
 const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
-
-Serial.printf("---%s---\n", WiFiMODE);
 
 if (strcmp(WiFiMODE, "STA") == 0)
 {
