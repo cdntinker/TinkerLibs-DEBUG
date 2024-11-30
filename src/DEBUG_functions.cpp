@@ -376,7 +376,7 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
 
 void DEBUG_ProgressBar2(int dotcount)
 {
-    for (int i = 0; i < ((DEBUG_Width - 1) - dotcount); i++)
+    for (int i = 0; i < ((DEBUG_Width - 3) - dotcount); i++)
     {
         Serial.printf(" ");
     }
