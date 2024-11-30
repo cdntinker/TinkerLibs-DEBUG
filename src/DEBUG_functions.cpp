@@ -463,7 +463,7 @@ void DEBUG_ESP_info()
 
 void DEBUG_WiFi_info()
 {
-
+Serial.println("-=[WIP]=-");
 char WiFi_Statii[][32] =
     {
         "WL_IDLE_STATUS",
@@ -487,26 +487,33 @@ char WiFiIP[16] = "___.___.___.___";
 const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
 
-if (strcmp(WiFiMODE, "STA"))
+Serial.printf("---%s---\n", WiFiMODE);
+
+if (strcmp(WiFiMODE, "STA") == 0)
 {
     if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
         strcpy (WiFiIP, "(IP unset)");
     else
     strcpy (WiFiIP, WiFi.localIP().toString().c_str());
+
+    if (strlen(WiFi.SSID().c_str()) != 0)
+        strcpy(WiFiSSID, WiFi.SSID().c_str());
+    else
+        strcpy(WiFiSSID, "(SSID unset)");
 }
-else if (strcmp(WiFiMODE, "AP"))
+else if (strcmp(WiFiMODE, "AP") == 0)
 {
-    strcpy (WiFiIP, WiFi.softAPIP().toString().c_str());
+    strcpy(WiFiIP, WiFi.softAPIP().toString().c_str());
+    strcpy(WiFiSSID, APssid);
+    strcpy(WiFiPASS, pass);
 }
 else
-    strcpy (WiFiIP, "(dunno)");
+{
+    strcpy(WiFiIP, "(dunno)");
+    strcpy(WiFiSSID, "(dunno)");
+}
 
 strcpy (WiFiHOST, WiFi.getHostname());
-
-if (strlen(WiFi.SSID().c_str()) != 0)
-    strcpy(WiFiSSID, WiFi.SSID().c_str());
-else
-    strcpy(WiFiSSID, "(SSID unset)");
 
 #if defined(ESP8266)
 
