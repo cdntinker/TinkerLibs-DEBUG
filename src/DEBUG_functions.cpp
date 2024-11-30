@@ -353,7 +353,7 @@ void DEBUG_Event(const char *Line)
 
 int DEBUG_ProgressBar(int dotcount, char Dot)
 {
-    int Width = DEBUG_Width - 1;
+    int Width = DEBUG_Width - 3;
     int dotposition = dotcount;
     int rowcount = dotcount / Width;
 
