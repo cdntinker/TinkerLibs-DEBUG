@@ -463,17 +463,6 @@ void DEBUG_ESP_info()
 
 void DEBUG_WiFi_info()
 {
-// char WiFi_Statii[][32] =
-//     {
-//         "WL_NO_SHIELD",
-//         "WL_IDLE_STATUS",
-//         "WL_NO_SSID_AVAIL",
-//         "WL_SCAN_COMPLETED",
-//         "WL_CONNECTED",
-//         "WiFi WL_CONNECT_FAILED",
-//         "WiFi WL_CONNECTION_LOST",
-//         "WL_DISCONNECTED"
-//     };
 
 char WiFi_Statii[][32] =
     {
