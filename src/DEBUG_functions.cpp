@@ -176,20 +176,20 @@ void DEBUG_Reset()
             "Reset Reason: %s",
             ESP.getResetReason().c_str());
     DEBUG_LineOut0(DEBUGtxt);
-    debug_LeftText('|', 1, DEBUGtxt);
+    debug_LeftText('|', 0, DEBUGtxt);
 #elif defined(ESP32)
     sprintf(DEBUGtxt,
             "CPU0 reset reason:  %d - %s",
             rtc_get_reset_reason(0),
             HR_reset_reason(rtc_get_reset_reason(0)).c_str());
     DEBUG_LineOut0(DEBUGtxt);
-    debug_LeftText('|', 1, DEBUGtxt);
+    debug_LeftText('|', 0, DEBUGtxt);
     sprintf(DEBUGtxt,
             "CPU1 reset reason:  %d - %s",
             rtc_get_reset_reason(1),
             HR_reset_reason(rtc_get_reset_reason(1)).c_str());
     DEBUG_LineOut0(DEBUGtxt);
-    debug_LeftText('|', 1, DEBUGtxt);
+    debug_LeftText('|', 0, DEBUGtxt);
 
 #endif
 }
