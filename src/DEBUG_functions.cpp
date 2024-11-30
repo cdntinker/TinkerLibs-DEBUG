@@ -559,7 +559,7 @@ else
     sprintf(DEBUGtxt, "      IP address : %s", WiFiIP);
     DEBUG_LineOut(DEBUGtxt);
 //////
-    DEBUG_LineOut("- - - - - - - - - -");
+    debug_CentredText('|', "- - - - - - - - - -");
 
     sprintf(DEBUGtxt, "      subnetMask : %s", WiFi.subnetMask().toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
