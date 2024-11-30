@@ -487,10 +487,19 @@ char WiFiIP[16] = "___.___.___.___";
 const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
 
-if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
-    strcpy (WiFiIP, "(IP unset)");
+if (strcmp(WiFiMODE, "STA"))
+{
+    if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
+        strcpy (WiFiIP, "(IP unset)");
+    else
+    strcpy (WiFiIP, WiFi.localIP().toString().c_str());
+}
+elif (strcmp(WiFiMODE, "AP"))
+{
+    strcpy (WiFiIP, WiFi.softAPIP());
+}
 else
-strcpy (WiFiIP, WiFi.localIP().toString().c_str());
+    strcpy (WiFiIP, "(dunno)");
 
 strcpy (WiFiHOST, WiFi.getHostname());
 
