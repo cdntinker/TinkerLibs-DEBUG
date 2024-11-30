@@ -193,10 +193,14 @@ void DEBUG_Reset()
 
 void DEBUG_Init(const char *InitPart)
 {
+    char TheLine[111] = "";
+
     DEBUG_Separator();
-    Serial.printf("| Initialising: %-83s |\n", InitPart);
+    sprintf(TheLine, "Initialising: %s", InitPart);
+    debug_LeftText('|', 0, TheLine);
 }
 
+/**/
 void DEBUG_Ready()
 {
     debug_MakeDivider('#', '=');
