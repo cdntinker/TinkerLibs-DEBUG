@@ -272,11 +272,15 @@ void DEBUG_BlockOut(const char *Block)
             }
             else
                 DEBUG_LineOut(Line);
+                    debug_LeftText('|', 2, Line);
+
         }
     }
 
     if (counter > 1)
         DEBUG_LineOut(Line);
+            debug_LeftText('|', 2, Line);
+
 }
 
 /**/
