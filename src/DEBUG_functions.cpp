@@ -494,7 +494,7 @@ if (strcmp(WiFiMODE, "STA"))
     else
     strcpy (WiFiIP, WiFi.localIP().toString().c_str());
 }
-elif (strcmp(WiFiMODE, "AP"))
+else if (strcmp(WiFiMODE, "AP"))
 {
     strcpy (WiFiIP, WiFi.softAPIP());
 }
