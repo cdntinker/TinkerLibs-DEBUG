@@ -465,6 +465,7 @@ extern const char* APpass;
 
 void DEBUG_WiFi_info()
 {
+// Serial.println("-=[WIP]=-");
 char WiFi_Statii[][32] =
     {
         "WL_IDLE_STATUS",
