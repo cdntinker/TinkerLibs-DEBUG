@@ -351,6 +351,7 @@ void DEBUG_Event(const char *Line)
     Serial.println(TheLine);
 }
 
+/**/
 int DEBUG_ProgressBar(int dotcount, char Dot)
 {
     int Width = DEBUG_Width - 3;
@@ -374,6 +375,7 @@ int DEBUG_ProgressBar(int dotcount, char Dot)
     return (dotposition);
 }
 
+/**/
 void DEBUG_ProgressBar2(int dotcount)
 {
     for (int i = 0; i < ((DEBUG_Width - 3) - dotcount); i++)
@@ -530,20 +532,6 @@ else
 
     DEBUG_SectionTitle("WiFi Info");
 
-//////
-    // sprintf(DEBUGtxt, " subnetMask : %s", WiFi.subnetMask().toString().c_str());
-    // DEBUG_LineOut(DEBUGtxt);
-    // sprintf(DEBUGtxt, "  gatewayIP : %s", WiFi.gatewayIP().toString().c_str());
-    // DEBUG_LineOut(DEBUGtxt);
-    // sprintf(DEBUGtxt, "     dnsIP 0: %s", WiFi.dnsIP(0).toString().c_str());
-    // DEBUG_LineOut(DEBUGtxt);
-    // sprintf(DEBUGtxt, "     dnsIP 1: %s", WiFi.dnsIP(1).toString().c_str());
-    // DEBUG_LineOut(DEBUGtxt);
-    // sprintf(DEBUGtxt, " broadcastIP: %s", WiFi.broadcastIP().toString().c_str());
-    // DEBUG_LineOut(DEBUGtxt);
-
-    // DEBUG_LineOut("- - - - - - - - - -");
-//////
     sprintf(DEBUGtxt, "      Connected? : %s", WiFi.isConnected() ? "YES" : "NO");
     DEBUG_LineOut(DEBUGtxt);
 
@@ -570,6 +558,20 @@ else
 
     sprintf(DEBUGtxt, "      IP address : %s", WiFiIP);
     DEBUG_LineOut(DEBUGtxt);
+//////
+    DEBUG_LineOut("- - - - - - - - - -");
+
+    sprintf(DEBUGtxt, " subnetMask : %s", WiFi.subnetMask().toString().c_str());
+    DEBUG_LineOut(DEBUGtxt);
+    sprintf(DEBUGtxt, "  gatewayIP : %s", WiFi.gatewayIP().toString().c_str());
+    DEBUG_LineOut(DEBUGtxt);
+    sprintf(DEBUGtxt, "     dnsIP 0: %s", WiFi.dnsIP(0).toString().c_str());
+    DEBUG_LineOut(DEBUGtxt);
+    sprintf(DEBUGtxt, "     dnsIP 1: %s", WiFi.dnsIP(1).toString().c_str());
+    DEBUG_LineOut(DEBUGtxt);
+    sprintf(DEBUGtxt, " broadcastIP: %s", WiFi.broadcastIP().toString().c_str());
+    DEBUG_LineOut(DEBUGtxt);
+//////
 }
 
 void DEBUG_WiFi_Mode()
