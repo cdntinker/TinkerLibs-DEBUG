@@ -239,6 +239,7 @@ void DEBUG_LineOut2(const char *Line)
 // In order to insert a blank line in your text block, place
 // `\n\n` where you want the blank line to appear.
 //////////////////////////////////////////////////////////////
+/**/
 void DEBUG_BlockOut(const char *Block)
 {
     int last_space = 0;
@@ -271,15 +272,13 @@ void DEBUG_BlockOut(const char *Block)
             {
             }
             else
-                DEBUG_LineOut(Line);
-                    debug_LeftText('|', 2, Line);
+                debug_LeftText('|', 2, Line);
 
         }
     }
 
     if (counter > 1)
-        DEBUG_LineOut(Line);
-            debug_LeftText('|', 2, Line);
+        debug_LeftText('|', 2, Line);
 
 }
 
