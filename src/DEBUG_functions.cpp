@@ -485,6 +485,10 @@ char WiFiHOST[32] = "____________";
 char WiFiMAC[24] = "__:__:__:__:__:__:__:__";
 char WiFiIP[16] = "___.___.___.___";
 
+char WiFiIP2[16] = "___.___.___.___";
+char WiFiSSID2[32] = "____________";
+char WiFiPASS2[32] = "____________";
+
 const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
 strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
 
@@ -502,9 +506,25 @@ if (strcmp(WiFiMODE, "STA") == 0)
 }
 else if (strcmp(WiFiMODE, "AP") == 0)
 {
-    strcpy(WiFiIP, WiFi.softAPIP().toString().c_str());
-    strcpy(WiFiSSID, APssid);
-    strcpy(WiFiPASS, APpass);
+    strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
+    strcpy(WiFiSSID2, APssid);
+    strcpy(WiFiPASS2, APpass);
+}
+else if (strcmp(WiFiMODE, "STA+AP") == 0)
+{
+    if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
+        strcpy (WiFiIP, "(IP shitty)");
+    else
+    strcpy (WiFiIP, WiFi.localIP().toString().c_str());
+
+    if (strlen(WiFi.SSID().c_str()) != 0)
+        strcpy(WiFiSSID, WiFi.SSID().c_str());
+    else
+        strcpy(WiFiSSID, "(SSID shitty)");
+
+    strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
+    strcpy(WiFiSSID2, APssid);
+    strcpy(WiFiPASS2, APpass);
 }
 else
 {
@@ -542,6 +562,10 @@ strcpy (WiFiHOST, WiFi.getHostname());
     sprintf(DEBUGtxt, "            Mode : %s", WiFiMODE);
     DEBUG_LineOut(DEBUGtxt);
 
+if ((strcmp(WiFiMODE, "STA") == 0) || (strcmp(WiFiMODE, "STA+AP") == 0))
+{
+    DEBUG_LineOut("STA:");
+
     sprintf(DEBUGtxt, "            SSID : %s", WiFiSSID);
     DEBUG_LineOut(DEBUGtxt);
 
@@ -559,6 +583,22 @@ strcpy (WiFiHOST, WiFi.getHostname());
 
     sprintf(DEBUGtxt, "      IP address : %s", WiFiIP);
     DEBUG_LineOut(DEBUGtxt);
+}
+
+if ((strcmp(WiFiMODE, "AP") == 0) || (strcmp(WiFiMODE, "STA+AP") == 0))
+{
+    DEBUG_LineOut("AP:");
+
+    sprintf(DEBUGtxt, "            SSID : %s", WiFiSSID2);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "            PASS : %s", WiFiPASS2);
+    DEBUG_LineOut(DEBUGtxt);
+
+    sprintf(DEBUGtxt, "      IP address : %s", WiFiIP2);
+    DEBUG_LineOut(DEBUGtxt);
+}
+
 //////
 #ifdef DEBUGx
     debug_CentredText('|', "- - - - - - - - - -");
