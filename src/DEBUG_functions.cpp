@@ -561,15 +561,15 @@ else
 //////
     DEBUG_LineOut("- - - - - - - - - -");
 
-    sprintf(DEBUGtxt, " subnetMask : %s", WiFi.subnetMask().toString().c_str());
+    sprintf(DEBUGtxt, "      subnetMask : %s", WiFi.subnetMask().toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
-    sprintf(DEBUGtxt, "  gatewayIP : %s", WiFi.gatewayIP().toString().c_str());
+    sprintf(DEBUGtxt, "       gatewayIP : %s", WiFi.gatewayIP().toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
-    sprintf(DEBUGtxt, "     dnsIP 0: %s", WiFi.dnsIP(0).toString().c_str());
+    sprintf(DEBUGtxt, "          dnsIP 0: %s", WiFi.dnsIP(0).toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
-    sprintf(DEBUGtxt, "     dnsIP 1: %s", WiFi.dnsIP(1).toString().c_str());
+    sprintf(DEBUGtxt, "          dnsIP 1: %s", WiFi.dnsIP(1).toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
-    sprintf(DEBUGtxt, " broadcastIP: %s", WiFi.broadcastIP().toString().c_str());
+    sprintf(DEBUGtxt, "      broadcastIP: %s", WiFi.broadcastIP().toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
 //////
 }
