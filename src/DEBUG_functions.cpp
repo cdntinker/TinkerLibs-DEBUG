@@ -465,91 +465,89 @@ extern const char* APpass;
 
 void DEBUG_WiFi_info()
 {
-// Serial.println("-=[WIP]=-");
-char WiFi_Statii[][32] =
+    // Serial.println("-=[WIP]=-");
+    char WiFi_Statii[][32] =
+        {
+            "WL_IDLE_STATUS",
+            "WL_NO_SSID_AVAIL",
+            "__2__",
+            "WL_CONNECTED",
+            "WL_CONNECT_FAILED",
+            "__5__",
+            "WL_WRONG_PASSWORD",
+            "WL_DISCONNECTED"};
+
+    char WiFiMODE[8] = "-----";
+    char WiFiSSID[32] = "____________";
+    char WiFiPASS[32] = "____________";
+    long WiFiRSSI = WiFi.RSSI();
+    char WiFiHOST[32] = "____________";
+    char WiFiMAC[24] = "__:__:__:__:__:__:__:__";
+    char WiFiIP[16] = "___.___.___.___";
+
+    char WiFiIP2[16] = "___.___.___.___";
+    char WiFiSSID2[64] = "____________";
+    char WiFiPASS2[64] = "____________";
+
+    const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
+    strcpy(WiFiMODE, WiFi_MODES[WiFi.getMode()]);
+
+    if (strcmp(WiFiMODE, "STA") == 0)
     {
-        "WL_IDLE_STATUS",
-        "WL_NO_SSID_AVAIL",
-        "__2__",
-        "WL_CONNECTED",
-        "WL_CONNECT_FAILED",
-        "__5__",
-        "WL_WRONG_PASSWORD",
-        "WL_DISCONNECTED"
-    };
+        if (strcmp(WiFi.localIP().toString().c_str(), "0.0.0.0") == 0)
+            strcpy(WiFiIP, "(IP unset)");
+        else
+            strcpy(WiFiIP, WiFi.localIP().toString().c_str());
 
-char WiFiMODE[8] = "-----";
-char WiFiSSID[32] = "____________";
-char WiFiPASS[32] = "____________";
-long WiFiRSSI = WiFi.RSSI();
-char WiFiHOST[32] = "____________";
-char WiFiMAC[24] = "__:__:__:__:__:__:__:__";
-char WiFiIP[16] = "___.___.___.___";
+        if (strlen(WiFi.SSID().c_str()) != 0)
+            strcpy(WiFiSSID, WiFi.SSID().c_str());
+        else
+            strcpy(WiFiSSID, "(SSID unset)");
+    }
+    else if (strcmp(WiFiMODE, "AP") == 0)
+    {
+        strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
+        strcpy(WiFiSSID2, APssid);
+        strcpy(WiFiPASS2, APpass);
+    }
+    else if (strcmp(WiFiMODE, "STA+AP") == 0)
+    {
+        if (strcmp(WiFi.localIP().toString().c_str(), "0.0.0.0") == 0)
+            strcpy(WiFiIP, "(IP shitty)");
+        else
+            strcpy(WiFiIP, WiFi.localIP().toString().c_str());
 
-char WiFiIP2[16] = "___.___.___.___";
-char WiFiSSID2[32] = "____________";
-char WiFiPASS2[32] = "____________";
+        if (strlen(WiFi.SSID().c_str()) != 0)
+            strcpy(WiFiSSID, WiFi.SSID().c_str());
+        else
+            strcpy(WiFiSSID, "(SSID shitty)");
 
-const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
-strcpy (WiFiMODE, WiFi_MODES[WiFi.getMode()]);
-
-if (strcmp(WiFiMODE, "STA") == 0)
-{
-    if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
-        strcpy (WiFiIP, "(IP unset)");
+        strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
+        strcpy(WiFiSSID2, APssid);
+        strcpy(WiFiPASS2, APpass);
+    }
     else
-    strcpy (WiFiIP, WiFi.localIP().toString().c_str());
+    {
+        strcpy(WiFiIP, "(dunno)");
+        strcpy(WiFiSSID, "(dunno)");
+    }
 
-    if (strlen(WiFi.SSID().c_str()) != 0)
-        strcpy(WiFiSSID, WiFi.SSID().c_str());
-    else
-        strcpy(WiFiSSID, "(SSID unset)");
-}
-else if (strcmp(WiFiMODE, "AP") == 0)
-{
-    strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
-    strcpy(WiFiSSID2, APssid);
-    strcpy(WiFiPASS2, APpass);
-}
-else if (strcmp(WiFiMODE, "STA+AP") == 0)
-{
-    if (strcmp(WiFi.localIP().toString().c_str(),"0.0.0.0") == 0)
-        strcpy (WiFiIP, "(IP shitty)");
-    else
-    strcpy (WiFiIP, WiFi.localIP().toString().c_str());
-
-    if (strlen(WiFi.SSID().c_str()) != 0)
-        strcpy(WiFiSSID, WiFi.SSID().c_str());
-    else
-        strcpy(WiFiSSID, "(SSID shitty)");
-
-    strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
-    strcpy(WiFiSSID2, APssid);
-    strcpy(WiFiPASS2, APpass);
-}
-else
-{
-    strcpy(WiFiIP, "(dunno)");
-    strcpy(WiFiSSID, "(dunno)");
-}
-
-strcpy (WiFiHOST, WiFi.getHostname());
+    strcpy(WiFiHOST, WiFi.getHostname());
 
 #if defined(ESP8266)
 
-// #include <ESP8266WiFi.h>
+    // #include <ESP8266WiFi.h>
     strcpy(WiFiMAC, WiFi.macAddress().c_str());
 #elif defined(ESP32)
 
-// #include <WiFi.h>
+    // #include <WiFi.h>
     uint8_t baseMac[6];
     // Get MAC address for WiFi station
     esp_read_mac(baseMac, ESP_MAC_WIFI_STA);
     char baseMacChr[18] = {0};
-    sprintf(WiFiMAC, 
-            "%02X:%02X:%02X:%02X:%02X:%02X", 
-            baseMac[0], baseMac[1], baseMac[2], baseMac[3], baseMac[4], baseMac[5]
-            );
+    sprintf(WiFiMAC,
+            "%02X:%02X:%02X:%02X:%02X:%02X",
+            baseMac[0], baseMac[1], baseMac[2], baseMac[3], baseMac[4], baseMac[5]);
 #endif
 
     DEBUG_SectionTitle("WiFi Info");
@@ -563,42 +561,42 @@ strcpy (WiFiHOST, WiFi.getHostname());
     sprintf(DEBUGtxt, "            Mode : %s", WiFiMODE);
     DEBUG_LineOut(DEBUGtxt);
 
-if ((strcmp(WiFiMODE, "STA") == 0) || (strcmp(WiFiMODE, "STA+AP") == 0))
-{
-    DEBUG_LineOut("STA:");
+    if ((strcmp(WiFiMODE, "STA") == 0) || (strcmp(WiFiMODE, "STA+AP") == 0))
+    {
+        DEBUG_LineOut("STA:");
 
-    sprintf(DEBUGtxt, "            SSID : %s", WiFiSSID);
-    DEBUG_LineOut(DEBUGtxt);
+        sprintf(DEBUGtxt, "            SSID : %s", WiFiSSID);
+        DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "            PASS : %s", WiFiPASS);
-    DEBUG_LineOut(DEBUGtxt);
+        sprintf(DEBUGtxt, "            PASS : %s", WiFiPASS);
+        DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "            RSSI : %ld dBm", WiFiRSSI);
-    DEBUG_LineOut(DEBUGtxt);
+        sprintf(DEBUGtxt, "            RSSI : %ld dBm", WiFiRSSI);
+        DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "        HostName : %s", WiFiHOST);
-    DEBUG_LineOut(DEBUGtxt);
+        sprintf(DEBUGtxt, "        HostName : %s", WiFiHOST);
+        DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "             MAC : %s", WiFiMAC);
-    DEBUG_LineOut(DEBUGtxt);
+        sprintf(DEBUGtxt, "             MAC : %s", WiFiMAC);
+        DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      IP address : %s", WiFiIP);
-    DEBUG_LineOut(DEBUGtxt);
-}
+        sprintf(DEBUGtxt, "      IP address : %s", WiFiIP);
+        DEBUG_LineOut(DEBUGtxt);
+    }
 
-if ((strcmp(WiFiMODE, "AP") == 0) || (strcmp(WiFiMODE, "STA+AP") == 0))
-{
-    DEBUG_LineOut("AP:");
+    if ((strcmp(WiFiMODE, "AP") == 0) || (strcmp(WiFiMODE, "STA+AP") == 0))
+    {
+        DEBUG_LineOut("AP:");
 
-    sprintf(DEBUGtxt, "            SSID : %s", WiFiSSID2);
-    DEBUG_LineOut(DEBUGtxt);
+        sprintf(DEBUGtxt, "            SSID : %s", WiFiSSID2);
+        DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "            PASS : %s", WiFiPASS2);
-    DEBUG_LineOut(DEBUGtxt);
+        sprintf(DEBUGtxt, "            PASS : %s", WiFiPASS2);
+        DEBUG_LineOut(DEBUGtxt);
 
-    sprintf(DEBUGtxt, "      IP address : %s", WiFiIP2);
-    DEBUG_LineOut(DEBUGtxt);
-}
+        sprintf(DEBUGtxt, "      IP address : %s", WiFiIP2);
+        DEBUG_LineOut(DEBUGtxt);
+    }
 
 //////
 #ifdef DEBUGx
@@ -615,7 +613,7 @@ if ((strcmp(WiFiMODE, "AP") == 0) || (strcmp(WiFiMODE, "STA+AP") == 0))
     sprintf(DEBUGtxt, "      broadcastIP: %s", WiFi.broadcastIP().toString().c_str());
     DEBUG_LineOut(DEBUGtxt);
 #endif
-//////
+    //////
 }
 
 void DEBUG_WiFi_Mode()
