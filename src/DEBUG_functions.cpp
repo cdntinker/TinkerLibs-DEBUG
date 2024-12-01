@@ -513,14 +513,14 @@ void DEBUG_WiFi_info()
     else if (strcmp(WiFiMODE, "STA+AP") == 0)
     {
         if (strcmp(WiFi.localIP().toString().c_str(), "0.0.0.0") == 0)
-            strcpy(WiFiIP, "(IP shitty)");
+            strcpy(WiFiIP, "(IP unset)");
         else
             strcpy(WiFiIP, WiFi.localIP().toString().c_str());
 
         if (strlen(WiFi.SSID().c_str()) != 0)
             strcpy(WiFiSSID, WiFi.SSID().c_str());
         else
-            strcpy(WiFiSSID, "(SSID shitty)");
+            strcpy(WiFiSSID, "(SSID unset)");
 
         strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
         strcpy(WiFiSSID2, APssid);
