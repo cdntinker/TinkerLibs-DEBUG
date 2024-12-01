@@ -99,7 +99,13 @@ void DEBUG_Title()
 {
     debug_MakeDivider('#', '=');
 
+#ifdef FIRMWAREVERSION
+    sprintf(DEBUGtxt, "%s (v%s)", STR(DeviceName), STR(FIRMWAREVERSION));
+    debug_CentredText('#', DEBUGtxt);
+#else
     debug_CentredText('#', STR(DeviceName));
+#endif
+
     debug_CentredText('#', STR(DeviceType));
 
     debug_MakeDivider('#', '-');
