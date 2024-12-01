@@ -486,8 +486,8 @@ void DEBUG_WiFi_info()
     char WiFiIP[16] = "___.___.___.___";
 
     char WiFiIP2[16] = "___.___.___.___";
-    char WiFiSSID2[64] = "____________";
-    char WiFiPASS2[64] = "____________";
+    char WiFiSSID2[32] = "____________";
+    char WiFiPASS2[32] = "____________";
 
     const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
     strcpy(WiFiMODE, WiFi_MODES[WiFi.getMode()]);
