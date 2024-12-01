@@ -460,8 +460,8 @@ void DEBUG_ESP_info()
 ////////////////////////////////////////////////////////////////
 //                   WiFi Related Debugging                   //
 ////////////////////////////////////////////////////////////////
-extern const char* APssid;
-extern const char* APpass;
+extern char* APssid;
+extern char* APpass;
 
 void DEBUG_WiFi_info()
 {
