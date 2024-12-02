@@ -209,9 +209,9 @@ void DEBUG_Done(const char *InitPart)
 {
     char TheLine[111] = "";
 
-    debug_MakeDivider('+', '-');
     sprintf(TheLine, "Done: %s", InitPart);
     debug_LeftText('|', 0, TheLine);
+    debug_MakeDivider('+', '-');
 }
 
 /**/
