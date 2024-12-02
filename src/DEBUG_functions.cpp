@@ -205,6 +205,16 @@ void DEBUG_Init(const char *InitPart)
 }
 
 /**/
+void DEBUG_Done(const char *InitPart)
+{
+    char TheLine[111] = "";
+
+    debug_MakeDivider('+', '-');
+    sprintf(TheLine, "Done: %s", InitPart);
+    debug_LeftText('|', 0, TheLine);
+}
+
+/**/
 void DEBUG_Ready()
 {
     debug_MakeDivider('#', '=');
@@ -622,6 +632,7 @@ void DEBUG_WiFi_info()
     //////
 }
 
+////  (likely obsolete...) /////
 void DEBUG_WiFi_Mode()
 {
     const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
@@ -664,6 +675,7 @@ void DEBUG_rssi(const char *InitPart)
 void setup_DEBUG() {}
 void DEBUG_Reset() {}
 void DEBUG_Init(const char *InitPart) {}
+void DEBUG_Done(const char *InitPart) {}
 void DEBUG_Title() {}
 void DEBUG_Ready() {}
 void DEBUG_Separator() {}

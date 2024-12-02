@@ -49,6 +49,7 @@ void DEBUG_Reset();
 String return_reset_reason(uint8_t reason);
 
 void DEBUG_Init(const char *InitPart);
+void DEBUG_Done(const char *InitPart);
 
 void DEBUG_ESP_info();
 void DEBUG_WiFi_info();
