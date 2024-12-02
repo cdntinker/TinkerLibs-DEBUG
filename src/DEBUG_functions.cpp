@@ -247,6 +247,14 @@ void DEBUG_LineOut2(const char *Line)
     debug_LeftText('|', 4, Line);
 }
 
+/**/
+void DEBUG_LibMessage(const char * Library, const char *Message)
+{
+    char Line[111];
+    sprintf(Line, "%s - %s", Library, Message);
+    debug_LeftText(':', 4, Line);
+}
+
 //////////////////////////////////////////////////////////////
 // NOTE:
 // In order to insert a blank line in your text block, place
@@ -682,6 +690,7 @@ void DEBUG_Separator() {}
 void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
 void DEBUG_LineOut2(const char *Line) {}
+void DEBUG_LibMessage(const char * Library, const char *Message) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
 void DEBUG_Event(const char *Line) {}
