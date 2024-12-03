@@ -254,19 +254,17 @@ void DEBUG_LineOut(const char *Line)
 {
     debug_LeftText('|', 2, Line);
 }
-
-/**/
-void DEBUG_LineOut2(const char *Line)
-{
-    debug_LeftText('|', 4, Line);
-}
-
-/**/
 void DEBUG_Lib_LineOut(const char * Library, const char *Message)
 {
     char Line[111];
     sprintf(Line, "{%s} - %s", Library, Message);
     debug_LeftText(':', 2, Line);
+}
+
+/**/
+void DEBUG_LineOut2(const char *Line)
+{
+    debug_LeftText('|', 4, Line);
 }
 void DEBUG_Lib_LineOut2(const char * Library, const char *Message)
 {
@@ -345,7 +343,6 @@ void DEBUG_Trouble(const char *Line)
 
     Serial.println(TheLine);
 }
-
 void DEBUG_Lib_Trouble(const char * Library, const char *Message)
 {
     char TheLine[111] = "";
@@ -363,21 +360,28 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
 
     int Position = 4;
 
-    TheLine[Position] = '{';
+    // TheLine[Position] = '{';
+    // for(size_t i = 0; i < strlen(Library); i++)
+    // {
+    //     Position++;
+    //     TheLine[Position] = Library[i];
+    // }
+    // Position++;
+    // TheLine[Position++] = '}';
+    // Position++;
+    // TheLine[Position++] = '-';
+    // // Position++;
+    // for(size_t j = 0; j < strlen(Message); j++)
+    // {
+    //     Position++;
+    //     TheLine[Position] = Message[j];
+    // }
+    char TheLine[111] = "";
+    sprintf(Line, "{%s} - %s", Library, Message);
     for(size_t i = 0; i < strlen(Library); i++)
     {
         Position++;
-        TheLine[Position] = Library[i];
-    }
-    Position++;
-    TheLine[Position++] = '}';
-    Position++;
-    TheLine[Position++] = '-';
-    // Position++;
-    for(size_t j = 0; j < strlen(Message); j++)
-    {
-        Position++;
-        TheLine[Position] = Message[j];
+        TheLine[Position] = Line[i];
     }
 
     Serial.println(TheLine);
@@ -405,7 +409,6 @@ void DEBUG_Success(const char *Line)
 
     Serial.println(TheLine);
 }
-
 void DEBUG_Lib_Success(const char * Library, const char *Message)
 {
     char TheLine[111] = "";
@@ -465,7 +468,6 @@ void DEBUG_Event(const char *Line)
 
     Serial.println(TheLine);
 }
-
 void DEBUG_Lib_Event(const char * Library, const char *Message)
 {
     char TheLine[111] = "";
