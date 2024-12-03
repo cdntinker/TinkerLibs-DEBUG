@@ -331,7 +331,6 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     char TheLine[111] = "";
     memset(TheLine, ' ', sizeof(TheLine) -1);
 
-    int Position = 6;
 {
     TheLine[0] = ':';
     TheLine[1] = 'X';
@@ -341,12 +340,18 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     TheLine[DEBUG_Width] = ':';
     TheLine[DEBUG_Width + 1] = '\0';
 }
+    TheLine[4] = '{';
+
+    int Position = 5;
+
     for(size_t i = 0; i < strlen(Library); i++)
     {
         Position++;
         TheLine[Position] = Library[i];
     }
-
+    Position++;
+    TheLine[4] = '}';
+    Position++;
     for(size_t j = 0; j < strlen(Message); j++)
     {
         Position++;
