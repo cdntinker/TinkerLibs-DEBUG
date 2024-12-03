@@ -341,15 +341,15 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     TheLine[DEBUG_Width] = ':';
     TheLine[DEBUG_Width + 1] = '\0';
 }
-    for(size_t i = 0; i < strlen(Message); i++)
+    for(size_t i = 0; i < strlen(Library); i++)
     {
-        Position += i;
-        TheLine[Position] = Message[i];
+        Position++;
+        TheLine[Position] = Library[i];
     }
 
     for(size_t j = 0; j < strlen(Message); j++)
     {
-        Position += j;
+        Position++;
         TheLine[Position] = Message[j];
     }
 
