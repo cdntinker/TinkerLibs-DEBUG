@@ -380,8 +380,8 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     sprintf(Line, "{%s} - %s", Library, Message);
     for(size_t i = 0; i < strlen(Line); i++)
     {
-        Position++;
         TheLine[Position] = Line[i];
+        Position++;
     }
 
     Serial.println(TheLine);
