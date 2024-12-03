@@ -208,7 +208,7 @@ void DEBUG_Lib_Init(const char * Library, const char *Message)
     char Line[111];
     debug_MakeDivider(':', '-');
     sprintf(Line, "{%s} - %s", Library, Message);
-    debug_LeftText(':', 0, Line);
+    debug_LeftText(':', 2, Line);
 }
 
 /**/
@@ -260,6 +260,12 @@ void DEBUG_Lib_LineOut(const char * Library, const char *Message)
     char Line[111];
     sprintf(Line, "{%s} - %s", Library, Message);
     debug_LeftText(':', 2, Line);
+}
+void DEBUG_Lib_LineOut2(const char * Library, const char *Message)
+{
+    char Line[111];
+    sprintf(Line, "{%s} - %s", Library, Message);
+    debug_LeftText(':', 4, Line);
 }
 
 //////////////////////////////////////////////////////////////
@@ -810,6 +816,7 @@ void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
 void DEBUG_LineOut2(const char *Line) {}
 void DEBUG_Lib_LineOut(const char * Library, const char *Message) {}
+void DEBUG_Lib_LineOut2(const char *Line) {}
 void DEBUG_Lib_BlockOut(const char * Library, const char *Message) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
