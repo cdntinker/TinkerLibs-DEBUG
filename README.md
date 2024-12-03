@@ -51,6 +51,8 @@ Which kinda defeats the idea of being able to compile with/without the serial ou
 ## The Functions
 These are all declared in **Tinker_DEBUG.h**
 
+(This section needs much updating...)
+
 ### `void setup_DEBUG()`
 Currently, just turns on Serial output at 115200 baud.
 
@@ -142,6 +144,8 @@ Sends out a seperator and an indication of what's being initialised.
 
     >----------------------------------------------------------------<
     | Initialising: InitPart                                         |
+
+### `DEBUG_Lib_` functions
 
 ## An Example
     #================================================================#

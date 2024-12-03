@@ -248,7 +248,7 @@ void DEBUG_LineOut2(const char *Line)
 }
 
 /**/
-void DEBUG_Lib_Message(const char * Library, const char *Message)
+void DEBUG_Lib_LineOut(const char * Library, const char *Message)
 {
     char Line[111];
     sprintf(Line, "{%s} - %s", Library, Message);
@@ -690,7 +690,7 @@ void DEBUG_Separator() {}
 void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
 void DEBUG_LineOut2(const char *Line) {}
-void DEBUG_Lib_Message(const char * Library, const char *Message) {}
+void DEBUG_Lib_LineOut(const char * Library, const char *Message) {}
 void DEBUG_Lib_BlockOut(const char * Library, const char *Message) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
