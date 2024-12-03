@@ -362,6 +362,7 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
 
     Serial.println(TheLine);
 }
+
 /**/
 void DEBUG_Success(const char *Line)
 {
@@ -385,7 +386,42 @@ void DEBUG_Success(const char *Line)
     Serial.println(TheLine);
 }
 
-void DEBUG_Lib_Success(const char * Library, const char *Message) {}
+void DEBUG_Lib_Success(const char * Library, const char *Message)
+{
+    char TheLine[111] = "";
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+{
+    TheLine[0] = ':';
+    TheLine[1] = '+';
+    TheLine[2] = '+';
+    TheLine[DEBUG_Width-2] = '+';
+    TheLine[DEBUG_Width-1] = '+';
+    TheLine[DEBUG_Width] = ':';
+    TheLine[DEBUG_Width + 1] = '\0';
+}
+
+    int Position = 4;
+
+    TheLine[Position] = '{';
+    for(size_t i = 0; i < strlen(Library); i++)
+    {
+        Position++;
+        TheLine[Position] = Library[i];
+    }
+    // Position++;
+    TheLine[Position++] = '}';
+    Position++;
+    TheLine[Position++] = '-';
+    Position++;
+    for(size_t j = 0; j < strlen(Message); j++)
+    {
+        Position++;
+        TheLine[Position] = Message[j];
+    }
+
+    Serial.println(TheLine);
+}
 
 /**/
 void DEBUG_Event(const char *Line)
@@ -410,7 +446,42 @@ void DEBUG_Event(const char *Line)
     Serial.println(TheLine);
 }
 
-void DEBUG_Lib_Event(const char * Library, const char *Message) {}
+void DEBUG_Lib_Event(const char * Library, const char *Message)
+{
+    char TheLine[111] = "";
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+{
+    TheLine[0] = ':';
+    TheLine[1] = '-';
+    TheLine[2] = '>';
+    TheLine[DEBUG_Width-2] = '<';
+    TheLine[DEBUG_Width-1] = '-';
+    TheLine[DEBUG_Width] = ':';
+    TheLine[DEBUG_Width + 1] = '\0';
+}
+
+    int Position = 4;
+
+    TheLine[Position] = '{';
+    for(size_t i = 0; i < strlen(Library); i++)
+    {
+        Position++;
+        TheLine[Position] = Library[i];
+    }
+    // Position++;
+    TheLine[Position++] = '}';
+    Position++;
+    TheLine[Position++] = '-';
+    Position++;
+    for(size_t j = 0; j < strlen(Message); j++)
+    {
+        Position++;
+        TheLine[Position] = Message[j];
+    }
+
+    Serial.println(TheLine);
+}
 
 /**/
 int DEBUG_ProgressBar(int dotcount, char Dot)
