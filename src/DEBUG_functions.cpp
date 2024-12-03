@@ -760,7 +760,6 @@ void DEBUG_WiFi_info()
 
         sprintf(DEBUGtxt, "      IP address : %s", WiFiIP2);
         DEBUG_LineOut(DEBUGtxt);
-        DEBUG_Separator();
     }
 
 //////
@@ -779,6 +778,7 @@ void DEBUG_WiFi_info()
     DEBUG_LineOut(DEBUGtxt);
 #endif
     //////
+    DEBUG_Separator();
 }
 
 ////  (likely obsolete...) /////
