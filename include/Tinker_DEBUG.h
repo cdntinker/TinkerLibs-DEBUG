@@ -38,7 +38,7 @@ void DEBUG_LineOut(const char *Line);
 void DEBUG_LineOut2(const char *Line);
 
 void DEBUG_Lib_LineOut(const char * Library, const char *Message);
-void DEBUG_Lib_LineOut2(const char *Line);
+void DEBUG_Lib_LineOut2(const char * Library, const char *Message);
 
 void DEBUG_BlockOut(const char *Block);
 
