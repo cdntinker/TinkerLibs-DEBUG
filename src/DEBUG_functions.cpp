@@ -331,7 +331,7 @@ void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
 
     char Line[DEBUG_Width];
 
-    for (int current = 0; Block[current] != '\0'; current++, counter++, Column++)
+    for (int current = 0; Message[current] != '\0'; current++, counter++, Column++)
     {
         if (isspace(Block[current])) // TODO: Add other delimiters here
             last_space = current;
@@ -339,7 +339,7 @@ void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
         Line[Column] = Block[current];
         Line[Column + 1] = '\0'; // We're re-using Line, ensure it ends...
 
-        if ((counter >= Line_Width) || (Block[current] == '\n'))
+        if ((counter >= Line_Width) || (Message[current] == '\n'))
         {
             Line[Column - (current - last_space)] = '\0';
 
