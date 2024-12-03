@@ -273,12 +273,12 @@ void DEBUG_Lib_LineOut2(const char * Library, const char *Message)
     debug_LeftText(':', 2, Line);
 }
 
+/* This needs much work to de-duplicate code... */
 //////////////////////////////////////////////////////////////
 // NOTE:
 // In order to insert a blank line in your text block, place
 // `\n\n` where you want the blank line to appear.
 //////////////////////////////////////////////////////////////
-/**/
 void DEBUG_BlockOut(const char *Block)
 {
     int last_space = 0;
@@ -614,6 +614,7 @@ void DEBUG_ESP_info()
                                                                    : ideMode == FM_DOUT   ? "DOUT"
                                                                                           : "BORKED"));
     DEBUG_LineOut(Line);
+    DEBUG_Separator();
 }
 
 #if defined(ESP8266)
@@ -759,6 +760,7 @@ void DEBUG_WiFi_info()
 
         sprintf(DEBUGtxt, "      IP address : %s", WiFiIP2);
         DEBUG_LineOut(DEBUGtxt);
+        DEBUG_Separator();
     }
 
 //////
