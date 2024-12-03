@@ -347,7 +347,6 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
 {
     char TheLine[111] = "";
     memset(TheLine, ' ', sizeof(TheLine) -1);
-
 {
     TheLine[0] = ':';
     TheLine[1] = 'X';
@@ -358,26 +357,9 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     TheLine[DEBUG_Width + 1] = '\0';
 }
 
-    int Position = 4;
-
-    // TheLine[Position] = '{';
-    // for(size_t i = 0; i < strlen(Library); i++)
-    // {
-    //     Position++;
-    //     TheLine[Position] = Library[i];
-    // }
-    // Position++;
-    // TheLine[Position++] = '}';
-    // Position++;
-    // TheLine[Position++] = '-';
-    // // Position++;
-    // for(size_t j = 0; j < strlen(Message); j++)
-    // {
-    //     Position++;
-    //     TheLine[Position] = Message[j];
-    // }
     char Line[111] = "";
-    sprintf(Line, "{%s} - %s", Library, Message);
+
+    int Position = 4;    sprintf(Line, "{%s} - %s", Library, Message);
     for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[Position] = Line[i];
@@ -424,23 +406,13 @@ void DEBUG_Lib_Success(const char * Library, const char *Message)
     TheLine[DEBUG_Width + 1] = '\0';
 }
 
-    int Position = 4;
+    char Line[111] = "";
 
-    TheLine[Position] = '{';
-    for(size_t i = 0; i < strlen(Library); i++)
+    int Position = 4;    sprintf(Line, "{%s} - %s", Library, Message);
+    for(size_t i = 0; i < strlen(Line); i++)
     {
+        TheLine[Position] = Line[i];
         Position++;
-        TheLine[Position] = Library[i];
-    }
-    Position++;
-    TheLine[Position++] = '}';
-    Position++;
-    TheLine[Position++] = '-';
-    // Position++;
-    for(size_t j = 0; j < strlen(Message); j++)
-    {
-        Position++;
-        TheLine[Position] = Message[j];
     }
 
     Serial.println(TheLine);
