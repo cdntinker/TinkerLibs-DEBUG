@@ -378,7 +378,7 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     // }
     char Line[111] = "";
     sprintf(Line, "{%s} - %s", Library, Message);
-    for(size_t i = 0; i < strlen(Library); i++)
+    for(size_t i = 0; i < strlen(Line); i++)
     {
         Position++;
         TheLine[Position] = Line[i];
