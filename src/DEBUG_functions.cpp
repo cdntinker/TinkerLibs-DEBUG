@@ -251,8 +251,8 @@ void DEBUG_LineOut2(const char *Line)
 void DEBUG_LibMessage(const char * Library, const char *Message)
 {
     char Line[111];
-    sprintf(Line, "%s - %s", Library, Message);
-    debug_LeftText(':', 4, Line);
+    sprintf(Line, "{%s} - %s", Library, Message);
+    debug_LeftText(':', 2, Line);
 }
 
 //////////////////////////////////////////////////////////////
