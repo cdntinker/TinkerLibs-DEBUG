@@ -353,7 +353,7 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     TheLine[Position++] = '}';
     Position++;
     TheLine[Position++] = '-';
-    Position++;
+    // Position++;
     for(size_t j = 0; j < strlen(Message); j++)
     {
         Position++;
@@ -413,7 +413,7 @@ void DEBUG_Lib_Success(const char * Library, const char *Message)
     TheLine[Position++] = '}';
     Position++;
     TheLine[Position++] = '-';
-    Position++;
+    // Position++;
     for(size_t j = 0; j < strlen(Message); j++)
     {
         Position++;
@@ -473,7 +473,7 @@ void DEBUG_Lib_Event(const char * Library, const char *Message)
     TheLine[Position++] = '}';
     Position++;
     TheLine[Position++] = '-';
-    Position++;
+    // Position++;
     for(size_t j = 0; j < strlen(Message); j++)
     {
         Position++;
