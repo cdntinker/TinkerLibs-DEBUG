@@ -207,7 +207,7 @@ void DEBUG_Lib_Init(const char * Library, const char *Message)
 {
     char Line[111];
     debug_MakeDivider(':', '-');
-    sprintf(Line, "{%s} - %s", Library, Message);
+    sprintf(Line, "{%s} - Initialising: %s", Library, Message);
     debug_LeftText(':', 2, Line);
 }
 
@@ -219,6 +219,13 @@ void DEBUG_Done(const char *InitPart)
     sprintf(TheLine, "Done: %s", InitPart);
     debug_LeftText('|', 0, TheLine);
     debug_MakeDivider('+', '-');
+}
+void DEBUG_Lib_Done(const char * Library, const char *Message)
+{
+    char Line[111];
+    debug_MakeDivider(':', '-');
+    sprintf(Line, "{%s} - Done: %s", Library, Message);
+    debug_LeftText(':', 2, Line);
 }
 
 /**/
@@ -809,6 +816,7 @@ void DEBUG_Reset() {}
 void DEBUG_Init(const char *InitPart) {}
 void DEBUG_Lib_Init(const char * Library, const char *Message) {}
 void DEBUG_Done(const char *InitPart) {}
+void DEBUG_Lib_Done(const char * Library, const char *Message) {}
 void DEBUG_Title() {}
 void DEBUG_Ready() {}
 void DEBUG_Separator() {}
