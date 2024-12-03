@@ -333,10 +333,10 @@ void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
 
     for (int current = 0; Message[current] != '\0'; current++, counter++, Column++)
     {
-        if (isspace(Block[current])) // TODO: Add other delimiters here
+        if (isspace(Message[current])) // TODO: Add other delimiters here
             last_space = current;
 
-        Line[Column] = Block[current];
+        Line[Column] = Message[current];
         Line[Column + 1] = '\0'; // We're re-using Line, ensure it ends...
 
         if ((counter >= Line_Width) || (Message[current] == '\n'))
