@@ -223,9 +223,9 @@ void DEBUG_Done(const char *InitPart)
 void DEBUG_Lib_Done(const char * Library, const char *Message)
 {
     char Line[111];
-    debug_MakeDivider(':', '-');
     sprintf(Line, "{%s} - Done: %s", Library, Message);
     debug_LeftText(':', 2, Line);
+    debug_MakeDivider(':', '-');
 }
 
 /**/
