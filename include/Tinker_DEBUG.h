@@ -33,15 +33,23 @@ void DEBUG_Title(void);
 void DEBUG_Ready();
 void DEBUG_Separator();
 void DEBUG_SectionTitle(const char *Title);
+
 void DEBUG_LineOut(const char *Line);
 void DEBUG_LineOut2(const char *Line);
-void DEBUG_LibMessage(const char * Library, const char *Message);
+
+void DEBUG_Lib_Message(const char * Library, const char *Message);
 
 void DEBUG_BlockOut(const char *Block);
+
+void DEBUG_Lib_BlockOut(const char * Library, const char *Message);
 
 void DEBUG_Success(const char *Line);
 void DEBUG_Trouble(const char *Line);
 void DEBUG_Event(const char *Line);
+
+void DEBUG_Lib_Success(const char * Library, const char *Message);
+void DEBUG_Lib_Trouble(const char * Library, const char *Message);
+void DEBUG_Lib_Event(const char * Library, const char *Message);
 
 int DEBUG_ProgressBar(int dotcount, char Dot);
 void DEBUG_ProgressBar2(int dotcount);
