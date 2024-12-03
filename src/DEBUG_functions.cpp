@@ -349,8 +349,10 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
         Position++;
         TheLine[Position] = Library[i];
     }
+    // Position++;
+    TheLine[Position++] = '}';
     Position++;
-    TheLine[Position] = '}';
+    TheLine[Position++] = '-';
     Position++;
     for(size_t j = 0; j < strlen(Message); j++)
     {
