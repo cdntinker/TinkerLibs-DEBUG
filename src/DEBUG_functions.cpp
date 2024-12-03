@@ -340,17 +340,17 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     TheLine[DEBUG_Width] = ':';
     TheLine[DEBUG_Width + 1] = '\0';
 }
-    TheLine[4] = '{';
 
-    int Position = 5;
+    int Position = 4;
 
+    TheLine[Position] = '{';
     for(size_t i = 0; i < strlen(Library); i++)
     {
         Position++;
         TheLine[Position] = Library[i];
     }
     Position++;
-    TheLine[4] = '}';
+    TheLine[Position] = '}';
     Position++;
     for(size_t j = 0; j < strlen(Message); j++)
     {
