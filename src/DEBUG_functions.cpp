@@ -84,6 +84,7 @@ void setup_DEBUG()
     Serial.println();
 }
 
+/**/
 ////////////////////////////////////////////////////////////////
 //                     BREAKING CHANGE!!!                     //
 ////////////////////////////////////////////////////////////////
@@ -94,7 +95,6 @@ void setup_DEBUG()
 //
 // Future thing(s): maybe figure out a good way to change the
 //                  vertical borders back to `#`s
-/**/
 void DEBUG_Title()
 {
     debug_MakeDivider('#', '=');
@@ -359,7 +359,8 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
 
     char Line[111] = "";
 
-    int Position = 4;    sprintf(Line, "{%s} - %s", Library, Message);
+    int Position = 4;
+    sprintf(Line, "{%s} - %s", Library, Message);
     for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[Position] = Line[i];
@@ -408,7 +409,8 @@ void DEBUG_Lib_Success(const char * Library, const char *Message)
 
     char Line[111] = "";
 
-    int Position = 4;    sprintf(Line, "{%s} - %s", Library, Message);
+    int Position = 4;
+    sprintf(Line, "{%s} - %s", Library, Message);
     for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[Position] = Line[i];
@@ -457,7 +459,8 @@ void DEBUG_Lib_Event(const char * Library, const char *Message)
 
     char Line[111] = "";
 
-    int Position = 4;    sprintf(Line, "{%s} - %s", Library, Message);
+    int Position = 4;
+    sprintf(Line, "{%s} - %s", Library, Message);
     for(size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[Position] = Line[i];
