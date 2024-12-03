@@ -203,6 +203,13 @@ void DEBUG_Init(const char *InitPart)
     sprintf(TheLine, "Initialising: %s", InitPart);
     debug_LeftText('|', 0, TheLine);
 }
+void DEBUG_Lib_Init(const char * Library, const char *Message)
+{
+    char Line[111];
+    debug_MakeDivider(':', '-');
+    sprintf(Line, "{%s} - %s", Library, Message);
+    debug_LeftText(':', 0, Line);
+}
 
 /**/
 void DEBUG_Done(const char *InitPart)
@@ -794,6 +801,7 @@ void DEBUG_rssi(const char *InitPart)
 void setup_DEBUG() {}
 void DEBUG_Reset() {}
 void DEBUG_Init(const char *InitPart) {}
+void DEBUG_Lib_Init(const char * Library, const char *Message) {}
 void DEBUG_Done(const char *InitPart) {}
 void DEBUG_Title() {}
 void DEBUG_Ready() {}
