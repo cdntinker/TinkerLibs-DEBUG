@@ -352,13 +352,13 @@ void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
             {
             }
             else
-                debug_LeftText('|', 2, Line);
+                debug_LeftText(':', 2, Line);
 
         }
     }
 
     if (counter > 1)
-        debug_LeftText('|', 2, Line);
+        debug_LeftText(':', 2, Line);
 
 }
 
