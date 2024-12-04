@@ -15,7 +15,6 @@ int DEBUG_Width = 100;
 int Line_width = DEBUG_Width -6;
 char DEBUGtxt[101];
 
-#ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
 #include <Tinker_DEBUG.h>
 
@@ -83,6 +82,8 @@ void setup_DEBUG()
     Serial.println();
     Serial.println();
 }
+
+#ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
 /**/
 ////////////////////////////////////////////////////////////////
@@ -863,4 +864,4 @@ void DEBUG_Lib_Success(const char * Library, const char *Message) {}
 void DEBUG_Lib_Trouble(const char * Library, const char *Message) {}
 void DEBUG_Lib_Event(const char * Library, const char *Message) {}
 
-#endif
+#endif // DEBUGl
