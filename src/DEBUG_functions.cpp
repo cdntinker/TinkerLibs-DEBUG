@@ -205,10 +205,12 @@ void DEBUG_Init(const char *InitPart)
 }
 void DEBUG_Lib_Init(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     char Line[111];
     debug_MakeDivider(':', '-');
     sprintf(Line, "{%s} - Initialising: %s", Library, Message);
     debug_LeftText(':', 2, Line);
+#endif
 }
 
 /**/
@@ -222,10 +224,12 @@ void DEBUG_Done(const char *InitPart)
 }
 void DEBUG_Lib_Done(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     char Line[111];
     sprintf(Line, "{%s} - Done: %s", Library, Message);
     debug_LeftText(':', 2, Line);
     debug_MakeDivider(':', '-');
+#endif
 }
 
 /**/
@@ -256,9 +260,11 @@ void DEBUG_LineOut(const char *Line)
 }
 void DEBUG_Lib_LineOut(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     char Line[111];
     sprintf(Line, "{%s} - %s", Library, Message);
     debug_LeftText(':', 2, Line);
+#endif
 }
 
 /**/
@@ -268,9 +274,11 @@ void DEBUG_LineOut2(const char *Line)
 }
 void DEBUG_Lib_LineOut2(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     char Line[111];
     sprintf(Line, "{%s} -   %s", Library, Message);
     debug_LeftText(':', 2, Line);
+#endif
 }
 
 /* This needs much work to de-duplicate code... */
@@ -322,6 +330,7 @@ void DEBUG_BlockOut(const char *Block)
 }
 void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     int last_space = 0;
     int counter = 0;
     int Column = 0;
@@ -360,6 +369,7 @@ void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
     if (counter > 1)
         debug_LeftText(':', 2, Line);
 
+#endif
 }
 
 /**/
@@ -386,6 +396,7 @@ void DEBUG_Trouble(const char *Line)
 }
 void DEBUG_Lib_Trouble(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     char TheLine[111] = "";
     memset(TheLine, ' ', sizeof(TheLine) -1);
 {
@@ -409,6 +420,7 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
     }
 
     Serial.println(TheLine);
+#endif
 }
 
 /**/
@@ -435,6 +447,7 @@ void DEBUG_Success(const char *Line)
 }
 void DEBUG_Lib_Success(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     char TheLine[111] = "";
     memset(TheLine, ' ', sizeof(TheLine) -1);
 
@@ -459,6 +472,7 @@ void DEBUG_Lib_Success(const char * Library, const char *Message)
     }
 
     Serial.println(TheLine);
+#endif
 }
 
 /**/
@@ -485,6 +499,7 @@ void DEBUG_Event(const char *Line)
 }
 void DEBUG_Lib_Event(const char * Library, const char *Message)
 {
+#ifdef DEBUGl
     char TheLine[111] = "";
     memset(TheLine, ' ', sizeof(TheLine) -1);
 
@@ -509,6 +524,7 @@ void DEBUG_Lib_Event(const char * Library, const char *Message)
     }
 
     Serial.println(TheLine);
+#endif
 }
 
 /**/
@@ -796,16 +812,19 @@ void DEBUG_Wifi(const char *InitPart)
     Serial.printf("|          SSID : %-87s |\n", InitPart);
 }
 
+////  (likely obsolete...) /////
 void DEBUG_IP()
 {
     Serial.printf("|    IP address : %-81s |\n", WiFi.localIP().toString().c_str());
 }
 
+////  (likely obsolete...) /////
 void DEBUG_MAC(const char *InitPart)
 {
     Serial.printf("|    MAC address : %-83s |\n", InitPart);
 }
 
+////  (likely obsolete...) /////
 void DEBUG_rssi(const char *InitPart)
 {
     Serial.printf("|    RSSI : %-87s |\n", InitPart);
