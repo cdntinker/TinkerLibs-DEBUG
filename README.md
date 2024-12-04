@@ -15,7 +15,7 @@ These functions create a neatly formatted serial debug output while developing y
 If **DEBUG** is turned on in platformio.ini (`build_flags = -D DEBUG`), the following [functions](#the-functions) are enabled.  Otherwise, they're defined as empty functions.
 
 * Defining **DEBUGx** will give you some extra info in `DEBUG_WiFi_info()`
-* Defining **DEBUGl** will enable debugging functions for use specifically in libraries
+* Defining **DEBUGl** will enable debugging functions for use specifically in libraries. (Do note tho...  The libraries must have calls to these functions embeded to make this useful.)
 
 **NOTE:**  The Arduino core libraries for ESP-32 & ESP-8266 have `Serial.printf()`.  Apparently, not so much with the Atmel core libraries.  (How silly...)
 

@@ -203,15 +203,6 @@ void DEBUG_Init(const char *InitPart)
     sprintf(TheLine, "Initialising: %s", InitPart);
     debug_LeftText('|', 0, TheLine);
 }
-void DEBUG_Lib_Init(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    char Line[111];
-    debug_MakeDivider(':', '-');
-    sprintf(Line, "{%s} - Initialising: %s", Library, Message);
-    debug_LeftText(':', 2, Line);
-#endif
-}
 
 /**/
 void DEBUG_Done(const char *InitPart)
@@ -221,15 +212,6 @@ void DEBUG_Done(const char *InitPart)
     sprintf(TheLine, "Done: %s", InitPart);
     debug_LeftText('|', 0, TheLine);
     debug_MakeDivider('+', '-');
-}
-void DEBUG_Lib_Done(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    char Line[111];
-    sprintf(Line, "{%s} - Done: %s", Library, Message);
-    debug_LeftText(':', 2, Line);
-    debug_MakeDivider(':', '-');
-#endif
 }
 
 /**/
@@ -258,27 +240,11 @@ void DEBUG_LineOut(const char *Line)
 {
     debug_LeftText('|', 2, Line);
 }
-void DEBUG_Lib_LineOut(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    char Line[111];
-    sprintf(Line, "{%s} - %s", Library, Message);
-    debug_LeftText(':', 2, Line);
-#endif
-}
 
 /**/
 void DEBUG_LineOut2(const char *Line)
 {
     debug_LeftText('|', 4, Line);
-}
-void DEBUG_Lib_LineOut2(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    char Line[111];
-    sprintf(Line, "{%s} -   %s", Library, Message);
-    debug_LeftText(':', 2, Line);
-#endif
 }
 
 /* This needs much work to de-duplicate code... */
@@ -328,49 +294,6 @@ void DEBUG_BlockOut(const char *Block)
         debug_LeftText('|', 2, Line);
 
 }
-void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    int last_space = 0;
-    int counter = 0;
-    int Column = 0;
-    int LineNum = 0;
-
-    int Line_Width = DEBUG_Width - 6;
-
-    char Line[DEBUG_Width];
-
-    for (int current = 0; Message[current] != '\0'; current++, counter++, Column++)
-    {
-        if (isspace(Message[current])) // TODO: Add other delimiters here
-            last_space = current;
-
-        Line[Column] = Message[current];
-        Line[Column + 1] = '\0'; // We're re-using Line, ensure it ends...
-
-        if ((counter >= Line_Width) || (Message[current] == '\n'))
-        {
-            Line[Column - (current - last_space)] = '\0';
-
-            counter = 0;
-            current = last_space; // Loop back to before the partial word...
-            Column = -1;          // Back 1 past the start because the loop will bump it one...
-            LineNum++;
-
-            if ((LineNum == 1) && (strlen(Line) == 0))
-            {
-            }
-            else
-                debug_LeftText(':', 2, Line);
-
-        }
-    }
-
-    if (counter > 1)
-        debug_LeftText(':', 2, Line);
-
-#endif
-}
 
 /**/
 void DEBUG_Trouble(const char *Line)
@@ -393,34 +316,6 @@ void DEBUG_Trouble(const char *Line)
     }
 
     Serial.println(TheLine);
-}
-void DEBUG_Lib_Trouble(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    char TheLine[111] = "";
-    memset(TheLine, ' ', sizeof(TheLine) -1);
-{
-    TheLine[0] = ':';
-    TheLine[1] = 'X';
-    TheLine[2] = 'X';
-    TheLine[DEBUG_Width-2] = 'X';
-    TheLine[DEBUG_Width-1] = 'X';
-    TheLine[DEBUG_Width] = ':';
-    TheLine[DEBUG_Width + 1] = '\0';
-}
-
-    char Line[111] = "";
-
-    int Position = 4;
-    sprintf(Line, "{%s} - %s", Library, Message);
-    for(size_t i = 0; i < strlen(Line); i++)
-    {
-        TheLine[Position] = Line[i];
-        Position++;
-    }
-
-    Serial.println(TheLine);
-#endif
 }
 
 /**/
@@ -445,35 +340,6 @@ void DEBUG_Success(const char *Line)
 
     Serial.println(TheLine);
 }
-void DEBUG_Lib_Success(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    char TheLine[111] = "";
-    memset(TheLine, ' ', sizeof(TheLine) -1);
-
-{
-    TheLine[0] = ':';
-    TheLine[1] = '+';
-    TheLine[2] = '+';
-    TheLine[DEBUG_Width-2] = '+';
-    TheLine[DEBUG_Width-1] = '+';
-    TheLine[DEBUG_Width] = ':';
-    TheLine[DEBUG_Width + 1] = '\0';
-}
-
-    char Line[111] = "";
-
-    int Position = 4;
-    sprintf(Line, "{%s} - %s", Library, Message);
-    for(size_t i = 0; i < strlen(Line); i++)
-    {
-        TheLine[Position] = Line[i];
-        Position++;
-    }
-
-    Serial.println(TheLine);
-#endif
-}
 
 /**/
 void DEBUG_Event(const char *Line)
@@ -496,35 +362,6 @@ void DEBUG_Event(const char *Line)
     }
 
     Serial.println(TheLine);
-}
-void DEBUG_Lib_Event(const char * Library, const char *Message)
-{
-#ifdef DEBUGl
-    char TheLine[111] = "";
-    memset(TheLine, ' ', sizeof(TheLine) -1);
-
-{
-    TheLine[0] = ':';
-    TheLine[1] = '-';
-    TheLine[2] = '>';
-    TheLine[DEBUG_Width-2] = '<';
-    TheLine[DEBUG_Width-1] = '-';
-    TheLine[DEBUG_Width] = ':';
-    TheLine[DEBUG_Width + 1] = '\0';
-}
-
-    char Line[111] = "";
-
-    int Position = 4;
-    sprintf(Line, "{%s} - %s", Library, Message);
-    for(size_t i = 0; i < strlen(Line); i++)
-    {
-        TheLine[Position] = Line[i];
-        Position++;
-    }
-
-    Serial.println(TheLine);
-#endif
 }
 
 /**/
@@ -632,10 +469,6 @@ void DEBUG_ESP_info()
     DEBUG_LineOut(Line);
     DEBUG_Separator();
 }
-
-#if defined(ESP8266)
-#elif defined(ESP32)
-#endif
 
 ////////////////////////////////////////////////////////////////
 //                   WiFi Related Debugging                   //
@@ -843,24 +676,16 @@ void DEBUG_rssi(const char *InitPart)
 void setup_DEBUG() {}
 void DEBUG_Reset() {}
 void DEBUG_Init(const char *InitPart) {}
-void DEBUG_Lib_Init(const char * Library, const char *Message) {}
 void DEBUG_Done(const char *InitPart) {}
-void DEBUG_Lib_Done(const char * Library, const char *Message) {}
 void DEBUG_Title() {}
 void DEBUG_Ready() {}
 void DEBUG_Separator() {}
 void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}
 void DEBUG_LineOut2(const char *Line) {}
-void DEBUG_Lib_LineOut(const char * Library, const char *Message) {}
-void DEBUG_Lib_LineOut2(const char * Library, const char *Message) {}
-void DEBUG_Lib_BlockOut(const char * Library, const char *Message) {}
 void DEBUG_Trouble(const char *Line) {}
 void DEBUG_Success(const char *Line) {}
 void DEBUG_Event(const char *Line) {}
-void DEBUG_Lib_Success(const char * Library, const char *Message) {}
-void DEBUG_Lib_Trouble(const char * Library, const char *Message) {}
-void DEBUG_Lib_Event(const char * Library, const char *Message) {}
 int DEBUG_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_ProgressBar2(int dotcount) {}
 
@@ -876,3 +701,166 @@ void DEBUG_MAC(const char *InitPart) {}
 void DEBUG_rssi(const char *InitPart) {}
 
 #endif // DEBUG
+
+/* ************************************************************************************************************* */
+#ifdef DEBUGl
+
+void DEBUG_Lib_Init(const char * Library, const char *Message)
+{
+    char Line[111];
+    debug_MakeDivider(':', '-');
+    sprintf(Line, "{%s} - Initialising: %s", Library, Message);
+    debug_LeftText(':', 2, Line);
+}
+void DEBUG_Lib_Done(const char * Library, const char *Message)
+{
+    char Line[111];
+    sprintf(Line, "{%s} - Done: %s", Library, Message);
+    debug_LeftText(':', 2, Line);
+    debug_MakeDivider(':', '-');
+}
+void DEBUG_Lib_LineOut(const char * Library, const char *Message)
+{
+    char Line[111];
+    sprintf(Line, "{%s} - %s", Library, Message);
+    debug_LeftText(':', 2, Line);
+}
+void DEBUG_Lib_LineOut2(const char * Library, const char *Message)
+{
+    char Line[111];
+    sprintf(Line, "{%s} -   %s", Library, Message);
+    debug_LeftText(':', 2, Line);
+}
+void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
+{
+    int last_space = 0;
+    int counter = 0;
+    int Column = 0;
+    int LineNum = 0;
+
+    int Line_Width = DEBUG_Width - 6;
+
+    char Line[DEBUG_Width];
+
+    for (int current = 0; Message[current] != '\0'; current++, counter++, Column++)
+    {
+        if (isspace(Message[current])) // TODO: Add other delimiters here
+            last_space = current;
+
+        Line[Column] = Message[current];
+        Line[Column + 1] = '\0'; // We're re-using Line, ensure it ends...
+
+        if ((counter >= Line_Width) || (Message[current] == '\n'))
+        {
+            Line[Column - (current - last_space)] = '\0';
+
+            counter = 0;
+            current = last_space; // Loop back to before the partial word...
+            Column = -1;          // Back 1 past the start because the loop will bump it one...
+            LineNum++;
+
+            if ((LineNum == 1) && (strlen(Line) == 0))
+            {
+            }
+            else
+                debug_LeftText(':', 2, Line);
+
+        }
+    }
+
+    if (counter > 1)
+        debug_LeftText(':', 2, Line);
+
+}
+void DEBUG_Lib_Trouble(const char * Library, const char *Message)
+{
+    char TheLine[111] = "";
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+{
+    TheLine[0] = ':';
+    TheLine[1] = 'X';
+    TheLine[2] = 'X';
+    TheLine[DEBUG_Width-2] = 'X';
+    TheLine[DEBUG_Width-1] = 'X';
+    TheLine[DEBUG_Width] = ':';
+    TheLine[DEBUG_Width + 1] = '\0';
+}
+
+    char Line[111] = "";
+
+    int Position = 4;
+    sprintf(Line, "{%s} - %s", Library, Message);
+    for(size_t i = 0; i < strlen(Line); i++)
+    {
+        TheLine[Position] = Line[i];
+        Position++;
+    }
+
+    Serial.println(TheLine);
+}
+void DEBUG_Lib_Success(const char * Library, const char *Message)
+{
+    char TheLine[111] = "";
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+{
+    TheLine[0] = ':';
+    TheLine[1] = '+';
+    TheLine[2] = '+';
+    TheLine[DEBUG_Width-2] = '+';
+    TheLine[DEBUG_Width-1] = '+';
+    TheLine[DEBUG_Width] = ':';
+    TheLine[DEBUG_Width + 1] = '\0';
+}
+
+    char Line[111] = "";
+
+    int Position = 4;
+    sprintf(Line, "{%s} - %s", Library, Message);
+    for(size_t i = 0; i < strlen(Line); i++)
+    {
+        TheLine[Position] = Line[i];
+        Position++;
+    }
+
+    Serial.println(TheLine);
+}
+void DEBUG_Lib_Event(const char * Library, const char *Message)
+{
+    char TheLine[111] = "";
+    memset(TheLine, ' ', sizeof(TheLine) -1);
+
+{
+    TheLine[0] = ':';
+    TheLine[1] = '-';
+    TheLine[2] = '>';
+    TheLine[DEBUG_Width-2] = '<';
+    TheLine[DEBUG_Width-1] = '-';
+    TheLine[DEBUG_Width] = ':';
+    TheLine[DEBUG_Width + 1] = '\0';
+}
+
+    char Line[111] = "";
+
+    int Position = 4;
+    sprintf(Line, "{%s} - %s", Library, Message);
+    for(size_t i = 0; i < strlen(Line); i++)
+    {
+        TheLine[Position] = Line[i];
+        Position++;
+    }
+
+    Serial.println(TheLine);
+}
+
+#else
+void DEBUG_Lib_Init(const char * Library, const char *Message) {}
+void DEBUG_Lib_Done(const char * Library, const char *Message) {}
+void DEBUG_Lib_LineOut(const char * Library, const char *Message) {}
+void DEBUG_Lib_LineOut2(const char * Library, const char *Message) {}
+void DEBUG_Lib_BlockOut(const char * Library, const char *Message) {}
+void DEBUG_Lib_Success(const char * Library, const char *Message) {}
+void DEBUG_Lib_Trouble(const char * Library, const char *Message) {}
+void DEBUG_Lib_Event(const char * Library, const char *Message) {}
+
+#endif

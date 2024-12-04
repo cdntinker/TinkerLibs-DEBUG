@@ -30,38 +30,42 @@ extern char DEBUGtxt[];
 void setup_DEBUG();
 
 void DEBUG_Title(void);
-void DEBUG_Ready();
+
+String return_reset_reason(uint8_t reason);
+
+void DEBUG_Reset();
 void DEBUG_Separator();
 void DEBUG_SectionTitle(const char *Title);
 
+void DEBUG_Init(const char *InitPart);
+void DEBUG_Done(const char *InitPart);
+
 void DEBUG_LineOut(const char *Line);
 void DEBUG_LineOut2(const char *Line);
-
-void DEBUG_Lib_LineOut(const char * Library, const char *Message);
-void DEBUG_Lib_LineOut2(const char * Library, const char *Message);
-
-void DEBUG_BlockOut(const char *Block);
-
-void DEBUG_Lib_BlockOut(const char * Library, const char *Message);
 
 void DEBUG_Success(const char *Line);
 void DEBUG_Trouble(const char *Line);
 void DEBUG_Event(const char *Line);
 
-void DEBUG_Lib_Success(const char * Library, const char *Message);
-void DEBUG_Lib_Trouble(const char * Library, const char *Message);
-void DEBUG_Lib_Event(const char * Library, const char *Message);
+void DEBUG_BlockOut(const char *Block);
 
 int DEBUG_ProgressBar(int dotcount, char Dot);
 void DEBUG_ProgressBar2(int dotcount);
 
-void DEBUG_Reset();
-String return_reset_reason(uint8_t reason);
+void DEBUG_Ready();
 
-void DEBUG_Init(const char *InitPart);
 void DEBUG_Lib_Init(const char * Library, const char *Message);
-void DEBUG_Done(const char *InitPart);
 void DEBUG_Lib_Done(const char * Library, const char *Message);
+
+void DEBUG_Lib_LineOut(const char * Library, const char *Message);
+void DEBUG_Lib_LineOut2(const char * Library, const char *Message);
+
+void DEBUG_Lib_Success(const char * Library, const char *Message);
+void DEBUG_Lib_Trouble(const char * Library, const char *Message);
+void DEBUG_Lib_Event(const char * Library, const char *Message);
+
+void DEBUG_Lib_BlockOut(const char * Library, const char *Message);
+
 
 void DEBUG_ESP_info();
 void DEBUG_WiFi_info();
