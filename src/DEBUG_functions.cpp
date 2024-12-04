@@ -83,6 +83,54 @@ void setup_DEBUG()
     Serial.println();
 }
 
+/* This needs much work to de-duplicate code... */
+//////////////////////////////////////////////////////////////
+// NOTE:
+// In order to insert a blank line in your text block, place
+// `\n\n` where you want the blank line to appear.
+//////////////////////////////////////////////////////////////
+void DEBUG_BlockOut(const char *Block)
+{
+    int last_space = 0;
+    int counter = 0;
+    int Column = 0;
+    int LineNum = 0;
+
+    int Line_Width = DEBUG_Width - 6;
+
+    char Line[DEBUG_Width];
+
+    for (int current = 0; Block[current] != '\0'; current++, counter++, Column++)
+    {
+        if (isspace(Block[current])) // TODO: Add other delimiters here
+            last_space = current;
+
+        Line[Column] = Block[current];
+        Line[Column + 1] = '\0'; // We're re-using Line, ensure it ends...
+
+        if ((counter >= Line_Width) || (Block[current] == '\n'))
+        {
+            Line[Column - (current - last_space)] = '\0';
+
+            counter = 0;
+            current = last_space; // Loop back to before the partial word...
+            Column = -1;          // Back 1 past the start because the loop will bump it one...
+            LineNum++;
+
+            if ((LineNum == 1) && (strlen(Line) == 0))
+            {
+            }
+            else
+                debug_LeftText('|', 2, Line);
+
+        }
+    }
+
+    if (counter > 1)
+        debug_LeftText('|', 2, Line);
+
+}
+
 #ifdef DEBUG // If DEBUG is turned on in platformio.ini
 
 /**/
@@ -246,54 +294,6 @@ void DEBUG_LineOut(const char *Line)
 void DEBUG_LineOut2(const char *Line)
 {
     debug_LeftText('|', 4, Line);
-}
-
-/* This needs much work to de-duplicate code... */
-//////////////////////////////////////////////////////////////
-// NOTE:
-// In order to insert a blank line in your text block, place
-// `\n\n` where you want the blank line to appear.
-//////////////////////////////////////////////////////////////
-void DEBUG_BlockOut(const char *Block)
-{
-    int last_space = 0;
-    int counter = 0;
-    int Column = 0;
-    int LineNum = 0;
-
-    int Line_Width = DEBUG_Width - 6;
-
-    char Line[DEBUG_Width];
-
-    for (int current = 0; Block[current] != '\0'; current++, counter++, Column++)
-    {
-        if (isspace(Block[current])) // TODO: Add other delimiters here
-            last_space = current;
-
-        Line[Column] = Block[current];
-        Line[Column + 1] = '\0'; // We're re-using Line, ensure it ends...
-
-        if ((counter >= Line_Width) || (Block[current] == '\n'))
-        {
-            Line[Column - (current - last_space)] = '\0';
-
-            counter = 0;
-            current = last_space; // Loop back to before the partial word...
-            Column = -1;          // Back 1 past the start because the loop will bump it one...
-            LineNum++;
-
-            if ((LineNum == 1) && (strlen(Line) == 0))
-            {
-            }
-            else
-                debug_LeftText('|', 2, Line);
-
-        }
-    }
-
-    if (counter > 1)
-        debug_LeftText('|', 2, Line);
-
 }
 
 /**/
@@ -676,6 +676,7 @@ void DEBUG_rssi(const char *InitPart)
 #else // If DEBUG is NOT turned on in platformio.ini
 // void setup_DEBUG() {}
 void DEBUG_Reset() {}
+void DEBUG_BlockOut(const char *Block) {}
 void DEBUG_Init(const char *InitPart) {}
 void DEBUG_Done(const char *InitPart) {}
 void DEBUG_Title() {}
