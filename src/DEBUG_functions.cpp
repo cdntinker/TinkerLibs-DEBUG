@@ -675,8 +675,8 @@ void DEBUG_rssi(const char *InitPart)
 
 #else // If DEBUG is NOT turned on in platformio.ini
 // void setup_DEBUG() {}
+// void DEBUG_BlockOut(const char *Block) {}
 void DEBUG_Reset() {}
-void DEBUG_BlockOut(const char *Block) {}
 void DEBUG_Init(const char *InitPart) {}
 void DEBUG_Done(const char *InitPart) {}
 void DEBUG_Title() {}
