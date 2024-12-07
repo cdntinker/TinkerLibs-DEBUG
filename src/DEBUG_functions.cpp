@@ -411,15 +411,15 @@ void DEBUG_ESP_info()
 
     // const char *ChipModel = "Dunno"; // Don't actually know
     const char *ChipModel;
-     if (is_esp8285)
+    if (is_esp8285)
     {
-    ChipModel = "ESP8285";
+        ChipModel = "ESP8285";
     }
     else
     {
-    ChipModel = "ESP8266";
+        ChipModel = "ESP8266";
     }
-    double ChipRev = 0;              // Don't actually know
+    double ChipRev = 0; // Don't actually know
     uint32_t ChipID = ESP.getChipId();
     uint32_t ChipCores = 1;
     uint32_t FlashID = ESP.getFlashChipId();
