@@ -430,8 +430,8 @@ void DEBUG_ESP_info()
     sprintf(CoreVer, "%s", ESP.getCoreVersion().c_str());
     uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-    // const char *ChipModel = ESP.getChipModel();
-    uint32_t ChipRev = ESP.getChipRevision();
+    const char *ChipModel = ESP.getChipModel();
+    // uint32_t ChipRev = ESP.getChipRevision();
     sprintf(ChipRevC, "%f", ESP.getChipRevision());
     ChipRevC[3] = '\0';
     uint32_t ChipID = 0; // ESP efuse ID
