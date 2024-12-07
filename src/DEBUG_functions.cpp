@@ -407,8 +407,19 @@ void DEBUG_ESP_info()
         READ_PERI_REG(0x3ff00058),
         READ_PERI_REG(0x3ff0005c)};
 
+    bool is_esp8285 = ((efuse_blocks[0] & (1 << 4)) || (efuse_blocks[2] & (1 << 16)));
+
     // const char *ChipModel = "Dunno"; // Don't actually know
-    const char *ChipModel = (is_esp8285 = ((efuse_blocks[0] & (1 << 4)) || (efuse_blocks[2] & (1 << 16)))) ? "ESP-8285" : "ESP8266";
+    const char *ChipModel;
+     if (is_esp8285)
+    {
+    ChipModel = "ESP8285";
+    }
+    else
+    {
+    ChipModel = "ESP8266";
+    }
+    const char *ChipModel = is_esp8285 ? "ESP-8285" : "ESP8266";
     double ChipRev = 0;              // Don't actually know
     uint32_t ChipID = ESP.getChipId();
     uint32_t ChipCores = 1;
