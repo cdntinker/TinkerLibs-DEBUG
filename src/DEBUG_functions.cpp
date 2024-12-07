@@ -12,9 +12,8 @@ int DEBUG_Width = DEBUGwidth;
 int DEBUG_Width = 100;
 #endif
 
-int Line_width = DEBUG_Width -6;
+int Line_width = DEBUG_Width - 6;
 char DEBUGtxt[101];
-
 
 #include <Tinker_DEBUG.h>
 
@@ -22,21 +21,20 @@ void debug_MakeDivider(char End, char Bar)
 {
     char TheLine[111] = "";
 
-    memset(TheLine, Bar, sizeof(TheLine) -1);
+    memset(TheLine, Bar, sizeof(TheLine) - 1);
 
     TheLine[0] = End;
     TheLine[DEBUG_Width] = End;
     TheLine[DEBUG_Width + 1] = '\0';
 
     Serial.println(TheLine);
-
 }
 
-void debug_CentredText(char End, const char* Text)
+void debug_CentredText(char End, const char *Text)
 {
     char TheLine[111] = "";
 
-    memset(TheLine, ' ', sizeof(TheLine) -1);
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
 
     int TextLength = strlen(Text);
     int MidPoint = DEBUG_Width / 2;
@@ -46,7 +44,7 @@ void debug_CentredText(char End, const char* Text)
     TheLine[DEBUG_Width] = End;
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < TextLength; i++)
+    for (int i = 0; i < TextLength; i++)
     {
         TheLine[StartPoint + i] = Text[i];
     }
@@ -54,12 +52,12 @@ void debug_CentredText(char End, const char* Text)
     Serial.println(TheLine);
 }
 
-void debug_LeftText(char End, int Indent, const char* Text)
+void debug_LeftText(char End, int Indent, const char *Text)
 {
 
     char TheLine[111] = "";
 
-    memset(TheLine, ' ', sizeof(TheLine) -1);
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
 
     int TextLength = strlen(Text);
 
@@ -67,7 +65,7 @@ void debug_LeftText(char End, int Indent, const char* Text)
     TheLine[DEBUG_Width] = End;
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(int i = 0; i < TextLength; i++)
+    for (int i = 0; i < TextLength; i++)
     {
         TheLine[Indent + 2 + i] = Text[i];
     }
@@ -253,19 +251,19 @@ void DEBUG_Trouble(const char *Line)
 {
     char TheLine[111] = "";
 
-    memset(TheLine, ' ', sizeof(TheLine) -1);
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
 
     TheLine[0] = '+';
     TheLine[1] = 'X';
     TheLine[2] = 'X';
-    TheLine[DEBUG_Width-2] = 'X';
-    TheLine[DEBUG_Width-1] = 'X';
+    TheLine[DEBUG_Width - 2] = 'X';
+    TheLine[DEBUG_Width - 1] = 'X';
     TheLine[DEBUG_Width] = '+';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(size_t i = 0; i < strlen(Line); i++)
+    for (size_t i = 0; i < strlen(Line); i++)
     {
-        TheLine[i+6] = Line[i];
+        TheLine[i + 6] = Line[i];
     }
 
     Serial.println(TheLine);
@@ -276,19 +274,19 @@ void DEBUG_Success(const char *Line)
 {
     char TheLine[111] = "";
 
-    memset(TheLine, ' ', sizeof(TheLine) -1);
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
 
     TheLine[0] = '+';
     TheLine[1] = '+';
     TheLine[2] = '+';
-    TheLine[DEBUG_Width-2] = '+';
-    TheLine[DEBUG_Width-1] = '+';
+    TheLine[DEBUG_Width - 2] = '+';
+    TheLine[DEBUG_Width - 1] = '+';
     TheLine[DEBUG_Width] = '+';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(size_t i = 0; i < strlen(Line); i++)
+    for (size_t i = 0; i < strlen(Line); i++)
     {
-        TheLine[i+6] = Line[i];
+        TheLine[i + 6] = Line[i];
     }
 
     Serial.println(TheLine);
@@ -299,19 +297,19 @@ void DEBUG_Event(const char *Line)
 {
     char TheLine[111] = "";
 
-    memset(TheLine, ' ', sizeof(TheLine) -1);
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
 
     TheLine[0] = '+';
     TheLine[1] = '-';
     TheLine[2] = '>';
-    TheLine[DEBUG_Width-2] = '<';
-    TheLine[DEBUG_Width-1] = '-';
+    TheLine[DEBUG_Width - 2] = '<';
+    TheLine[DEBUG_Width - 1] = '-';
     TheLine[DEBUG_Width] = '+';
     TheLine[DEBUG_Width + 1] = '\0';
 
-    for(size_t i = 0; i < strlen(Line); i++)
+    for (size_t i = 0; i < strlen(Line); i++)
     {
-        TheLine[i+6] = Line[i];
+        TheLine[i + 6] = Line[i];
     }
 
     Serial.println(TheLine);
@@ -356,13 +354,11 @@ void DEBUG_BlockOut(const char *Block)
             }
             else
                 debug_LeftText('|', 2, Line);
-
         }
     }
 
     if (counter > 1)
         debug_LeftText('|', 2, Line);
-
 }
 
 /**/
@@ -405,7 +401,14 @@ void DEBUG_ESP_info()
     char Line[46];
     char CoreVer[12];
 #if defined(ESP8266)
-    const char *ChipModel = "Dunno"; // Don't actually know
+    const uint32_t efuse_blocks[4]{
+        READ_PERI_REG(0x3ff00050),
+        READ_PERI_REG(0x3ff00054),
+        READ_PERI_REG(0x3ff00058),
+        READ_PERI_REG(0x3ff0005c)};
+
+    // const char *ChipModel = "Dunno"; // Don't actually know
+    const char *ChipModel = (is_esp8285 = ((efuse_blocks[0] & (1 << 4)) || (efuse_blocks[2] & (1 << 16)))) ? "ESP-8285" : "ESP8266";
     double ChipRev = 0;              // Don't actually know
     uint32_t ChipID = ESP.getChipId();
     uint32_t ChipCores = 1;
@@ -464,9 +467,9 @@ void DEBUG_ESP_info()
     sprintf(Line, " ESP SDK version : %s", SDKver);
     DEBUG_LineOut(Line);
     sprintf(Line, "  Flash ide mode : %s", (ideMode == FM_QIO ? "QIO" : ideMode == FM_QOUT ? "QOUT"
-                                                                   : ideMode == FM_DIO    ? "DIO"
-                                                                   : ideMode == FM_DOUT   ? "DOUT"
-                                                                                          : "BORKED"));
+                                                                    : ideMode == FM_DIO    ? "DIO"
+                                                                    : ideMode == FM_DOUT   ? "DOUT"
+                                                                                           : "BORKED"));
     DEBUG_LineOut(Line);
     DEBUG_Separator();
 }
@@ -707,33 +710,33 @@ void DEBUG_rssi(const char *InitPart) {}
 /* ************************************************************************************************************* */
 #ifdef DEBUGl
 
-void DEBUG_Lib_Init(const char * Library, const char *Message)
+void DEBUG_Lib_Init(const char *Library, const char *Message)
 {
     char Line[111];
     debug_MakeDivider(':', '-');
     sprintf(Line, "{%s} - Initialising: %s", Library, Message);
     debug_LeftText(':', 2, Line);
 }
-void DEBUG_Lib_Done(const char * Library, const char *Message)
+void DEBUG_Lib_Done(const char *Library, const char *Message)
 {
     char Line[111];
     sprintf(Line, "{%s} - Done: %s", Library, Message);
     debug_LeftText(':', 2, Line);
     debug_MakeDivider(':', '-');
 }
-void DEBUG_Lib_LineOut(const char * Library, const char *Message)
+void DEBUG_Lib_LineOut(const char *Library, const char *Message)
 {
     char Line[111];
     sprintf(Line, "{%s} - %s", Library, Message);
     debug_LeftText(':', 2, Line);
 }
-void DEBUG_Lib_LineOut2(const char * Library, const char *Message)
+void DEBUG_Lib_LineOut2(const char *Library, const char *Message)
 {
     char Line[111];
     sprintf(Line, "{%s} -   %s", Library, Message);
     debug_LeftText(':', 2, Line);
 }
-void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
+void DEBUG_Lib_BlockOut(const char *Library, const char *Message)
 {
     int last_space = 0;
     int counter = 0;
@@ -766,33 +769,31 @@ void DEBUG_Lib_BlockOut(const char * Library, const char *Message)
             }
             else
                 debug_LeftText(':', 2, Line);
-
         }
     }
 
     if (counter > 1)
         debug_LeftText(':', 2, Line);
-
 }
-void DEBUG_Lib_Trouble(const char * Library, const char *Message)
+void DEBUG_Lib_Trouble(const char *Library, const char *Message)
 {
     char TheLine[111] = "";
-    memset(TheLine, ' ', sizeof(TheLine) -1);
-{
-    TheLine[0] = ':';
-    TheLine[1] = 'X';
-    TheLine[2] = 'X';
-    TheLine[DEBUG_Width-2] = 'X';
-    TheLine[DEBUG_Width-1] = 'X';
-    TheLine[DEBUG_Width] = ':';
-    TheLine[DEBUG_Width + 1] = '\0';
-}
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
+    {
+        TheLine[0] = ':';
+        TheLine[1] = 'X';
+        TheLine[2] = 'X';
+        TheLine[DEBUG_Width - 2] = 'X';
+        TheLine[DEBUG_Width - 1] = 'X';
+        TheLine[DEBUG_Width] = ':';
+        TheLine[DEBUG_Width + 1] = '\0';
+    }
 
     char Line[111] = "";
 
     int Position = 4;
     sprintf(Line, "{%s} - %s", Library, Message);
-    for(size_t i = 0; i < strlen(Line); i++)
+    for (size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[Position] = Line[i];
         Position++;
@@ -800,26 +801,26 @@ void DEBUG_Lib_Trouble(const char * Library, const char *Message)
 
     Serial.println(TheLine);
 }
-void DEBUG_Lib_Success(const char * Library, const char *Message)
+void DEBUG_Lib_Success(const char *Library, const char *Message)
 {
     char TheLine[111] = "";
-    memset(TheLine, ' ', sizeof(TheLine) -1);
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
 
-{
-    TheLine[0] = ':';
-    TheLine[1] = '+';
-    TheLine[2] = '+';
-    TheLine[DEBUG_Width-2] = '+';
-    TheLine[DEBUG_Width-1] = '+';
-    TheLine[DEBUG_Width] = ':';
-    TheLine[DEBUG_Width + 1] = '\0';
-}
+    {
+        TheLine[0] = ':';
+        TheLine[1] = '+';
+        TheLine[2] = '+';
+        TheLine[DEBUG_Width - 2] = '+';
+        TheLine[DEBUG_Width - 1] = '+';
+        TheLine[DEBUG_Width] = ':';
+        TheLine[DEBUG_Width + 1] = '\0';
+    }
 
     char Line[111] = "";
 
     int Position = 4;
     sprintf(Line, "{%s} - %s", Library, Message);
-    for(size_t i = 0; i < strlen(Line); i++)
+    for (size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[Position] = Line[i];
         Position++;
@@ -827,26 +828,26 @@ void DEBUG_Lib_Success(const char * Library, const char *Message)
 
     Serial.println(TheLine);
 }
-void DEBUG_Lib_Event(const char * Library, const char *Message)
+void DEBUG_Lib_Event(const char *Library, const char *Message)
 {
     char TheLine[111] = "";
-    memset(TheLine, ' ', sizeof(TheLine) -1);
+    memset(TheLine, ' ', sizeof(TheLine) - 1);
 
-{
-    TheLine[0] = ':';
-    TheLine[1] = '-';
-    TheLine[2] = '>';
-    TheLine[DEBUG_Width-2] = '<';
-    TheLine[DEBUG_Width-1] = '-';
-    TheLine[DEBUG_Width] = ':';
-    TheLine[DEBUG_Width + 1] = '\0';
-}
+    {
+        TheLine[0] = ':';
+        TheLine[1] = '-';
+        TheLine[2] = '>';
+        TheLine[DEBUG_Width - 2] = '<';
+        TheLine[DEBUG_Width - 1] = '-';
+        TheLine[DEBUG_Width] = ':';
+        TheLine[DEBUG_Width + 1] = '\0';
+    }
 
     char Line[111] = "";
 
     int Position = 4;
     sprintf(Line, "{%s} - %s", Library, Message);
-    for(size_t i = 0; i < strlen(Line); i++)
+    for (size_t i = 0; i < strlen(Line); i++)
     {
         TheLine[Position] = Line[i];
         Position++;
@@ -856,13 +857,13 @@ void DEBUG_Lib_Event(const char * Library, const char *Message)
 }
 
 #else
-void DEBUG_Lib_Init(const char * Library, const char *Message) {}
-void DEBUG_Lib_Done(const char * Library, const char *Message) {}
-void DEBUG_Lib_LineOut(const char * Library, const char *Message) {}
-void DEBUG_Lib_LineOut2(const char * Library, const char *Message) {}
-void DEBUG_Lib_BlockOut(const char * Library, const char *Message) {}
-void DEBUG_Lib_Success(const char * Library, const char *Message) {}
-void DEBUG_Lib_Trouble(const char * Library, const char *Message) {}
-void DEBUG_Lib_Event(const char * Library, const char *Message) {}
+void DEBUG_Lib_Init(const char *Library, const char *Message) {}
+void DEBUG_Lib_Done(const char *Library, const char *Message) {}
+void DEBUG_Lib_LineOut(const char *Library, const char *Message) {}
+void DEBUG_Lib_LineOut2(const char *Library, const char *Message) {}
+void DEBUG_Lib_BlockOut(const char *Library, const char *Message) {}
+void DEBUG_Lib_Success(const char *Library, const char *Message) {}
+void DEBUG_Lib_Trouble(const char *Library, const char *Message) {}
+void DEBUG_Lib_Event(const char *Library, const char *Message) {}
 
 #endif // DEBUGl
