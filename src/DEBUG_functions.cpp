@@ -400,6 +400,8 @@ void DEBUG_ESP_info()
 {
     char Line[46];
     char CoreVer[12];
+    char ChipRevC[32];
+
 #if defined(ESP8266)
     const uint32_t efuse_blocks[4]{
         READ_PERI_REG(0x3ff00050),
@@ -419,7 +421,8 @@ void DEBUG_ESP_info()
     {
         ChipModel = "ESP8266";
     }
-    double ChipRev = 0; // Don't actually know
+    // double ChipRev = 0; // Don't actually know
+    strcpy(ChipRevC, "NoClue");
     uint32_t ChipID = ESP.getChipId();
     uint32_t ChipCores = 1;
     uint32_t FlashID = ESP.getFlashChipId();
@@ -427,8 +430,10 @@ void DEBUG_ESP_info()
     sprintf(CoreVer, "%s", ESP.getCoreVersion().c_str());
     uint32_t ideMode = ESP.getFlashChipMode();
 #elif defined(ESP32)
-    const char *ChipModel = ESP.getChipModel();
+    // const char *ChipModel = ESP.getChipModel();
     uint32_t ChipRev = ESP.getChipRevision();
+    sprintf(ChipRevC, "%f", ESP.getChipRevision());
+    ChipRevC[3] = '\0';
     uint32_t ChipID = 0; // ESP efuse ID
     for (int i = 0; i < 17; i = i + 8)
     {
@@ -448,7 +453,8 @@ void DEBUG_ESP_info()
 
     DEBUG_SectionTitle("ESP Info");
 
-    sprintf(Line, "  ESP Chip model : %s Rev %.1f", ChipModel, ChipRev);
+    // sprintf(Line, "  ESP Chip model : %s Rev %.1f", ChipModel, ChipRev);
+    sprintf(Line, "  ESP Chip model : %s Rev %s", ChipModel, ChipRevC);
     DEBUG_LineOut(Line);
     sprintf(Line, "         Chip ID : %08X", ChipID);
     DEBUG_LineOut(Line);
