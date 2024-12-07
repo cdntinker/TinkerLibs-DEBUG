@@ -433,7 +433,7 @@ void DEBUG_ESP_info()
     const char *ChipModel = ESP.getChipModel();
     // uint32_t ChipRev = ESP.getChipRevision();
     sprintf(ChipRevC, "%f", ESP.getChipRevision());
-    ChipRevC[3] = '\0';
+    // ChipRevC[3] = '\0';
     uint32_t ChipID = 0; // ESP efuse ID
     for (int i = 0; i < 17; i = i + 8)
     {
