@@ -398,7 +398,7 @@ void DEBUG_ProgressBar2(int dotcount)
 // Hardware & platform information
 void DEBUG_ESP_info()
 {
-    char Line[46];
+    char Line[111];
     char CoreVer[12];
     char ChipRevC[32];
 
