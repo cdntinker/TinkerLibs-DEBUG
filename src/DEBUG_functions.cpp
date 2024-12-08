@@ -199,7 +199,7 @@ void DEBUG_Init(const char *InitPart)
     char TheLine[111] = "";
 
     debug_MakeDivider('+', '-');
-    sprintf(TheLine, "Initialising: %s", InitPart);
+    sprintf(TheLine, "Init: %s", InitPart);
     debug_LeftText('|', 0, TheLine);
 }
 
@@ -730,7 +730,7 @@ void DEBUG_Lib_Init(const char *Library, const char *Message)
 {
     char Line[111];
     debug_MakeDivider(':', '-');
-    sprintf(Line, "{%s} - Initialising: %s", Library, Message);
+    sprintf(Line, "{%s} - Init: %s", Library, Message);
     debug_LeftText(':', 2, Line);
 }
 void DEBUG_Lib_Done(const char *Library, const char *Message)
