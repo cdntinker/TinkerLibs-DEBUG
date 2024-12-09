@@ -521,6 +521,7 @@ void DEBUG_WiFi_info()
     char WiFiIP2[16] = "___.___.___.___";
     char WiFiSSID2[32] = "____________";
     char WiFiPASS2[32] = "____________";
+    int WiFiClients = 0;
 
     const char *WiFi_MODES[] = {"NULL", "STA", "AP", "STA+AP"};
     strcpy(WiFiMODE, WiFi_MODES[WiFi.getMode()]);
@@ -542,6 +543,7 @@ void DEBUG_WiFi_info()
         strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
         strcpy(WiFiSSID2, APssid);
         strcpy(WiFiPASS2, APpass);
+        WiFiClients = WiFi.softAPgetStationNum();
     }
     else if (strcmp(WiFiMODE, "STA+AP") == 0)
     {
@@ -558,6 +560,7 @@ void DEBUG_WiFi_info()
         strcpy(WiFiIP2, WiFi.softAPIP().toString().c_str());
         strcpy(WiFiSSID2, APssid);
         strcpy(WiFiPASS2, APpass);
+        WiFiClients = WiFi.softAPgetStationNum();
     }
     else
     {
@@ -628,6 +631,9 @@ void DEBUG_WiFi_info()
         DEBUG_LineOut(DEBUGtxt);
 
         sprintf(DEBUGtxt, "      IP address : %s", WiFiIP2);
+        DEBUG_LineOut(DEBUGtxt);
+
+        sprintf(DEBUGtxt, "         Clients : %d", WiFiClients);
         DEBUG_LineOut(DEBUGtxt);
     }
 
