@@ -52,6 +52,9 @@ void DEBUG_BlockOut(const char *Block);
 int DEBUG_ProgressBar(int dotcount, char Dot);
 void DEBUG_ProgressBar2(int dotcount);
 
+int DEBUG_Lib_ProgressBar(int dotcount, char Dot);
+void DEBUG_Lib_ProgressBar2(int dotcount);
+
 void DEBUG_Ready();
 
 void DEBUG_Lib_Init(const char * Library, const char *Message);
