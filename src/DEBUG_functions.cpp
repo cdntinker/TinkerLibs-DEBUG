@@ -871,6 +871,36 @@ void DEBUG_Lib_Event(const char *Library, const char *Message)
 
     Serial.println(TheLine);
 }
+int DEBUG_Lib_ProgressBar(int dotcount, char Dot)
+{
+    int Width = DEBUG_Width - 3;
+    int dotposition = dotcount;
+    int rowcount = dotcount / Width;
+
+    dotposition = dotcount - ((Width * rowcount));
+
+    if (dotposition == 0)
+        Serial.printf(": ");
+
+    Serial.print(Dot);
+    // Serial.print(rowcount);
+
+    if (dotposition == Width - 1)
+    {
+        Serial.printf(" |\n");
+        return 0;
+    }
+    dotcount++;
+    return (dotposition);
+}
+void DEBUG_Lib_ProgressBar2(int dotcount)
+{
+    for (int i = 0; i < ((DEBUG_Width - 3) - dotcount); i++)
+    {
+        Serial.printf(" ");
+    }
+    Serial.printf(":\n");
+}
 
 #else
 void DEBUG_Lib_Init(const char *Library, const char *Message) {}
@@ -881,5 +911,7 @@ void DEBUG_Lib_BlockOut(const char *Library, const char *Message) {}
 void DEBUG_Lib_Success(const char *Library, const char *Message) {}
 void DEBUG_Lib_Trouble(const char *Library, const char *Message) {}
 void DEBUG_Lib_Event(const char *Library, const char *Message) {}
+int DEBUG_Lib_ProgressBar(int dotcount, char Dot) { return 0; }
+void DEBUG_Lib_ProgressBar2(int dotcount) {}
 
 #endif // DEBUGl
