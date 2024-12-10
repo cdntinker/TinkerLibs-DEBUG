@@ -57,6 +57,8 @@ void DEBUG_Lib_ProgressBar2(int dotcount);
 
 void DEBUG_Ready();
 
+void DEBUG_Separator();
+
 void DEBUG_Lib_Init(const char * Library, const char *Message);
 void DEBUG_Lib_Done(const char * Library, const char *Message);
 

@@ -907,6 +907,10 @@ void DEBUG_Lib_ProgressBar2(int dotcount)
     }
     Serial.printf(":\n");
 }
+void DEBUG_Lib_Separator()
+{
+    debug_MakeDivider(':', '-');
+}
 
 #else
 void DEBUG_Lib_Init(const char *Library, const char *Message) {}
@@ -919,5 +923,6 @@ void DEBUG_Lib_Trouble(const char *Library, const char *Message) {}
 void DEBUG_Lib_Event(const char *Library, const char *Message) {}
 int DEBUG_Lib_ProgressBar(int dotcount, char Dot) { return 0; }
 void DEBUG_Lib_ProgressBar2(int dotcount) {}
+void DEBUG_Lib_Separator() {}
 
 #endif // DEBUGl
