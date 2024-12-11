@@ -227,6 +227,11 @@ void DEBUG_Separator()
     debug_MakeDivider('+', '-');
 }
 
+void DEBUG_ReAlign()
+{
+    Serial.println();
+}
+
 /**/
 void DEBUG_SectionTitle(const char *Title)
 {
@@ -705,6 +710,7 @@ void DEBUG_Init(const char *InitPart) {}
 void DEBUG_Done(const char *InitPart) {}
 void DEBUG_Title() {}
 void DEBUG_Ready() {}
+void DEBUG_ReAlign() {}
 void DEBUG_Separator() {}
 void DEBUG_SectionTitle(const char *Title) {}
 void DEBUG_LineOut(const char *Line) {}

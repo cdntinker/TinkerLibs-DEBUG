@@ -34,6 +34,7 @@ void DEBUG_Title(void);
 String return_reset_reason(uint8_t reason);
 
 void DEBUG_Reset();
+void DEBUG_ReAlign();
 void DEBUG_Separator();
 void DEBUG_SectionTitle(const char *Title);
 
