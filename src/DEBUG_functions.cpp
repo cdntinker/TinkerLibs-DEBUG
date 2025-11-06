@@ -687,7 +687,7 @@ void DEBUG_IP()
 ////  (likely obsolete...) /////
 void DEBUG_MAC(const char *InitPart)
 {
-    Serial.printf("|    MAC address : %-83s |\n", InitPart);
+    Serial.printf("|    MAC address : %-80s |\n", InitPart);
 }
 
 ////  (likely obsolete...) /////
