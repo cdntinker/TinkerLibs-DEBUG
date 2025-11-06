@@ -1,3 +1,4 @@
+#define DEBUG
 // #include <NOTARDUINO.h>
 #include <Arduino.h>
 
@@ -673,7 +674,8 @@ void DEBUG_WiFi_Mode()
 ////  (likely obsolete...) /////
 void DEBUG_Wifi(const char *InitPart)
 {
-    Serial.printf("|          SSID : %-87s |\n", InitPart);
+    // Serial.printf("|          SSID : %-87s |\n", InitPart);
+    Serial.printf("|          SSID : %-80s |\n", InitPart);
 }
 
 ////  (likely obsolete...) /////
