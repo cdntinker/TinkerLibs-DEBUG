@@ -675,7 +675,7 @@ void DEBUG_WiFi_Mode()
 void DEBUG_Wifi(const char *InitPart)
 {
     // Serial.printf("|          SSID : %-87s |\n", InitPart);
-    Serial.printf("|          SSID : %-80s |\n", InitPart);
+    Serial.printf("|          SSID : %-81s |\n", InitPart);
 }
 
 ////  (likely obsolete...) /////
